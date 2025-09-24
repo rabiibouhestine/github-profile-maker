@@ -12,16 +12,38 @@ import GithubIcon from "./components/icons/GithubIcon";
 import TextEditor from "./components/editors/TextEditor";
 import ImageEditor from "./components/editors/ImageEditor";
 
+const sectionsList = [
+  {
+    id: 1,
+    type: "text",
+    tag: "h1",
+    align: "center",
+    text: "Hello World jhfgkjh jhf u jyf uufjh uyf j f uyfhkuyfjf",
+  },
+  {
+    id: 2,
+    type: "image",
+    url: "https://myimage.com",
+    align: "center",
+    height: 200,
+  },
+  {
+    id: 3,
+    type: "text",
+    tag: "h1",
+    align: "center",
+    text: "My Brain Hurts lcdkjhksfd. kagdhska adskg g sdk g kdgsk gs dkjgs dkfg",
+  },
+];
+
 function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <div className="h-screen max-w-[1440px] mx-auto p-4 grid grid-cols-4 gap-4">
         <div className="panel col-span-1 flex flex-col gap-2 overflow-y-auto">
-          <SectionCard />
-          <SectionCard />
-          <SectionCard />
-          <SectionCard />
-          <SectionCard />
+          {sectionsList.map((section) => (
+            <SectionCard type={section.type} text={section.text} />
+          ))}
           <Button size={"lg"}>
             <CirclePlusIcon />
             Add Section

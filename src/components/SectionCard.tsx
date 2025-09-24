@@ -1,18 +1,37 @@
 import {
   Grip as GripIcon,
-  ChartPie as ChartPieIcon,
   SquarePen as SquarePenIcon,
+  Type as TextIcon,
+  Image as ImageIcon,
+  SquareDashed as SquareDashedIcon,
 } from "lucide-react";
 
-export default function SectionCard() {
+type SectionCardProps = {
+  type?: string;
+  text?: string;
+};
+
+export default function SectionCard({ type, text }: SectionCardProps) {
+  function getIcon(type?: string) {
+    switch (type) {
+      case "text":
+        return <TextIcon />;
+        break;
+      case "image":
+        return <ImageIcon />;
+        break;
+      default:
+        return <SquareDashedIcon />;
+    }
+  }
   return (
     <div className="border rounded-sm p-2 flex items-center gap-4">
       <GripIcon className="text-muted-foreground" strokeWidth={1.5} />
       <div className="flex gap-2 items-center">
-        <ChartPieIcon />
+        {getIcon(type)}
         <div className="flex flex-col">
-          <span className="font-semibold">Text</span>
-          <span className="text-xs">I am a softw...</span>
+          <span className="font-semibold capitalize">{type}</span>
+          {text && <span className="text-xs truncate w-40">{text}</span>}
         </div>
       </div>
       <SquarePenIcon
