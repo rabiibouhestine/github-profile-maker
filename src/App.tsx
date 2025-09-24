@@ -1,19 +1,36 @@
 import { ThemeProvider } from "./components/theme-provider";
 import { ModeToggle } from "./components/ui/mode-toggle";
 import { Button } from "@/components/ui/button";
+import SectionCard from "./components/SectionCard";
 import {
   Settings as SettingsIcon,
   Download as DownloadIcon,
   Clipboard as ClipboardCopyIcon,
+  CirclePlus as CirclePlusIcon,
 } from "lucide-react";
 import GithubIcon from "./components/icons/GithubIcon";
+import TextEditor from "./components/editors/TextEditor";
+import ImageEditor from "./components/editors/ImageEditor";
 
 function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <div className="h-screen max-w-[1440px] mx-auto p-4 grid grid-cols-4 gap-4">
-        <div className="panel col-span-1"></div>
-        <div className="panel col-span-1"></div>
+        <div className="panel col-span-1 flex flex-col gap-2 overflow-y-auto">
+          <SectionCard />
+          <SectionCard />
+          <SectionCard />
+          <SectionCard />
+          <SectionCard />
+          <Button size={"lg"}>
+            <CirclePlusIcon />
+            Add Section
+          </Button>
+        </div>
+        <div className="panel col-span-1">
+          <TextEditor />
+          {/* <ImageEditor /> */}
+        </div>
         <div className="col-span-2 flex flex-col gap-4">
           <div className="panel flex flex-wrap gap-2 items-center justify-between">
             <div className="flex flex-wrap gap-2 items-center">
