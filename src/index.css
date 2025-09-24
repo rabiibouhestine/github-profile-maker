@@ -118,6 +118,6 @@
     @apply bg-background text-foreground;
   }
   .panel {
-    @apply rounded-md border-1;
+    @apply rounded-md border-1 p-3;
   }
 }

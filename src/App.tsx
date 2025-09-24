@@ -1,10 +1,52 @@
+import { Button } from "@/components/ui/button";
+import {
+  SunMoon as SunMoonIcon,
+  Settings as SettingsIcon,
+  Download as DownloadIcon,
+  Clipboard as ClipboardCopyIcon,
+} from "lucide-react";
+import GithubIcon from "./components/icons/GithubIcon";
+
 function App() {
   return (
     <div className="h-screen max-w-[1440px] mx-auto p-4 grid grid-cols-4 gap-4">
       <div className="panel col-span-1"></div>
       <div className="panel col-span-1"></div>
       <div className="col-span-2 flex flex-col gap-4">
-        <div className="panel h-16"></div>
+        <div className="panel flex flex-wrap gap-2 items-center justify-between">
+          <div className="flex flex-wrap gap-2 items-center">
+            <a
+              href="https://github.com/rabiibouhestine/profile-maker"
+              target="_blank"
+            >
+              <GithubIcon width={32} height={32} />
+            </a>
+            <div className="flex flex-col">
+              <h1 className="font-semibold text-sm">Profile Maker</h1>
+              <span className="text-xs">
+                Made by{" "}
+                <a href="https://rabiibouhestine.com/" target="_blank">
+                  Rabii Bouhestine
+                </a>
+              </span>
+            </div>
+          </div>
+          <div className="flex flex-wrap items-center gap-2">
+            <Button variant="outline">
+              <ClipboardCopyIcon />
+              Copy
+            </Button>
+            <Button variant="outline">
+              <DownloadIcon /> Download
+            </Button>
+            <Button variant="outline">
+              <SettingsIcon />
+            </Button>
+            <Button variant="ghost">
+              <SunMoonIcon />
+            </Button>
+          </div>
+        </div>
         <div className="panel h-full"></div>
       </div>
     </div>
