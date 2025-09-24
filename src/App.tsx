@@ -2,7 +2,6 @@ import { ThemeProvider } from "./components/theme-provider";
 import { ModeToggle } from "./components/ui/mode-toggle";
 import { Button } from "@/components/ui/button";
 import {
-  SunMoon as SunMoonIcon,
   Settings as SettingsIcon,
   Download as DownloadIcon,
   Clipboard as ClipboardCopyIcon,
