@@ -51,7 +51,7 @@ function App() {
         }
         return "";
       })
-      .join("\n");
+      .join("<br>\n");
   }, [sections]);
 
   return (
