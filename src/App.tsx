@@ -11,6 +11,16 @@ import {
 import GithubIcon from "./components/icons/GithubIcon";
 import Editor from "./components/editors/Editor";
 import { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+
+import { Type as TextIcon, Image as ImageIcon } from "lucide-react";
 
 import type { Section } from "./lib/types";
 
@@ -48,6 +58,33 @@ const sectionsList: Section[] = [
 function App() {
   const [sections, setSections] = useState<Section[]>(sectionsList);
   const [selectedSectionID, setSelectedSectionID] = useState(1);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleAddText = () => {
+    const newSection: Section = {
+      id: Date.now(),
+      type: "text",
+      tag: "h1",
+      align: "left",
+      text: "New Text",
+    };
+    setSections([...sections, newSection]);
+    setSelectedSectionID(newSection.id);
+    setIsModalOpen(false);
+  };
+
+  const handleAddImage = () => {
+    const newSection: Section = {
+      id: Date.now(),
+      type: "image",
+      url: "https://via.placeholder.com/200",
+      align: "center",
+      height: 200,
+    };
+    setSections([...sections, newSection]);
+    setSelectedSectionID(newSection.id);
+    setIsModalOpen(false);
+  };
 
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
@@ -61,10 +98,40 @@ function App() {
               onClick={() => setSelectedSectionID(section.id)}
             />
           ))}
-          <Button size={"lg"}>
-            <CirclePlusIcon />
-            Add Section
-          </Button>
+          <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+            <Button asChild size={"lg"}>
+              <DialogTrigger>
+                <CirclePlusIcon />
+                Add Section
+              </DialogTrigger>
+            </Button>
+            <DialogContent
+              onInteractOutside={(e) => e.preventDefault()}
+              onEscapeKeyDown={(e) => e.preventDefault()}
+            >
+              <DialogHeader>
+                <DialogTitle>Add a section to your profile</DialogTitle>
+                <DialogDescription>
+                  <div className="p-4 grid grid-cols-4 gap-4">
+                    <div
+                      className="border aspect-square rounded-md flex flex-col items-center justify-center gap-3"
+                      onClick={handleAddText}
+                    >
+                      <TextIcon />
+                      Text
+                    </div>
+                    <div
+                      className="border aspect-square rounded-md flex flex-col items-center justify-center gap-3"
+                      onClick={handleAddImage}
+                    >
+                      <ImageIcon />
+                      Image
+                    </div>
+                  </div>
+                </DialogDescription>
+              </DialogHeader>
+            </DialogContent>
+          </Dialog>
         </div>
         <div className="panel col-span-1">
           <Editor

@@ -108,7 +108,7 @@ export default function TextEditor({
           onChange={onTextChange}
         />
       </div>
-      <Button variant="destructive" onClick={handleDeleteSection}>
+      <Button variant="destructive" size={"lg"} onClick={handleDeleteSection}>
         <TrashIcon />
         Delete Section
       </Button>

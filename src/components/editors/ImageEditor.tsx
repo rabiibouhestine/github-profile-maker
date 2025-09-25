@@ -101,7 +101,7 @@ export default function ImageEditor({
           onChange={onHeightChange}
         />
       </div>
-      <Button variant="destructive" onClick={handleDeleteSection}>
+      <Button variant="destructive" size={"lg"} onClick={handleDeleteSection}>
         <TrashIcon />
         Delete Section
       </Button>
