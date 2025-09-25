@@ -57,6 +57,7 @@ function App() {
             <SectionCard
               key={section.id}
               section={section}
+              isSelected={section.id === selectedSectionID}
               onClick={() => setSelectedSectionID(section.id)}
             />
           ))}
@@ -70,6 +71,7 @@ function App() {
             sections={sections}
             setSections={setSections}
             selectedSectionID={selectedSectionID}
+            setSelectedSectionID={setSelectedSectionID}
           />
         </div>
         <div className="col-span-2 flex flex-col gap-4">

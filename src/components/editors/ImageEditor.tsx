@@ -16,12 +16,14 @@ type ImageEditorProps = {
   sections: Section[];
   setSections: React.Dispatch<React.SetStateAction<Section[]>>;
   selectedSectionID: number;
+  setSelectedSectionID: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export default function ImageEditor({
   sections,
   setSections,
   selectedSectionID,
+  setSelectedSectionID,
 }: ImageEditorProps) {
   const selectedSection = sections.find(
     (s): s is ImageSection => s.id === selectedSectionID && s.type === "image"
@@ -49,6 +51,21 @@ export default function ImageEditor({
     setSections((prev) =>
       prev.map((s) => (s.id === selectedSectionID ? { ...s, height: val } : s))
     );
+  }
+
+  function handleDeleteSection() {
+    setSections((prev) => {
+      const newSections = prev.filter((s) => s.id !== selectedSectionID);
+
+      // Update selectedSectionID to the first section if exists, otherwise 0
+      if (newSections.length > 0) {
+        setSelectedSectionID(newSections[0].id);
+      } else {
+        setSelectedSectionID(0);
+      }
+
+      return newSections;
+    });
   }
 
   return (
@@ -84,7 +101,7 @@ export default function ImageEditor({
           onChange={onHeightChange}
         />
       </div>
-      <Button variant="destructive">
+      <Button variant="destructive" onClick={handleDeleteSection}>
         <TrashIcon />
         Delete Section
       </Button>

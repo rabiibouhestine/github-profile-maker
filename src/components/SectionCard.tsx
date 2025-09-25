@@ -10,10 +10,15 @@ import type { Section } from "@/lib/types";
 
 type SectionCardProps = {
   section: Section;
+  isSelected: boolean;
   onClick: () => void;
 };
 
-export default function SectionCard({ section, onClick }: SectionCardProps) {
+export default function SectionCard({
+  section,
+  isSelected,
+  onClick,
+}: SectionCardProps) {
   function getIcon(type?: string) {
     switch (type) {
       case "text":
@@ -28,7 +33,12 @@ export default function SectionCard({ section, onClick }: SectionCardProps) {
   }
 
   return (
-    <div className="border rounded-sm p-2 flex items-center gap-4 h-16">
+    <div
+      className={
+        (isSelected ? "border-blue-500 " : "") +
+        "border rounded-sm p-2 flex items-center gap-4 h-16"
+      }
+    >
       <GripIcon className="text-muted-foreground" strokeWidth={1.5} />
       <div className="flex gap-2 items-center">
         {getIcon(section.type)}
