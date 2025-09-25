@@ -38,7 +38,10 @@ export default function SectionCard({
         "border rounded-sm p-2 flex items-center gap-4 h-16 hover:border-blue-500 hover:text-primary hover:cursor-pointer group"
       }
     >
-      <GripIcon className="text-muted-foreground" strokeWidth={1.5} />
+      <GripIcon
+        className="text-muted-foreground hover:cursor-grab"
+        strokeWidth={1.5}
+      />
       <div className="flex gap-2 items-center">
         {getIcon(section.type)}
         <div className="flex flex-col">
