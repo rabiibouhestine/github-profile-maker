@@ -23,10 +23,8 @@ export default function SectionCard({
     switch (type) {
       case "text":
         return <TextIcon />;
-        break;
       case "image":
         return <ImageIcon />;
-        break;
       default:
         return <SquareDashedIcon />;
     }
