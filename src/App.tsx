@@ -44,10 +44,10 @@ function App() {
     return sections
       .map((section) => {
         if (section.type === "text") {
-          return `<${section.tag} style="text-align:${section.align}">${section.text}</${section.tag}>`;
+          return `<${section.tag} align="${section.align}" >${section.text}</${section.tag}>`;
         }
         if (section.type === "image") {
-          return `<img src="${section.url}" alt="" style="display:block; margin:0 auto; height:${section.height}px; text-align:${section.align}" />`;
+          return `<div align="${section.align}"><img src="${section.url}" height=${section.height} /></div>`;
         }
         return "";
       })
