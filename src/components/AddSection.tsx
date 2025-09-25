@@ -43,7 +43,7 @@ export default function AddSection({
         type: "text",
         tag: "h1",
         align: "left",
-        text: "New Text",
+        text: "Hello World",
       }),
     },
     {
@@ -78,7 +78,7 @@ export default function AddSection({
               {options.map(({ label, icon: Icon, create }) => (
                 <button
                   key={label}
-                  className="border aspect-square rounded-md flex flex-col items-center justify-center gap-3 hover:bg-muted"
+                  className="border aspect-square rounded-md flex flex-col items-center justify-center gap-3 hover:bg-muted hover:cursor-pointer"
                   onClick={() => handleAddSection(create())}
                 >
                   <Icon />
