@@ -56,8 +56,8 @@ function App() {
 
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <div className="h-screen max-w-[1440px] mx-auto p-4 grid grid-cols-4 gap-4">
-        <div className="panel col-span-1 flex flex-col gap-2 overflow-y-auto">
+      <div className="h-screen max-w-[1440px] mx-auto p-4 grid grid-cols-1 xl:grid-cols-4 gap-4">
+        <div className="panel col-span-1 flex flex-col gap-2 xl:overflow-y-auto">
           <SectionsPanel
             sections={sections}
             setSections={setSections}
@@ -73,10 +73,10 @@ function App() {
             setSelectedSectionID={setSelectedSectionID}
           />
         </div>
-        <div className="col-span-2 flex flex-col gap-4 h-full min-h-0">
+        <div className="col-span-1 xl:col-span-2 flex flex-col gap-4 h-full min-h-0">
           <ButtonsPanel sectionsHTML={sectionsHTML} />
           <div
-            className="panel flex-1 min-h-0 overflow-y-auto"
+            className="panel flex-1 xl:min-h-0 xl:overflow-y-auto order-first xl:order-last"
             dangerouslySetInnerHTML={{ __html: sectionsHTML }}
           />
         </div>
