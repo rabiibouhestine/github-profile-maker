@@ -10,25 +10,48 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Trash as TrashIcon } from "lucide-react";
 
-import type { TagType, AlignType } from "@/lib/types";
+import type { Section, TagType, AlignType } from "@/lib/types";
 
 type TextEditorProps = {
-  tag: TagType;
-  onTagChange: (value: TagType) => void;
-  align: AlignType;
-  onAlignChange: (value: AlignType) => void;
-  text: string;
-  onTextChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  sections: Section[];
+  setSections: React.Dispatch<React.SetStateAction<Section[]>>;
+  selectedSectionID: number;
 };
 
 export default function TextEditor({
-  tag,
-  onTagChange,
-  align,
-  onAlignChange,
-  text,
-  onTextChange,
+  sections,
+  setSections,
+  selectedSectionID,
 }: TextEditorProps) {
+  const tag = sections.find(
+    (s) => s.id === selectedSectionID && s.type === "text"
+  )?.tag;
+  const align = sections.find(
+    (s) => s.id === selectedSectionID && s.type === "text"
+  )?.align;
+  const text = sections.find(
+    (s) => s.id === selectedSectionID && s.type === "text"
+  )?.text;
+
+  function onTagChange(val: TagType) {
+    setSections((prev) =>
+      prev.map((s) => (s.id === selectedSectionID ? { ...s, tag: val } : s))
+    );
+  }
+
+  function onAlignChange(val: AlignType) {
+    setSections((prev) =>
+      prev.map((s) => (s.id === selectedSectionID ? { ...s, align: val } : s))
+    );
+  }
+
+  function onTextChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
+    const val = event.target.value;
+    setSections((prev) =>
+      prev.map((s) => (s.id === selectedSectionID ? { ...s, text: val } : s))
+    );
+  }
+
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-2">

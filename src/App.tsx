@@ -9,11 +9,10 @@ import {
   CirclePlus as CirclePlusIcon,
 } from "lucide-react";
 import GithubIcon from "./components/icons/GithubIcon";
-import TextEditor from "./components/editors/TextEditor";
-import ImageEditor from "./components/editors/ImageEditor";
+import Editor from "./components/editors/Editor";
 import { useState } from "react";
 
-import type { AlignType, Section, TagType } from "./lib/types";
+import type { Section } from "./lib/types";
 
 const sectionsList: Section[] = [
   {
@@ -49,40 +48,6 @@ const sectionsList: Section[] = [
 function App() {
   const [sections, setSections] = useState<Section[]>(sectionsList);
   const [selectedSectionID, setSelectedSectionID] = useState(1);
-  const selectedSection = sections.find((s) => s.id === selectedSectionID);
-
-  function onTagChange(val: TagType) {
-    setSections((prev) =>
-      prev.map((s) => (s.id === selectedSectionID ? { ...s, tag: val } : s))
-    );
-  }
-
-  function onUrlChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const val = event.target.value;
-    setSections((prev) =>
-      prev.map((s) => (s.id === selectedSectionID ? { ...s, url: val } : s))
-    );
-  }
-
-  function onHeightChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const val = Number(event.target.value);
-    setSections((prev) =>
-      prev.map((s) => (s.id === selectedSectionID ? { ...s, height: val } : s))
-    );
-  }
-
-  function onAlignChange(val: AlignType) {
-    setSections((prev) =>
-      prev.map((s) => (s.id === selectedSectionID ? { ...s, align: val } : s))
-    );
-  }
-
-  function onTextChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
-    const val = event.target.value;
-    setSections((prev) =>
-      prev.map((s) => (s.id === selectedSectionID ? { ...s, text: val } : s))
-    );
-  }
 
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
@@ -101,26 +66,11 @@ function App() {
           </Button>
         </div>
         <div className="panel col-span-1">
-          {selectedSection?.type === "text" && (
-            <TextEditor
-              tag={selectedSection?.tag}
-              onTagChange={onTagChange}
-              align={selectedSection?.align}
-              onAlignChange={onAlignChange}
-              text={selectedSection?.text}
-              onTextChange={onTextChange}
-            />
-          )}
-          {selectedSection?.type === "image" && (
-            <ImageEditor
-              url={selectedSection?.url}
-              onUrlChange={onUrlChange}
-              align={selectedSection?.align}
-              onAlignChange={onAlignChange}
-              height={selectedSection?.height}
-              onHeightChange={onHeightChange}
-            />
-          )}
+          <Editor
+            sections={sections}
+            setSections={setSections}
+            selectedSectionID={selectedSectionID}
+          />
         </div>
         <div className="col-span-2 flex flex-col gap-4">
           <div className="panel flex flex-wrap gap-2 items-center justify-between">
