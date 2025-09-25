@@ -32,9 +32,10 @@ export default function SectionCard({
 
   return (
     <div
+      onClick={onClick}
       className={
         (isSelected ? "border-blue-500 " : "") +
-        "border rounded-sm p-2 flex items-center gap-4 h-16"
+        "border rounded-sm p-2 flex items-center gap-4 h-16 hover:border-blue-500 hover:text-primary hover:cursor-pointer group"
       }
     >
       <GripIcon className="text-muted-foreground" strokeWidth={1.5} />
@@ -48,9 +49,11 @@ export default function SectionCard({
         </div>
       </div>
       <SquarePenIcon
-        className="text-muted-foreground ml-auto hover:cursor-pointer hover:text-primary"
+        className={
+          (isSelected ? "text-blue-500 " : "text-muted-foreground ") +
+          "ml-auto group-hover:text-blue-500"
+        }
         strokeWidth={1.5}
-        onClick={onClick}
       />
     </div>
   );
