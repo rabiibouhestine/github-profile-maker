@@ -1,5 +1,4 @@
 import {
-  Settings as SettingsIcon,
   Download as DownloadIcon,
   Clipboard as ClipboardCopyIcon,
 } from "lucide-react";
@@ -51,9 +50,6 @@ export default function ButtonsPanel({ sectionsHTML }: ButtonsPanelProps) {
         </Button>
         <Button variant="outline" onClick={handleDownload}>
           <DownloadIcon /> Download
-        </Button>
-        <Button variant="outline">
-          <SettingsIcon />
         </Button>
         <ModeToggle />
       </div>
