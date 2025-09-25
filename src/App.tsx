@@ -34,6 +34,13 @@ const sectionsList = [
     align: "center",
     text: "My Brain Hurts lcdkjhksfd. kagdhska adskg g sdk g kdgsk gs dkjgs dkfg",
   },
+  {
+    id: 4,
+    type: "text",
+    tag: "h1",
+    align: "center",
+    text: "Hakuna Matata kagdhska adskg g sdk g kdgsk gs dkjgs dkfg",
+  },
 ];
 
 function App() {

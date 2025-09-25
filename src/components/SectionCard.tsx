@@ -25,7 +25,7 @@ export default function SectionCard({ type, text }: SectionCardProps) {
     }
   }
   return (
-    <div className="border rounded-sm p-2 flex items-center gap-4">
+    <div className="border rounded-sm p-2 flex items-center gap-4 h-16">
       <GripIcon className="text-muted-foreground" strokeWidth={1.5} />
       <div className="flex gap-2 items-center">
         {getIcon(type)}
