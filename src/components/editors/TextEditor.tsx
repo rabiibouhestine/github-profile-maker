@@ -56,9 +56,9 @@ export default function TextEditor({
     setSections((prev) => {
       const newSections = prev.filter((s) => s.id !== selectedSectionID);
 
-      // Update selectedSectionID to the first section if exists, otherwise 0
+      // Update selectedSectionID to the last section if exists, otherwise 0
       if (newSections.length > 0) {
-        setSelectedSectionID(newSections[0].id);
+        setSelectedSectionID(newSections[newSections.length - 1].id);
       } else {
         setSelectedSectionID(0);
       }
