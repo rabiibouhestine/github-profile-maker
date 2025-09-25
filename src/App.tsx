@@ -1,4 +1,4 @@
-import { ThemeProvider } from "./components/theme-provider";
+import { ThemeProvider } from "./components/hooks/theme-provider";
 import { ModeToggle } from "./components/ui/mode-toggle";
 import { Button } from "@/components/ui/button";
 import SectionCard from "./components/SectionCard";
@@ -11,8 +11,11 @@ import {
 import GithubIcon from "./components/icons/GithubIcon";
 import TextEditor from "./components/editors/TextEditor";
 import ImageEditor from "./components/editors/ImageEditor";
+import { useState } from "react";
 
-const sectionsList = [
+import type { AlignType, Section, TagType } from "./lib/types";
+
+const sectionsList: Section[] = [
   {
     id: 1,
     type: "text",
@@ -44,12 +47,53 @@ const sectionsList = [
 ];
 
 function App() {
+  const [sections, setSections] = useState<Section[]>(sectionsList);
+  const [selectedSectionID, setSelectedSectionID] = useState(1);
+  const selectedSection = sections.find((s) => s.id === selectedSectionID);
+
+  function onTagChange(val: TagType) {
+    setSections((prev) =>
+      prev.map((s) => (s.id === selectedSectionID ? { ...s, tag: val } : s))
+    );
+  }
+
+  function onUrlChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const val = event.target.value;
+    setSections((prev) =>
+      prev.map((s) => (s.id === selectedSectionID ? { ...s, url: val } : s))
+    );
+  }
+
+  function onHeightChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const val = Number(event.target.value);
+    setSections((prev) =>
+      prev.map((s) => (s.id === selectedSectionID ? { ...s, height: val } : s))
+    );
+  }
+
+  function onAlignChange(val: AlignType) {
+    setSections((prev) =>
+      prev.map((s) => (s.id === selectedSectionID ? { ...s, align: val } : s))
+    );
+  }
+
+  function onTextChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
+    const val = event.target.value;
+    setSections((prev) =>
+      prev.map((s) => (s.id === selectedSectionID ? { ...s, text: val } : s))
+    );
+  }
+
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <div className="h-screen max-w-[1440px] mx-auto p-4 grid grid-cols-4 gap-4">
         <div className="panel col-span-1 flex flex-col gap-2 overflow-y-auto">
-          {sectionsList.map((section) => (
-            <SectionCard type={section.type} text={section.text} />
+          {sections.map((section) => (
+            <SectionCard
+              key={section.id}
+              section={section}
+              onClick={() => setSelectedSectionID(section.id)}
+            />
           ))}
           <Button size={"lg"}>
             <CirclePlusIcon />
@@ -57,8 +101,26 @@ function App() {
           </Button>
         </div>
         <div className="panel col-span-1">
-          <TextEditor />
-          {/* <ImageEditor /> */}
+          {selectedSection?.type === "text" && (
+            <TextEditor
+              tag={selectedSection?.tag}
+              onTagChange={onTagChange}
+              align={selectedSection?.align}
+              onAlignChange={onAlignChange}
+              text={selectedSection?.text}
+              onTextChange={onTextChange}
+            />
+          )}
+          {selectedSection?.type === "image" && (
+            <ImageEditor
+              url={selectedSection?.url}
+              onUrlChange={onUrlChange}
+              align={selectedSection?.align}
+              onAlignChange={onAlignChange}
+              height={selectedSection?.height}
+              onHeightChange={onHeightChange}
+            />
+          )}
         </div>
         <div className="col-span-2 flex flex-col gap-4">
           <div className="panel flex flex-wrap gap-2 items-center justify-between">

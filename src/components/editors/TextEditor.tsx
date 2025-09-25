@@ -10,12 +10,30 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Trash as TrashIcon } from "lucide-react";
 
-export default function TextEditor() {
+import type { TagType, AlignType } from "@/lib/types";
+
+type TextEditorProps = {
+  tag: TagType;
+  onTagChange: (value: TagType) => void;
+  align: AlignType;
+  onAlignChange: (value: AlignType) => void;
+  text: string;
+  onTextChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
+};
+
+export default function TextEditor({
+  tag,
+  onTagChange,
+  align,
+  onAlignChange,
+  text,
+  onTextChange,
+}: TextEditorProps) {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-2">
         <Label>Tag</Label>
-        <Select value={"h1"}>
+        <Select value={tag} onValueChange={onTagChange}>
           <SelectTrigger className="w-full">
             <SelectValue placeholder="Theme" />
           </SelectTrigger>
@@ -32,7 +50,7 @@ export default function TextEditor() {
       </div>
       <div className="flex flex-col gap-2">
         <Label>Align</Label>
-        <Select value={"center"}>
+        <Select value={align} onValueChange={onAlignChange}>
           <SelectTrigger className="w-full">
             <SelectValue placeholder="Theme" />
           </SelectTrigger>
@@ -45,7 +63,12 @@ export default function TextEditor() {
       </div>
       <div className="flex flex-col gap-2">
         <Label>Text</Label>
-        <Textarea placeholder="Type your message here." id="message" />
+        <Textarea
+          placeholder="Type your message here."
+          id="message"
+          value={text}
+          onChange={onTextChange}
+        />
       </div>
       <Button variant="destructive">
         <TrashIcon />
