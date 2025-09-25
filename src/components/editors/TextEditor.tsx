@@ -10,7 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Trash as TrashIcon } from "lucide-react";
 
-import type { Section, TagType, AlignType } from "@/lib/types";
+import type { Section, TextSection, TagType, AlignType } from "@/lib/types";
 
 type TextEditorProps = {
   sections: Section[];
@@ -23,15 +23,13 @@ export default function TextEditor({
   setSections,
   selectedSectionID,
 }: TextEditorProps) {
-  const tag = sections.find(
-    (s) => s.id === selectedSectionID && s.type === "text"
-  )?.tag;
-  const align = sections.find(
-    (s) => s.id === selectedSectionID && s.type === "text"
-  )?.align;
-  const text = sections.find(
-    (s) => s.id === selectedSectionID && s.type === "text"
-  )?.text;
+  const selectedSection = sections.find(
+    (s): s is TextSection => s.id === selectedSectionID && s.type === "text"
+  );
+
+  const tag = selectedSection?.tag || "h1";
+  const align = selectedSection?.align || "center";
+  const text = selectedSection?.text || "Hello World";
 
   function onTagChange(val: TagType) {
     setSections((prev) =>

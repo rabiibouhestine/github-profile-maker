@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Trash as TrashIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
-import type { Section, AlignType } from "@/lib/types";
+import type { Section, ImageSection, AlignType } from "@/lib/types";
 
 type ImageEditorProps = {
   sections: Section[];
@@ -24,7 +24,7 @@ export default function ImageEditor({
   selectedSectionID,
 }: ImageEditorProps) {
   const selectedSection = sections.find(
-    (s) => s.id === selectedSectionID && s.type === "image"
+    (s): s is ImageSection => s.id === selectedSectionID && s.type === "image"
   );
 
   const url = selectedSection?.url || "";
