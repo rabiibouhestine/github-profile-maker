@@ -1,21 +1,21 @@
-import TextEditor from "./TextEditor";
-import ImageEditor from "./ImageEditor";
+import TextEditor from "../editors/TextEditor";
+import ImageEditor from "../editors/ImageEditor";
 
 import type { Section } from "@/lib/types";
 
-type EditorProps = {
+type EditorPanelProps = {
   sections: Section[];
   setSections: React.Dispatch<React.SetStateAction<Section[]>>;
   selectedSectionID: number;
   setSelectedSectionID: React.Dispatch<React.SetStateAction<number>>;
 };
 
-export default function Editor({
+export default function EditorPanel({
   sections,
   setSections,
   selectedSectionID,
   setSelectedSectionID,
-}: EditorProps) {
+}: EditorPanelProps) {
   const selectedSection = sections.find((s) => s.id === selectedSectionID);
   switch (selectedSection?.type) {
     case "text":
