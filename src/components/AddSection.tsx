@@ -67,10 +67,7 @@ export default function AddSection({
           Add Section
         </DialogTrigger>
       </Button>
-      <DialogContent
-        onInteractOutside={(e) => e.preventDefault()}
-        onEscapeKeyDown={(e) => e.preventDefault()}
-      >
+      <DialogContent>
         <DialogHeader>
           <DialogTitle>Add a section to your profile</DialogTitle>
           <DialogDescription>
