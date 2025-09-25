@@ -16,7 +16,7 @@ const sectionsList: Section[] = [
   {
     id: 2,
     type: "image",
-    url: "https://myimage.com",
+    url: "https://placehold.co/600x200",
     align: "center",
     height: 200,
   },

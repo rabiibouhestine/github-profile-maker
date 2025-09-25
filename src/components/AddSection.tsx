@@ -52,7 +52,7 @@ export default function AddSection({
       create: (): Section => ({
         id: Date.now(),
         type: "image",
-        url: "https://via.placeholder.com/200",
+        url: "https://placehold.co/600x200",
         align: "center",
         height: 200,
       }),
