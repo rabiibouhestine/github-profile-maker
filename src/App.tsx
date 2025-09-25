@@ -2,6 +2,7 @@ import { ThemeProvider } from "./components/hooks/theme-provider";
 import { ModeToggle } from "./components/ui/mode-toggle";
 import { Button } from "@/components/ui/button";
 import SectionCard from "./components/SectionCard";
+import { saveAs } from "file-saver";
 import {
   Settings as SettingsIcon,
   Download as DownloadIcon,
@@ -10,7 +11,7 @@ import {
 } from "lucide-react";
 import GithubIcon from "./components/icons/GithubIcon";
 import Editor from "./components/editors/Editor";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import {
   Dialog,
   DialogContent,
@@ -59,6 +60,32 @@ function App() {
   const [sections, setSections] = useState<Section[]>(sectionsList);
   const [selectedSectionID, setSelectedSectionID] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const sectionsHTML = useMemo(() => {
+    return sections
+      .map((section) => {
+        if (section.type === "text") {
+          return `<${section.tag} style="text-align:${section.align}">${section.text}</${section.tag}>`;
+        }
+        if (section.type === "image") {
+          return `<img src="${section.url}" alt="" style="display:block; margin:0 auto; height:${section.height}px; text-align:${section.align}" />`;
+        }
+        return "";
+      })
+      .join("\n");
+  }, [sections]);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(sectionsHTML);
+    alert("Copied to clipboard!");
+  };
+
+  const handleDownload = () => {
+    const blob = new Blob([sectionsHTML], {
+      type: "text/markdown;charset=utf-8",
+    });
+    saveAs(blob, "README.md");
+  };
 
   const handleAddText = () => {
     const newSection: Section = {
@@ -161,11 +188,11 @@ function App() {
               </div>
             </div>
             <div className="flex flex-wrap items-center gap-2">
-              <Button variant="outline">
+              <Button variant="outline" onClick={handleCopy}>
                 <ClipboardCopyIcon />
                 Copy
               </Button>
-              <Button variant="outline">
+              <Button variant="outline" onClick={handleDownload}>
                 <DownloadIcon /> Download
               </Button>
               <Button variant="outline">
@@ -174,7 +201,9 @@ function App() {
               <ModeToggle />
             </div>
           </div>
-          <div className="panel h-full"></div>
+          <div className="panel h-full">
+            <div dangerouslySetInnerHTML={{ __html: sectionsHTML }} />
+          </div>
         </div>
       </div>
     </ThemeProvider>
