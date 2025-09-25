@@ -73,11 +73,12 @@ function App() {
             setSelectedSectionID={setSelectedSectionID}
           />
         </div>
-        <div className="col-span-2 flex flex-col gap-4">
+        <div className="col-span-2 flex flex-col gap-4 h-full min-h-0">
           <ButtonsPanel sectionsHTML={sectionsHTML} />
-          <div className="panel h-full">
-            <div dangerouslySetInnerHTML={{ __html: sectionsHTML }} />
-          </div>
+          <div
+            className="panel flex-1 min-h-0 overflow-y-auto"
+            dangerouslySetInnerHTML={{ __html: sectionsHTML }}
+          />
         </div>
       </div>
     </ThemeProvider>
