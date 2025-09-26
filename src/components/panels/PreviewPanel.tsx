@@ -33,7 +33,7 @@ export default function PreviewPanel({ sections }: PreviePanelProps) {
                   src={
                     "https://github-profile-trophy.vercel.app?username=" +
                     section.username +
-                    "&theme=dracula&column=-1&row=1&margin-w=8&margin-h=8&no-bg=false&no-frame=false&order=4"
+                    "&theme=dracula&column=-1&row=1&margin-w=8&margin-h=8&no-bg=false&no-frame=false"
                   }
                   height="150"
                   alt="trophy graph"
@@ -45,7 +45,7 @@ export default function PreviewPanel({ sections }: PreviePanelProps) {
                   src={
                     "https://github-readme-activity-graph.vercel.app/graph?username=" +
                     section.username +
-                    "&radius=16&theme=dracula&area=true&order=5"
+                    "&radius=16&theme=dracula&area=true"
                   }
                   height="300"
                   alt="activity-graph graph"
@@ -57,7 +57,7 @@ export default function PreviewPanel({ sections }: PreviePanelProps) {
                   src={
                     "https://streak-stats.demolab.com?user=" +
                     section.username +
-                    "&locale=en&mode=daily&theme=dracula&hide_border=false&border_radius=5&order=3"
+                    "&locale=en&mode=daily&theme=dracula&hide_border=false&border_radius=5"
                   }
                   height="150"
                   alt="streak graph"
