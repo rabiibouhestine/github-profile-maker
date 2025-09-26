@@ -20,7 +20,7 @@ export default function ButtonsPanel({ sections }: ButtonsPanelProps) {
         if (section.type === "text") {
           return `<${section.tag} align="${section.align}" >${section.text}</${section.tag}>`;
         }
-        if (section.type === "snake") {
+        if (section.type === "trophy") {
           return `<div align="${section.align}"><img src="https://github-profile-trophy.vercel.app?username=${section.username}&theme=dracula&column=-1&row=1&margin-w=8&margin-h=8&no-bg=false&no-frame=false&order=4" height="150" alt="trophy graph"  /></div>`;
         }
         if (section.type === "image") {

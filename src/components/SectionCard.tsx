@@ -4,6 +4,7 @@ import {
   Type as TextIcon,
   Image as ImageIcon,
   SquareDashed as SquareDashedIcon,
+  Trophy as TrophyIcon,
 } from "lucide-react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
@@ -34,8 +35,8 @@ export default function SectionCard({
     switch (type) {
       case "text":
         return <TextIcon />;
-      case "github":
-        return <TextIcon />;
+      case "trophy":
+        return <TrophyIcon />;
       case "image":
         return <ImageIcon />;
       default:

@@ -28,7 +28,7 @@ export default function EditorPanel({
           setSelectedSectionID={setSelectedSectionID}
         />
       );
-    case "snake":
+    case "trophy":
       return (
         <GithubEditor
           sections={sections}

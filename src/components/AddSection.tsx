@@ -9,6 +9,7 @@ import {
 import {
   Type as TextIcon,
   Image as ImageIcon,
+  Trophy as TrophyIcon,
   CirclePlus as CirclePlusIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -47,11 +48,11 @@ export default function AddSection({
       }),
     },
     {
-      label: "Snake",
-      icon: TextIcon,
+      label: "Trophies",
+      icon: TrophyIcon,
       create: (): Section => ({
         id: Date.now(),
-        type: "snake",
+        type: "trophy",
         align: "center",
         username: "rabiibouhestine",
       }),
