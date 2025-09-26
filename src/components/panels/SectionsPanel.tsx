@@ -15,6 +15,7 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
+import { motion, AnimatePresence } from "framer-motion";
 
 import type { Section } from "@/lib/types";
 import type { DragEndEvent } from "@dnd-kit/core";
@@ -71,15 +72,25 @@ export default function SectionsPanel({
           items={sections.map((s) => s.id.toString())}
           strategy={verticalListSortingStrategy}
         >
-          {sections.map((section) => (
-            <SectionCard
-              id={section.id.toString()}
-              key={section.id}
-              section={section}
-              isSelected={section.id === selectedSectionID}
-              onClick={() => setSelectedSectionID(section.id)}
-            />
-          ))}
+          <AnimatePresence>
+            {sections.map((section) => (
+              <motion.div
+                key={section.id}
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <SectionCard
+                  id={section.id.toString()}
+                  key={section.id}
+                  section={section}
+                  isSelected={section.id === selectedSectionID}
+                  onClick={() => setSelectedSectionID(section.id)}
+                />
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </SortableContext>
       </DndContext>
       <AddSection
