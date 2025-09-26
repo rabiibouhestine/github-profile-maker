@@ -35,7 +35,7 @@ export default function SectionCard({
     switch (type) {
       case "text":
         return <TextIcon />;
-      case "trophy":
+      case "trophies":
         return <TrophyIcon />;
       case "image":
         return <ImageIcon />;

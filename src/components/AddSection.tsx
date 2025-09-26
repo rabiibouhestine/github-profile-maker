@@ -52,7 +52,7 @@ export default function AddSection({
       icon: TrophyIcon,
       create: (): Section => ({
         id: Date.now(),
-        type: "trophy",
+        type: "trophies",
         align: "center",
         username: "rabiibouhestine",
       }),

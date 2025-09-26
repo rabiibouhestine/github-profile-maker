@@ -12,8 +12,8 @@ export type TextSection = BaseSection & {
   text: string;
 };
 
-export type TrophySection = BaseSection & {
-  type: "trophy";
+export type TrophiesSection = BaseSection & {
+  type: "trophies";
   username: string;
   align: AlignType;
 };
@@ -25,4 +25,4 @@ export type ImageSection = BaseSection & {
   height: number;
 };
 
-export type Section = TextSection | TrophySection | ImageSection;
+export type Section = TextSection | TrophiesSection | ImageSection;

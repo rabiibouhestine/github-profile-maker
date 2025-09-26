@@ -27,7 +27,7 @@ export default function PreviewPanel({ sections }: PreviePanelProps) {
                 height={section.height}
                 style={{ display: "block", margin: "auto" }}
               />
-            ) : section.type === "trophy" ? (
+            ) : section.type === "trophies" ? (
               <div className={`text-${section.align}`}>
                 <img
                   src={

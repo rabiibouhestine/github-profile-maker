@@ -28,7 +28,7 @@ export default function EditorPanel({
           setSelectedSectionID={setSelectedSectionID}
         />
       );
-    case "trophy":
+    case "trophies":
       return (
         <GithubEditor
           sections={sections}
