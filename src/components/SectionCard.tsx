@@ -5,20 +5,31 @@ import {
   Image as ImageIcon,
   SquareDashed as SquareDashedIcon,
 } from "lucide-react";
-
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 import type { Section } from "@/lib/types";
 
 type SectionCardProps = {
+  id: string;
   section: Section;
   isSelected: boolean;
   onClick: () => void;
 };
 
 export default function SectionCard({
+  id,
   section,
   isSelected,
   onClick,
 }: SectionCardProps) {
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({ id: id });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  };
+
   function getIcon(type?: string) {
     switch (type) {
       case "text":
@@ -33,12 +44,16 @@ export default function SectionCard({
   return (
     <div
       onClick={onClick}
+      ref={setNodeRef}
+      style={style}
       className={
         (isSelected ? "border-blue-500 " : "") +
         "border rounded-sm p-2 flex items-center gap-4 h-16 hover:border-blue-500 hover:text-primary hover:cursor-pointer group"
       }
     >
       <GripIcon
+        {...attributes}
+        {...listeners}
         className="text-muted-foreground hover:cursor-grab"
         strokeWidth={1.5}
       />
