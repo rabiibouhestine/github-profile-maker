@@ -30,6 +30,12 @@ export type StreakSection = BaseSection & {
   align: AlignType;
 };
 
+export type LanguagesSection = BaseSection & {
+  type: "languages";
+  username: string;
+  align: AlignType;
+};
+
 export type ImageSection = BaseSection & {
   type: "image";
   align: AlignType;
@@ -42,4 +48,5 @@ export type Section =
   | TrophiesSection
   | ActivitySection
   | StreakSection
+  | LanguagesSection
   | ImageSection;

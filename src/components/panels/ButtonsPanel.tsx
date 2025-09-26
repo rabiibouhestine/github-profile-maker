@@ -29,6 +29,9 @@ export default function ButtonsPanel({ sections }: ButtonsPanelProps) {
         if (section.type === "streak") {
           return `<div align="${section.align}"><img src="https://streak-stats.demolab.com?user=${section.username}&locale=en&mode=daily&theme=dracula&hide_border=false&border_radius=5" height="150" alt="streak graph"  /></div>`;
         }
+        if (section.type === "languages") {
+          return `<div align="${section.align}"><img src="https://github-readme-stats.vercel.app/api/top-langs?username=${section.username}&locale=en&hide_title=false&layout=compact&card_width=320&langs_count=5&theme=dracula&hide_border=false" height="150" alt="languages graph"  /></div>`;
+        }
         if (section.type === "image") {
           return `<div align="${section.align}"><img src="${section.url}" height=${section.height} /></div>`;
         }

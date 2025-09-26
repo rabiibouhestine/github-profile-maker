@@ -7,6 +7,7 @@ import {
   Trophy as TrophyIcon,
   ChartLine as ChartLineIcon,
   Flame as FlameIcon,
+  CodeXml as CodeIcon,
 } from "lucide-react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
@@ -43,6 +44,8 @@ export default function SectionCard({
         return <ChartLineIcon />;
       case "streak":
         return <FlameIcon />;
+      case "languages":
+        return <CodeIcon />;
       case "image":
         return <ImageIcon />;
       default:

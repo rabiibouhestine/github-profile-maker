@@ -27,6 +27,7 @@ export default function EditorPanel({
     trophies: GithubEditor,
     activity: GithubEditor,
     streak: GithubEditor,
+    languages: GithubEditor,
   };
 
   const EditorComponent = editorMap[selectedSection.type];

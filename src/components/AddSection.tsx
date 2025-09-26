@@ -13,6 +13,7 @@ import {
   CirclePlus as CirclePlusIcon,
   ChartLine as ChartLineIcon,
   Flame as FlameIcon,
+  CodeXml as CodeIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -75,6 +76,16 @@ export default function AddSection({
       create: (): Section => ({
         id: Date.now(),
         type: "streak",
+        align: "center",
+        username: "rabiibouhestine",
+      }),
+    },
+    {
+      label: "Languages",
+      icon: CodeIcon,
+      create: (): Section => ({
+        id: Date.now(),
+        type: "languages",
         align: "center",
         username: "rabiibouhestine",
       }),

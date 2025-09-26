@@ -63,6 +63,18 @@ export default function PreviewPanel({ sections }: PreviePanelProps) {
                   alt="streak graph"
                 />
               </div>
+            ) : section.type === "languages" ? (
+              <div className={`text-${section.align}`}>
+                <img
+                  src={
+                    "https://github-readme-stats.vercel.app/api/top-langs?username=" +
+                    section.username +
+                    "&locale=en&hide_title=false&layout=compact&card_width=320&langs_count=5&theme=dracula&hide_border=false"
+                  }
+                  height="150"
+                  alt="languages graph"
+                />
+              </div>
             ) : null}
             <br></br>
           </motion.div>
