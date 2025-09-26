@@ -23,6 +23,9 @@ export default function ButtonsPanel({ sections }: ButtonsPanelProps) {
         if (section.type === "trophies") {
           return `<div align="${section.align}"><img src="https://github-profile-trophy.vercel.app?username=${section.username}&theme=dracula&column=-1&row=1&margin-w=8&margin-h=8&no-bg=false&no-frame=false&order=4" height="150" alt="trophy graph"  /></div>`;
         }
+        if (section.type === "activity") {
+          return `<div align="${section.align}"><img src="https://github-readme-activity-graph.vercel.app/graph?username=${section.username}&radius=16&theme=dracula&area=true&order=5" height="300" alt="activity-graph graph"  /></div>`;
+        }
         if (section.type === "image") {
           return `<div align="${section.align}"><img src="${section.url}" height=${section.height} /></div>`;
         }

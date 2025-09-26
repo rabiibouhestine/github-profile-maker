@@ -11,6 +11,7 @@ import {
   Image as ImageIcon,
   Trophy as TrophyIcon,
   CirclePlus as CirclePlusIcon,
+  ChartLine as ChartLineIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -58,6 +59,16 @@ export default function AddSection({
       }),
     },
     {
+      label: "Activity",
+      icon: ChartLineIcon,
+      create: (): Section => ({
+        id: Date.now(),
+        type: "activity",
+        align: "center",
+        username: "rabiibouhestine",
+      }),
+    },
+    {
       label: "Image",
       icon: ImageIcon,
       create: (): Section => ({
@@ -82,7 +93,7 @@ export default function AddSection({
         <DialogHeader>
           <DialogTitle>Add a section to your profile</DialogTitle>
           <DialogDescription>
-            <div className="p-4 grid grid-cols-4 gap-4">
+            <div className="p-4 grid grid-cols-4 gap-4 text-primary">
               {options.map(({ label, icon: Icon, create }) => (
                 <button
                   key={label}

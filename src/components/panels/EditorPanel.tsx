@@ -37,6 +37,15 @@ export default function EditorPanel({
           setSelectedSectionID={setSelectedSectionID}
         />
       );
+    case "activity":
+      return (
+        <GithubEditor
+          sections={sections}
+          setSections={setSections}
+          selectedSectionID={selectedSectionID}
+          setSelectedSectionID={setSelectedSectionID}
+        />
+      );
     case "image":
       return (
         <ImageEditor

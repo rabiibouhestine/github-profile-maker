@@ -10,7 +10,12 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Trash as TrashIcon } from "lucide-react";
 
-import type { Section, AlignType, TrophiesSection } from "@/lib/types";
+import type {
+  Section,
+  AlignType,
+  TrophiesSection,
+  ActivitySection,
+} from "@/lib/types";
 
 type GithubEditorProps = {
   sections: Section[];
@@ -26,7 +31,8 @@ export default function GithubEditor({
   setSelectedSectionID,
 }: GithubEditorProps) {
   const selectedSection = sections.find(
-    (s): s is TrophiesSection => s.id === selectedSectionID && s.type === "text"
+    (s): s is TrophiesSection | ActivitySection =>
+      s.id === selectedSectionID && (s.type === "text" || s.type === "activity")
   );
 
   const username = selectedSection?.username || "rabiibouhestine";

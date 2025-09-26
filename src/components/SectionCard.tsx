@@ -5,6 +5,7 @@ import {
   Image as ImageIcon,
   SquareDashed as SquareDashedIcon,
   Trophy as TrophyIcon,
+  ChartLine as ChartLineIcon,
 } from "lucide-react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
@@ -37,6 +38,8 @@ export default function SectionCard({
         return <TextIcon />;
       case "trophies":
         return <TrophyIcon />;
+      case "activity":
+        return <ChartLineIcon />;
       case "image":
         return <ImageIcon />;
       default:
