@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/hooks/theme-provider";
 import EditorPanel from "@/components/panels/EditorPanel";
 import SectionsPanel from "@/components/panels/SectionsPanel";
 import ButtonsPanel from "@/components/panels/ButtonsPanel";
+import { motion, AnimatePresence } from "framer-motion";
 
 const sectionsList: Section[] = [
   {
@@ -46,6 +47,9 @@ function App() {
         if (section.type === "text") {
           return `<${section.tag} align="${section.align}" >${section.text}</${section.tag}>`;
         }
+        if (section.type === "snake") {
+          return `<div align="${section.align}"><img src="https://github-profile-trophy.vercel.app?username=${section.username}&theme=dracula&column=-1&row=1&margin-w=8&margin-h=8&no-bg=false&no-frame=false&order=4" height="150" alt="trophy graph"  /></div>`;
+        }
         if (section.type === "image") {
           return `<div align="${section.align}"><img src="${section.url}" height=${section.height} /></div>`;
         }
@@ -75,10 +79,31 @@ function App() {
         </div>
         <div className="col-span-1 xl:col-span-2 flex flex-col gap-4 h-full xl:min-h-0">
           <ButtonsPanel sectionsHTML={sectionsHTML} />
-          <div
-            className="panel flex-1 xl:min-h-0 xl:overflow-y-auto order-first xl:order-last"
-            dangerouslySetInnerHTML={{ __html: sectionsHTML }}
-          />
+          <AnimatePresence>
+            <div className="panel flex-1 xl:min-h-0 xl:overflow-y-auto order-first xl:order-last">
+              {sections.map((section) => (
+                <motion.div
+                  key={section.id}
+                  layout // animates position changes
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  {section.type === "text" ? (
+                    <section.tag style={{ textAlign: section.align }}>
+                      {section.text}
+                    </section.tag>
+                  ) : section.type === "image" ? (
+                    <img
+                      src={section.url}
+                      height={section.height}
+                      style={{ display: "block", margin: "auto" }}
+                    />
+                  ) : null}
+                </motion.div>
+              ))}
+            </div>
+          </AnimatePresence>
         </div>
       </div>
     </ThemeProvider>

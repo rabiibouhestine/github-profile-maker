@@ -12,6 +12,12 @@ export type TextSection = BaseSection & {
   text: string;
 };
 
+export type SnakeSection = BaseSection & {
+  type: "snake";
+  username: string;
+  align: AlignType;
+};
+
 export type ImageSection = BaseSection & {
   type: "image";
   align: AlignType;
@@ -19,4 +25,4 @@ export type ImageSection = BaseSection & {
   height: number;
 };
 
-export type Section = TextSection | ImageSection;
+export type Section = TextSection | SnakeSection | ImageSection;

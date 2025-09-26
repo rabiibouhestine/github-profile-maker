@@ -34,6 +34,8 @@ export default function SectionCard({
     switch (type) {
       case "text":
         return <TextIcon />;
+      case "github":
+        return <TextIcon />;
       case "image":
         return <ImageIcon />;
       default:

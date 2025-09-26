@@ -47,6 +47,16 @@ export default function AddSection({
       }),
     },
     {
+      label: "Snake",
+      icon: TextIcon,
+      create: (): Section => ({
+        id: Date.now(),
+        type: "snake",
+        align: "center",
+        username: "rabiibouhestine",
+      }),
+    },
+    {
       label: "Image",
       icon: ImageIcon,
       create: (): Section => ({

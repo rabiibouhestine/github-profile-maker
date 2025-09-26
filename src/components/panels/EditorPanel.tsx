@@ -1,5 +1,6 @@
 import TextEditor from "../editors/TextEditor";
 import ImageEditor from "../editors/ImageEditor";
+import GithubEditor from "../editors/GithubEditor";
 
 import type { Section } from "@/lib/types";
 
@@ -21,6 +22,15 @@ export default function EditorPanel({
     case "text":
       return (
         <TextEditor
+          sections={sections}
+          setSections={setSections}
+          selectedSectionID={selectedSectionID}
+          setSelectedSectionID={setSelectedSectionID}
+        />
+      );
+    case "snake":
+      return (
+        <GithubEditor
           sections={sections}
           setSections={setSections}
           selectedSectionID={selectedSectionID}
