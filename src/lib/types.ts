@@ -36,6 +36,12 @@ export type LanguagesSection = BaseSection & {
   align: AlignType;
 };
 
+export type StatsSection = BaseSection & {
+  type: "stats";
+  username: string;
+  align: AlignType;
+};
+
 export type ImageSection = BaseSection & {
   type: "image";
   align: AlignType;
@@ -49,4 +55,5 @@ export type Section =
   | ActivitySection
   | StreakSection
   | LanguagesSection
+  | StatsSection
   | ImageSection;

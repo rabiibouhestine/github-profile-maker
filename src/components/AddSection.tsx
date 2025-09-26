@@ -14,6 +14,7 @@ import {
   ChartLine as ChartLineIcon,
   Flame as FlameIcon,
   CodeXml as CodeIcon,
+  ChartPie as ChartPieIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -86,6 +87,16 @@ export default function AddSection({
       create: (): Section => ({
         id: Date.now(),
         type: "languages",
+        align: "center",
+        username: "rabiibouhestine",
+      }),
+    },
+    {
+      label: "Stats",
+      icon: ChartPieIcon,
+      create: (): Section => ({
+        id: Date.now(),
+        type: "stats",
         align: "center",
         username: "rabiibouhestine",
       }),
