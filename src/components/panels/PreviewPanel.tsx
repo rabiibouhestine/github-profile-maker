@@ -51,6 +51,18 @@ export default function PreviewPanel({ sections }: PreviePanelProps) {
                   alt="activity-graph graph"
                 />
               </div>
+            ) : section.type === "streak" ? (
+              <div className={`text-${section.align}`}>
+                <img
+                  src={
+                    "https://streak-stats.demolab.com?user=" +
+                    section.username +
+                    "&locale=en&mode=daily&theme=dracula&hide_border=false&border_radius=5&order=3"
+                  }
+                  height="150"
+                  alt="streak graph"
+                />
+              </div>
             ) : null}
             <br></br>
           </motion.div>

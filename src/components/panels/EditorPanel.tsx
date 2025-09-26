@@ -18,44 +18,27 @@ export default function EditorPanel({
   setSelectedSectionID,
 }: EditorPanelProps) {
   const selectedSection = sections.find((s) => s.id === selectedSectionID);
-  switch (selectedSection?.type) {
-    case "text":
-      return (
-        <TextEditor
-          sections={sections}
-          setSections={setSections}
-          selectedSectionID={selectedSectionID}
-          setSelectedSectionID={setSelectedSectionID}
-        />
-      );
-    case "trophies":
-      return (
-        <GithubEditor
-          sections={sections}
-          setSections={setSections}
-          selectedSectionID={selectedSectionID}
-          setSelectedSectionID={setSelectedSectionID}
-        />
-      );
-    case "activity":
-      return (
-        <GithubEditor
-          sections={sections}
-          setSections={setSections}
-          selectedSectionID={selectedSectionID}
-          setSelectedSectionID={setSelectedSectionID}
-        />
-      );
-    case "image":
-      return (
-        <ImageEditor
-          sections={sections}
-          setSections={setSections}
-          selectedSectionID={selectedSectionID}
-          setSelectedSectionID={setSelectedSectionID}
-        />
-      );
-    default:
-      break;
-  }
+
+  if (!selectedSection) return null;
+
+  const editorMap: Record<string, React.ComponentType<EditorPanelProps>> = {
+    text: TextEditor,
+    image: ImageEditor,
+    trophies: GithubEditor,
+    activity: GithubEditor,
+    streak: GithubEditor,
+  };
+
+  const EditorComponent = editorMap[selectedSection.type];
+
+  if (!EditorComponent) return null;
+
+  return (
+    <EditorComponent
+      sections={sections}
+      setSections={setSections}
+      selectedSectionID={selectedSectionID}
+      setSelectedSectionID={setSelectedSectionID}
+    />
+  );
 }

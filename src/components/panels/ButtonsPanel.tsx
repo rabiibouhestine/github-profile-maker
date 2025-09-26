@@ -26,6 +26,9 @@ export default function ButtonsPanel({ sections }: ButtonsPanelProps) {
         if (section.type === "activity") {
           return `<div align="${section.align}"><img src="https://github-readme-activity-graph.vercel.app/graph?username=${section.username}&radius=16&theme=dracula&area=true&order=5" height="300" alt="activity-graph graph"  /></div>`;
         }
+        if (section.type === "streak") {
+          return `<div align="${section.align}"><img src="https://streak-stats.demolab.com?user=${section.username}&locale=en&mode=daily&theme=dracula&hide_border=false&border_radius=5&order=3" height="150" alt="streak graph"  /></div>`;
+        }
         if (section.type === "image") {
           return `<div align="${section.align}"><img src="${section.url}" height=${section.height} /></div>`;
         }

@@ -12,6 +12,7 @@ import {
   Trophy as TrophyIcon,
   CirclePlus as CirclePlusIcon,
   ChartLine as ChartLineIcon,
+  Flame as FlameIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -64,6 +65,16 @@ export default function AddSection({
       create: (): Section => ({
         id: Date.now(),
         type: "activity",
+        align: "center",
+        username: "rabiibouhestine",
+      }),
+    },
+    {
+      label: "Streak",
+      icon: FlameIcon,
+      create: (): Section => ({
+        id: Date.now(),
+        type: "streak",
         align: "center",
         username: "rabiibouhestine",
       }),
