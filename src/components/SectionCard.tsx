@@ -48,7 +48,7 @@ export default function SectionCard({
       style={style}
       className={
         (isSelected ? "border-blue-500 " : "") +
-        "border rounded-sm p-2 flex items-center gap-4 h-16 hover:border-blue-500 hover:text-primary hover:cursor-pointer group"
+        "border rounded-sm p-2 flex items-center gap-4 min-h-16 hover:border-blue-500 hover:text-primary hover:cursor-pointer group"
       }
     >
       <GripIcon
