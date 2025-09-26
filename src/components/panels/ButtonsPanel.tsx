@@ -6,12 +6,31 @@ import GithubIcon from "@/components/icons/GithubIcon";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/ui/mode-toggle";
 import { saveAs } from "file-saver";
+import type { Section } from "@/lib/types";
+import { useMemo } from "react";
 
 type ButtonsPanelProps = {
-  sectionsHTML: string;
+  sections: Section[];
 };
 
-export default function ButtonsPanel({ sectionsHTML }: ButtonsPanelProps) {
+export default function ButtonsPanel({ sections }: ButtonsPanelProps) {
+  const sectionsHTML = useMemo(() => {
+    return sections
+      .map((section) => {
+        if (section.type === "text") {
+          return `<${section.tag} align="${section.align}" >${section.text}</${section.tag}>`;
+        }
+        if (section.type === "snake") {
+          return `<div align="${section.align}"><img src="https://github-profile-trophy.vercel.app?username=${section.username}&theme=dracula&column=-1&row=1&margin-w=8&margin-h=8&no-bg=false&no-frame=false&order=4" height="150" alt="trophy graph"  /></div>`;
+        }
+        if (section.type === "image") {
+          return `<div align="${section.align}"><img src="${section.url}" height=${section.height} /></div>`;
+        }
+        return "";
+      })
+      .join("<br>\n");
+  }, [sections]);
+
   const handleCopy = () => {
     navigator.clipboard.writeText(sectionsHTML);
     alert("Copied to clipboard!");

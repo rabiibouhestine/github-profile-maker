@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import type { Section } from "@/lib/types";
 import { ThemeProvider } from "@/components/hooks/theme-provider";
 import EditorPanel from "@/components/panels/EditorPanel";
@@ -41,23 +41,6 @@ function App() {
   const [sections, setSections] = useState<Section[]>(sectionsList);
   const [selectedSectionID, setSelectedSectionID] = useState(1);
 
-  const sectionsHTML = useMemo(() => {
-    return sections
-      .map((section) => {
-        if (section.type === "text") {
-          return `<${section.tag} align="${section.align}" >${section.text}</${section.tag}>`;
-        }
-        if (section.type === "snake") {
-          return `<div align="${section.align}"><img src="https://github-profile-trophy.vercel.app?username=${section.username}&theme=dracula&column=-1&row=1&margin-w=8&margin-h=8&no-bg=false&no-frame=false&order=4" height="150" alt="trophy graph"  /></div>`;
-        }
-        if (section.type === "image") {
-          return `<div align="${section.align}"><img src="${section.url}" height=${section.height} /></div>`;
-        }
-        return "";
-      })
-      .join("<br>\n");
-  }, [sections]);
-
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <div className="h-screen max-w-[1440px] mx-auto p-4 grid grid-cols-1 xl:grid-cols-4 gap-4">
@@ -78,7 +61,7 @@ function App() {
           />
         </div>
         <div className="col-span-1 xl:col-span-2 flex flex-col gap-4 h-full xl:min-h-0">
-          <ButtonsPanel sectionsHTML={sectionsHTML} />
+          <ButtonsPanel sections={sections} />
           <PreviewPanel sections={sections} />
         </div>
       </div>
