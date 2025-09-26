@@ -73,7 +73,7 @@ function App() {
             setSelectedSectionID={setSelectedSectionID}
           />
         </div>
-        <div className="col-span-1 xl:col-span-2 flex flex-col gap-4 h-full min-h-0">
+        <div className="col-span-1 xl:col-span-2 flex flex-col gap-4 h-full xl:min-h-0">
           <ButtonsPanel sectionsHTML={sectionsHTML} />
           <div
             className="panel flex-1 xl:min-h-0 xl:overflow-y-auto order-first xl:order-last"

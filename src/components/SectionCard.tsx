@@ -54,7 +54,7 @@ export default function SectionCard({
       <GripIcon
         {...attributes}
         {...listeners}
-        className="text-muted-foreground hover:cursor-grab"
+        className="text-muted-foreground focus:outline-none hover:cursor-grab"
         strokeWidth={1.5}
       />
       <div className="flex gap-2 items-center">

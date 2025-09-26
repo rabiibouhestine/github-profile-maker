@@ -25,7 +25,7 @@ export default function ButtonsPanel({ sectionsHTML }: ButtonsPanelProps) {
   };
 
   return (
-    <div className="panel flex flex-wrap gap-2 items-center justify-between">
+    <div className="panel flex flex-wrap gap-2 items-center justify-between mb-4 xl:mb-0">
       <div className="flex flex-wrap gap-2 items-center">
         <a
           href="https://github.com/rabiibouhestine/profile-maker"
