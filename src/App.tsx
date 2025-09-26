@@ -4,7 +4,7 @@ import { ThemeProvider } from "@/components/hooks/theme-provider";
 import EditorPanel from "@/components/panels/EditorPanel";
 import SectionsPanel from "@/components/panels/SectionsPanel";
 import ButtonsPanel from "@/components/panels/ButtonsPanel";
-import { motion, AnimatePresence } from "framer-motion";
+import PreviewPanel from "@/components/panels/PreviewPanel";
 
 const sectionsList: Section[] = [
   {
@@ -79,31 +79,7 @@ function App() {
         </div>
         <div className="col-span-1 xl:col-span-2 flex flex-col gap-4 h-full xl:min-h-0">
           <ButtonsPanel sectionsHTML={sectionsHTML} />
-          <AnimatePresence>
-            <div className="panel flex-1 xl:min-h-0 xl:overflow-y-auto order-first xl:order-last">
-              {sections.map((section) => (
-                <motion.div
-                  key={section.id}
-                  layout // animates position changes
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                >
-                  {section.type === "text" ? (
-                    <section.tag style={{ textAlign: section.align }}>
-                      {section.text}
-                    </section.tag>
-                  ) : section.type === "image" ? (
-                    <img
-                      src={section.url}
-                      height={section.height}
-                      style={{ display: "block", margin: "auto" }}
-                    />
-                  ) : null}
-                </motion.div>
-              ))}
-            </div>
-          </AnimatePresence>
+          <PreviewPanel sections={sections} />
         </div>
       </div>
     </ThemeProvider>
