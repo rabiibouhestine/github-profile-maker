@@ -122,11 +122,11 @@ export default function AddSection({
           Add Section
         </DialogTrigger>
       </Button>
-      <DialogContent>
+      <DialogContent className="!max-w-4xl !max-h-screen overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Add a section to your profile</DialogTitle>
           <DialogDescription>
-            <div className="p-4 grid grid-cols-4 gap-4 text-primary">
+            <div className="p-4 grid grid-cols-2 sm:grid-cols-5 gap-4 text-primary">
               {options.map(({ label, icon: Icon, create }) => (
                 <button
                   key={label}
