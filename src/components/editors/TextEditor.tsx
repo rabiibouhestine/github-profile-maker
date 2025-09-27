@@ -68,7 +68,7 @@ export default function TextEditor({
   }
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 pb-3">
       <div className="flex flex-col gap-2">
         <Label>Tag</Label>
         <Select value={tag} onValueChange={onTagChange}>

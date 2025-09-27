@@ -66,7 +66,7 @@ export default function GithubEditor({
   }
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 pb-3">
       <div className="flex flex-col gap-2">
         <Label>Github Username</Label>
         <Input

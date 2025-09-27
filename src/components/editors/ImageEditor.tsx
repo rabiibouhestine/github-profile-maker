@@ -69,7 +69,7 @@ export default function ImageEditor({
   }
 
   return (
-    <div className="h-full flex flex-col gap-4">
+    <div className="h-full flex flex-col gap-4 pb-3">
       <div className="flex flex-col gap-2">
         <Label>Image URL</Label>
         <Input

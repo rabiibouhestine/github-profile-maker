@@ -64,7 +64,7 @@ export default function StackEditor({
   }
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 pb-3">
       <div className="flex flex-col gap-2">
         <Label>Align</Label>
         <Select value={align} onValueChange={onAlignChange}>
