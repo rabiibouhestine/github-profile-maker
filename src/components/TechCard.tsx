@@ -75,7 +75,6 @@ export default function TechCard({
           width={32}
         />
         <span className="truncate w-full">{name}</span>
-        <div className="hidden">{versions}</div>
       </div>
       <Select value={selected} onValueChange={handleVersionChange}>
         <SelectTrigger className="ml-auto"></SelectTrigger>
