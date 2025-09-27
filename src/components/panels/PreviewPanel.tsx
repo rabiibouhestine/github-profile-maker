@@ -6,6 +6,11 @@ type PreviePanelProps = {
 };
 
 export default function PreviewPanel({ sections }: PreviePanelProps) {
+  const justifyMap: Record<"left" | "center" | "right", string> = {
+    left: "justify-start",
+    center: "justify-center",
+    right: "justify-end",
+  };
   return (
     <AnimatePresence>
       <div className="panel flex-1 xl:min-h-0 xl:overflow-y-auto order-first xl:order-last">
@@ -86,6 +91,27 @@ export default function PreviewPanel({ sections }: PreviePanelProps) {
                   height="150"
                   alt="stats graph"
                 />
+              </div>
+            ) : section.type === "stack" ? (
+              <div
+                className={`flex flex-wrap ${justifyMap[section.align]} gap-3`}
+              >
+                {section.list.map((tech) => (
+                  <img
+                    src={
+                      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/" +
+                      tech.name +
+                      "/" +
+                      tech.name +
+                      "-" +
+                      tech.selected +
+                      ".svg"
+                    }
+                    height={section.size}
+                    width={section.size}
+                    alt={tech.name}
+                  />
+                ))}
               </div>
             ) : null}
             <br></br>
