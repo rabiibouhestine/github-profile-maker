@@ -1,6 +1,7 @@
 import TextEditor from "../editors/TextEditor";
 import ImageEditor from "../editors/ImageEditor";
 import GithubEditor from "../editors/GithubEditor";
+import { motion, AnimatePresence } from "framer-motion";
 
 import type { Section } from "@/lib/types";
 
@@ -36,11 +37,22 @@ export default function EditorPanel({
   if (!EditorComponent) return null;
 
   return (
-    <EditorComponent
-      sections={sections}
-      setSections={setSections}
-      selectedSectionID={selectedSectionID}
-      setSelectedSectionID={setSelectedSectionID}
-    />
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={selectedSection.id}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -10 }}
+        transition={{ duration: 0.1 }}
+        className="h-full"
+      >
+        <EditorComponent
+          sections={sections}
+          setSections={setSections}
+          selectedSectionID={selectedSectionID}
+          setSelectedSectionID={setSelectedSectionID}
+        />
+      </motion.div>
+    </AnimatePresence>
   );
 }
