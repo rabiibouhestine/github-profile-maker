@@ -91,7 +91,15 @@ export default function AddTech({
   };
 
   return (
-    <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+    <Dialog
+      open={isModalOpen}
+      onOpenChange={(open) => {
+        setIsModalOpen(open);
+        if (open) {
+          setSearch("");
+        }
+      }}
+    >
       <Button asChild size="lg">
         <DialogTrigger>
           <CirclePlusIcon />
