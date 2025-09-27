@@ -1,4 +1,6 @@
 import { Trash as TrashIcon, Grip as GripIcon } from "lucide-react";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 
 import {
   Select,
@@ -24,6 +26,14 @@ export default function TechCard({
   selected,
   versions,
 }: TechCardProps) {
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({ id: name });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  };
+
   const handleDelete = () => {
     setSections((prev) =>
       prev.map((section) => {
@@ -55,8 +65,14 @@ export default function TechCard({
   };
 
   return (
-    <div className="border rounded-sm p-2 flex items-center gap-4 min-h-16">
+    <div
+      className="border rounded-sm p-2 flex items-center gap-4 min-h-16"
+      ref={setNodeRef}
+      style={style}
+    >
       <GripIcon
+        {...attributes}
+        {...listeners}
         className="text-muted-foreground focus:outline-none hover:cursor-grab"
         strokeWidth={1.5}
       />

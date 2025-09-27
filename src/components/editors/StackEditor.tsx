@@ -5,6 +5,22 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {
+  DndContext,
+  closestCenter,
+  KeyboardSensor,
+  PointerSensor,
+  useSensor,
+  useSensors,
+} from "@dnd-kit/core";
+import {
+  arrayMove,
+  SortableContext,
+  sortableKeyboardCoordinates,
+  verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
+import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
+import { motion, AnimatePresence } from "framer-motion";
 import AddTech from "@/components/AddTech";
 import TechCard from "@/components/TechCard";
 import { Label } from "@/components/ui/label";
@@ -13,6 +29,7 @@ import { Button } from "@/components/ui/button";
 import { Trash as TrashIcon } from "lucide-react";
 
 import type { Section, AlignType, StackSection } from "@/lib/types";
+import type { DragEndEvent } from "@dnd-kit/core";
 
 type StackEditorProps = {
   sections: Section[];
@@ -34,6 +51,13 @@ export default function StackEditor({
   const align = selectedSection?.align || "center";
   const size = selectedSection?.size || 40;
   const list = selectedSection?.list || [];
+
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    })
+  );
 
   function onAlignChange(val: AlignType) {
     setSections((prev) =>
@@ -63,6 +87,29 @@ export default function StackEditor({
     });
   }
 
+  function handleDragEnd(event: DragEndEvent) {
+    const { active, over } = event;
+    if (!over) return;
+    if (active.id === over.id) return;
+
+    setSections((prev) =>
+      prev.map((s) => {
+        if (s.id !== selectedSectionID) return s;
+        if (s.type !== "stack") return s;
+
+        const oldIndex = s.list.findIndex((tech) => tech.name === active.id);
+        const newIndex = s.list.findIndex((tech) => tech.name === over.id);
+
+        if (oldIndex === -1 || newIndex === -1) return s;
+
+        return {
+          ...s,
+          list: arrayMove(s.list, oldIndex, newIndex),
+        };
+      })
+    );
+  }
+
   return (
     <div className="flex flex-col gap-4 pb-3">
       <div className="flex flex-col gap-2">
@@ -90,16 +137,38 @@ export default function StackEditor({
       </div>
       <div className="flex flex-col gap-2">
         <Label>Stack</Label>
-        {list.map((technology) => (
-          <TechCard
-            key={technology.name}
-            setSections={setSections}
-            selectedSectionID={selectedSectionID}
-            name={technology.name}
-            selected={technology.selected}
-            versions={technology.versions}
-          />
-        ))}
+        <DndContext
+          sensors={sensors}
+          collisionDetection={closestCenter}
+          modifiers={[restrictToVerticalAxis]}
+          onDragEnd={handleDragEnd}
+        >
+          <SortableContext
+            items={list.map((s) => s.name.toString())}
+            strategy={verticalListSortingStrategy}
+          >
+            <AnimatePresence>
+              {list.map((technology) => (
+                <motion.div
+                  key={technology.name}
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <TechCard
+                    key={technology.name}
+                    setSections={setSections}
+                    selectedSectionID={selectedSectionID}
+                    name={technology.name}
+                    selected={technology.selected}
+                    versions={technology.versions}
+                  />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </SortableContext>
+        </DndContext>
       </div>
       <AddTech
         setSections={setSections}
