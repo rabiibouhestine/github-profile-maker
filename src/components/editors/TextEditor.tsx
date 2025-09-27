@@ -26,7 +26,7 @@ export default function TextEditor({
   setSelectedSectionID,
 }: TextEditorProps) {
   const selectedSection = sections.find(
-    (s): s is TextSection => s.id === selectedSectionID && s.type === "text"
+    (s): s is TextSection => s.id === selectedSectionID
   );
 
   const tag = selectedSection?.tag || "h1";

@@ -15,6 +15,7 @@ import {
   Flame as FlameIcon,
   CodeXml as CodeIcon,
   ChartPie as ChartPieIcon,
+  Blocks as BlocksIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -99,6 +100,33 @@ export default function AddSection({
         type: "stats",
         align: "center",
         username: "rabiibouhestine",
+      }),
+    },
+    {
+      label: "Stack",
+      icon: BlocksIcon,
+      create: (): Section => ({
+        id: Date.now(),
+        type: "stack",
+        align: "center",
+        size: 40,
+        list: [
+          {
+            name: "linuxmint",
+            selected: "original",
+            versions: [
+              "original",
+              "original-wordmark",
+              "plain",
+              "plain-wordmark",
+            ],
+          },
+          {
+            name: "liquibase",
+            selected: "original",
+            versions: ["original", "original-wordmark"],
+          },
+        ],
       }),
     },
     {

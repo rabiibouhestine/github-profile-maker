@@ -49,6 +49,19 @@ export type ImageSection = BaseSection & {
   height: number;
 };
 
+export type Tech = {
+  name: string;
+  selected: string;
+  versions: string[];
+};
+
+export type StackSection = BaseSection & {
+  type: "stack";
+  align: AlignType;
+  size: number;
+  list: Tech[];
+};
+
 export type Section =
   | TextSection
   | TrophiesSection
@@ -56,4 +69,5 @@ export type Section =
   | StreakSection
   | LanguagesSection
   | StatsSection
+  | StackSection
   | ImageSection;

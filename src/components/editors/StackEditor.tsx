@@ -5,40 +5,35 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import AddTech from "@/components/AddTech";
+import TechCard from "@/components/TechCard";
 import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Trash as TrashIcon } from "lucide-react";
-import { Input } from "@/components/ui/input";
 
-import type { Section, ImageSection, AlignType } from "@/lib/types";
+import type { Section, AlignType, StackSection } from "@/lib/types";
 
-type ImageEditorProps = {
+type StackEditorProps = {
   sections: Section[];
   setSections: React.Dispatch<React.SetStateAction<Section[]>>;
   selectedSectionID: number;
   setSelectedSectionID: React.Dispatch<React.SetStateAction<number>>;
 };
 
-export default function ImageEditor({
+export default function StackEditor({
   sections,
   setSections,
   selectedSectionID,
   setSelectedSectionID,
-}: ImageEditorProps) {
+}: StackEditorProps) {
   const selectedSection = sections.find(
-    (s): s is ImageSection => s.id === selectedSectionID
+    (s): s is StackSection => s.id === selectedSectionID
   );
 
-  const url = selectedSection?.url || "";
-  const align = selectedSection?.align || "left";
-  const height = selectedSection?.height || 200;
-
-  function onUrlChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const val = event.target.value;
-    setSections((prev) =>
-      prev.map((s) => (s.id === selectedSectionID ? { ...s, url: val } : s))
-    );
-  }
+  const align = selectedSection?.align || "center";
+  const size = selectedSection?.size || 40;
+  const list = selectedSection?.list || [];
 
   function onAlignChange(val: AlignType) {
     setSections((prev) =>
@@ -47,9 +42,9 @@ export default function ImageEditor({
   }
 
   function onHeightChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const val = Number(event.target.value);
+    const val = event.target.value;
     setSections((prev) =>
-      prev.map((s) => (s.id === selectedSectionID ? { ...s, height: val } : s))
+      prev.map((s) => (s.id === selectedSectionID ? { ...s, text: val } : s))
     );
   }
 
@@ -69,16 +64,7 @@ export default function ImageEditor({
   }
 
   return (
-    <div className="h-full flex flex-col gap-4">
-      <div className="flex flex-col gap-2">
-        <Label>Image URL</Label>
-        <Input
-          type="text"
-          placeholder="https://image.com"
-          value={url}
-          onChange={onUrlChange}
-        />
-      </div>
+    <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-2">
         <Label>Align</Label>
         <Select value={align} onValueChange={onAlignChange}>
@@ -93,14 +79,32 @@ export default function ImageEditor({
         </Select>
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Height</Label>
+        <Label>Icon Size</Label>
         <Input
           type="number"
-          placeholder="200"
-          value={height}
+          placeholder="40"
+          id="message"
+          value={size}
           onChange={onHeightChange}
         />
       </div>
+      <div className="flex flex-col gap-2">
+        <Label>Stack</Label>
+        {list.map((technology) => (
+          <TechCard
+            key={technology.name}
+            setSections={setSections}
+            selectedSectionID={selectedSectionID}
+            name={technology.name}
+            selected={technology.selected}
+            versions={technology.versions}
+          />
+        ))}
+      </div>
+      <AddTech
+        setSections={setSections}
+        selectedSectionID={selectedSectionID}
+      />
       <Button variant="destructive" size={"lg"} onClick={handleDeleteSection}>
         <TrashIcon />
         Delete Section

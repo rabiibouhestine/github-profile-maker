@@ -31,8 +31,7 @@ export default function GithubEditor({
   setSelectedSectionID,
 }: GithubEditorProps) {
   const selectedSection = sections.find(
-    (s): s is TrophiesSection | ActivitySection =>
-      s.id === selectedSectionID && (s.type === "text" || s.type === "activity")
+    (s): s is TrophiesSection | ActivitySection => s.id === selectedSectionID
   );
 
   const username = selectedSection?.username || "rabiibouhestine";

@@ -9,6 +9,7 @@ import {
   Flame as FlameIcon,
   CodeXml as CodeIcon,
   ChartPie as ChartPieIcon,
+  Blocks as BlocksIcon,
 } from "lucide-react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
@@ -49,6 +50,8 @@ export default function SectionCard({
         return <CodeIcon />;
       case "stats":
         return <ChartPieIcon />;
+      case "stack":
+        return <BlocksIcon />;
       case "image":
         return <ImageIcon />;
       default:
