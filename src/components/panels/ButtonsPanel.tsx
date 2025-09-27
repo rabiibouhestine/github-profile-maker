@@ -38,6 +38,15 @@ export default function ButtonsPanel({ sections }: ButtonsPanelProps) {
         if (section.type === "image") {
           return `<div align="${section.align}"><img src="${section.url}" height=${section.height} /></div>`;
         }
+        if (section.type === "stack") {
+          const imgs = section.list
+            .map(
+              (tech) =>
+                `<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.name}/${tech.name}-${tech.selected}.svg" height="${section.size}" width="${section.size}" alt="${tech.name}" />`
+            )
+            .join("\n");
+          return `<div align=${section.align}>\n${imgs}\n</div>`;
+        }
         return "";
       })
       .join("<br>\n");
