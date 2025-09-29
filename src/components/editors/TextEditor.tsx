@@ -27,7 +27,7 @@ export default function TextEditor({
 
   const tag = selectedSection?.tag || "h1";
   const align = selectedSection?.align || "center";
-  const text = selectedSection?.text || "Hello World";
+  const text = selectedSection?.text || "";
 
   function onTagChange(val: TagType) {
     setSections((prev) =>
