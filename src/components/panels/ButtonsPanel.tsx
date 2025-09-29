@@ -102,7 +102,7 @@ export default function ButtonsPanel({ sections }: ButtonsPanelProps) {
 
         <Button asChild variant="outline">
           <a
-            href="https://github.com/rabiibouhestine/profile-maker"
+            href="https://github.com/rabiibouhestine/github-profile-maker"
             target="_blank"
           >
             <GithubIcon />
