@@ -9,7 +9,8 @@ import {
 import { CirclePlus as CirclePlusIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { dev_icons } from "@/resources/dev_icons";
 
 import type { Section, StackSection, Tech } from "@/lib/types";
 
@@ -30,36 +31,9 @@ export default function AddTech({
   selectedSectionID,
 }: AddTechProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [data, setData] = useState<DeviconItem[] | null>(null);
-  const [error, setError] = useState<Error | null>(null);
   const [search, setSearch] = useState("");
 
-  const url =
-    "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/devicon.json";
-
-  useEffect(() => {
-    fetch(url)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((json: DeviconItem[]) => setData(json))
-      .catch((err: unknown) => {
-        if (err instanceof Error) setError(err);
-        else setError(new Error("Unknown error"));
-      });
-  }, []);
-
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
-  if (!data) {
-    return <div>Loading…</div>;
-  }
-
-  const filtered = data.filter((item) =>
+  const filtered = dev_icons.filter((item) =>
     item.name.toLowerCase().includes(search.toLowerCase())
   );
 
