@@ -135,7 +135,6 @@ export default function PreviewPanel({ sections }: PreviePanelProps) {
                 {section.list.map((badge) => (
                   <img
                     src={`https://img.shields.io/badge/${badge.label}-${badge.message}-${badge.color}`}
-                    className="h-full"
                     alt="badge"
                   />
                 ))}

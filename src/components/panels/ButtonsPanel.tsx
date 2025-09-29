@@ -56,6 +56,15 @@ export default function ButtonsPanel({ sections }: ButtonsPanelProps) {
             .join("\n");
           return `<div align=${section.align}>\n${imgs}\n</div>`;
         }
+        if (section.type === "badges") {
+          const imgs = section.list
+            .map(
+              (badge) =>
+                `<img src="https://img.shields.io/badge/${badge.label}-${badge.message}-${badge.color}" alt="badge" />`
+            )
+            .join("\n");
+          return `<div align=${section.align}>\n${imgs}\n</div>`;
+        }
         return "";
       })
       .join("<br>\n");
