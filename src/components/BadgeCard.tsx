@@ -153,10 +153,12 @@ export default function BadgeCard({
                 />
               </div>
               <div className="grid gap-3">
-                <Label htmlFor="color">Color</Label>
-                <p className="text-muted-foreground">
-                  Hex, rgb, rgba, hsl, hsla and css named colors may be used.
-                </p>
+                <Label htmlFor="color" className="flex flex-col items-start">
+                  Color
+                  <span className="text-muted-foreground leading-6">
+                    Hex, rgb, rgba, hsl, hsla and css named colors may be used.
+                  </span>
+                </Label>
                 <Input
                   id="color"
                   name="color"
