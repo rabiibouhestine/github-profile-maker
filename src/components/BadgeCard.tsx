@@ -3,8 +3,21 @@ import {
   Grip as GripIcon,
   SquarePen as SquarePenIcon,
 } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+  DialogClose,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import { useState } from "react";
 
 import type { Section, BadgesSection } from "@/lib/types";
 
@@ -25,12 +38,24 @@ export default function BadgeCard({
   message,
   color,
 }: BadgeCardProps) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    label,
+    message,
+    color,
+  });
+
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: id });
 
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleDelete = () => {
@@ -45,6 +70,34 @@ export default function BadgeCard({
         } as BadgesSection;
       })
     );
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    setSections((prev) =>
+      prev.map((section) => {
+        if (section.id !== selectedSectionID) return section;
+        if (section.type !== "badges") return section;
+
+        return {
+          ...section,
+          list: section.list.map((badge) =>
+            badge.id === id ? { ...badge, ...formData } : badge
+          ),
+        } as BadgesSection;
+      })
+    );
+
+    setIsModalOpen(false);
+  };
+
+  const resetForm = () => {
+    setFormData({
+      label,
+      message,
+      color,
+    });
   };
 
   return (
@@ -64,11 +117,61 @@ export default function BadgeCard({
           src={`https://img.shields.io/badge/${label}-${message}-${color}`}
         />
       </div>
-      <SquarePenIcon
-        className="text-muted-foreground hover:cursor-pointer hover:text-primary"
-        strokeWidth={1.5}
-        onClick={handleDelete}
-      />
+      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+        <DialogTrigger>
+          <SquarePenIcon
+            className="text-muted-foreground hover:cursor-pointer hover:text-primary"
+            strokeWidth={1.5}
+          />
+        </DialogTrigger>
+        <DialogContent className="!max-h-screen overflow-y-auto">
+          <form onSubmit={handleSubmit}>
+            <DialogHeader className="mb-6">
+              <DialogTitle>Add a badge</DialogTitle>
+            </DialogHeader>
+            <div className="grid gap-4">
+              <div className="grid gap-3">
+                <Label htmlFor="label">Label</Label>
+                <Input
+                  id="label"
+                  name="label"
+                  placeholder="anything"
+                  value={formData.label}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="grid gap-3">
+                <Label htmlFor="message">Message</Label>
+                <Input
+                  id="message"
+                  name="message"
+                  placeholder="you like"
+                  value={formData.message}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="grid gap-3">
+                <Label htmlFor="color">Color</Label>
+                <Input
+                  id="color"
+                  name="color"
+                  placeholder="color"
+                  value={formData.color}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+            <DialogFooter className="mt-6">
+              <DialogClose asChild>
+                <Button variant="outline" onClick={resetForm}>
+                  Cancel
+                </Button>
+              </DialogClose>
+              <Button type="submit">Save changes</Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
       <TrashIcon
         className="text-muted-foreground hover:cursor-pointer hover:text-destructive"
         strokeWidth={1.5}
