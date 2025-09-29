@@ -11,6 +11,7 @@ import {
   Blocks as BlocksIcon,
   MessageSquare as SocialsIcon,
   RectangleHorizontal as BadgeIcon,
+  SquarePen as SquarePenIcon,
   Trash as TrashIcon,
 } from "lucide-react";
 import { useSortable } from "@dnd-kit/sortable";
@@ -99,20 +100,20 @@ export default function SectionCard({
         className="text-muted-foreground focus:outline-none hover:cursor-grab"
         strokeWidth={1.5}
       />
-      <div
-        className="flex gap-2 items-center flex-grow group hover:cursor-pointer"
-        onClick={onClick}
-      >
+      <div className="flex gap-2 items-center flex-grow">
         {getIcon(section.type)}
         <div className="flex flex-col">
-          <span className="font-semibold capitalize group-hover:underline">
-            {section.type}
-          </span>
+          <span className="font-semibold capitalize">{section.type}</span>
           {section.type === "text" && (
-            <span className="text-xs truncate w-40">{section.text}</span>
+            <span className="text-xs truncate w-20">{section.text}</span>
           )}
         </div>
       </div>
+      <SquarePenIcon
+        onClick={onClick}
+        className="text-muted-foreground hover:cursor-pointer hover:text-primary"
+        strokeWidth={1.5}
+      />
       <TrashIcon
         className="text-muted-foreground hover:cursor-pointer hover:text-destructive flex-shrink-0"
         strokeWidth={1.5}
