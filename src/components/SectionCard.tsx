@@ -105,7 +105,7 @@ export default function SectionCard({
         <div className="flex flex-col">
           <span className="font-semibold capitalize">{section.type}</span>
           {section.type === "text" && (
-            <span className="text-xs truncate w-20">{section.text}</span>
+            <span className="text-xs truncate w-26">{section.text}</span>
           )}
         </div>
       </div>
