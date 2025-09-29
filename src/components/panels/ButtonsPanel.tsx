@@ -76,17 +76,16 @@ export default function ButtonsPanel({ sections }: ButtonsPanelProps) {
   return (
     <div className="panel flex flex-wrap gap-2 items-center justify-between mb-4 xl:mb-0">
       <div className="flex flex-wrap gap-2 items-center">
-        <a
-          href="https://github.com/rabiibouhestine/profile-maker"
-          target="_blank"
-        >
-          <GithubIcon width={32} height={32} />
-        </a>
+        <GithubIcon width={32} height={32} />
         <div className="flex flex-col">
           <h1 className="font-semibold text-sm">Github Profile Maker</h1>
           <span className="text-xs">
             Made by{" "}
-            <a href="https://rabiibouhestine.com/" target="_blank">
+            <a
+              href="https://rabiibouhestine.com/"
+              target="_blank"
+              className="text-blue-800 dark:text-blue-300 hover:underline"
+            >
               Rabii Bouhestine
             </a>
           </span>
@@ -99,6 +98,15 @@ export default function ButtonsPanel({ sections }: ButtonsPanelProps) {
         </Button>
         <Button variant="outline" onClick={handleDownload}>
           <DownloadIcon /> Download
+        </Button>
+
+        <Button asChild variant="outline">
+          <a
+            href="https://github.com/rabiibouhestine/profile-maker"
+            target="_blank"
+          >
+            <GithubIcon />
+          </a>
         </Button>
         <ModeToggle />
       </div>
