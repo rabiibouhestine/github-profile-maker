@@ -89,7 +89,7 @@ export default function SectionCard({
       ref={setNodeRef}
       style={style}
       className={
-        (isSelected ? "border-blue-500 " : "") +
+        (isSelected ? "bg-muted " : "") +
         "border rounded-sm p-2 flex items-center gap-4 min-h-16"
       }
     >
@@ -100,7 +100,7 @@ export default function SectionCard({
         strokeWidth={1.5}
       />
       <div
-        className="flex gap-2 items-center flex-grow hover:cursor-pointer hover:text-blue-500"
+        className="flex gap-2 items-center flex-grow hover:cursor-pointer hover:text-muted-foreground"
         onClick={onClick}
       >
         {getIcon(section.type)}
