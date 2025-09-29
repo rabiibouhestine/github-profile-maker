@@ -109,12 +109,14 @@ export default function BadgeCard({
       <GripIcon
         {...attributes}
         {...listeners}
-        className="text-muted-foreground focus:outline-none hover:cursor-grab"
+        className="text-muted-foreground focus:outline-none hover:cursor-grab flex-shrink-0"
         strokeWidth={1.5}
       />
-      <div className="flex gap-2 items-center grow">
+      <div className="grow h-6">
         <img
           src={`https://img.shields.io/badge/${label}-${message}-${color}`}
+          className="h-full"
+          alt="badge"
         />
       </div>
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
@@ -173,7 +175,7 @@ export default function BadgeCard({
         </DialogContent>
       </Dialog>
       <TrashIcon
-        className="text-muted-foreground hover:cursor-pointer hover:text-destructive"
+        className="text-muted-foreground hover:cursor-pointer hover:text-destructive flex-shrink-0"
         strokeWidth={1.5}
         onClick={handleDelete}
       />
