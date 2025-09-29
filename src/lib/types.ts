@@ -62,6 +62,18 @@ export type StackSection = BaseSection & {
   list: Tech[];
 };
 
+export type Social = {
+  name: string;
+  link: string;
+};
+
+export type SocialsSection = BaseSection & {
+  type: "socials";
+  align: AlignType;
+  size: number;
+  list: Social[];
+};
+
 export type Section =
   | TextSection
   | TrophiesSection
@@ -70,4 +82,5 @@ export type Section =
   | LanguagesSection
   | StatsSection
   | StackSection
+  | SocialsSection
   | ImageSection;

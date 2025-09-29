@@ -16,6 +16,7 @@ import {
   CodeXml as CodeIcon,
   ChartPie as ChartPieIcon,
   Blocks as BlocksIcon,
+  MessageSquare as SocialsIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -125,6 +126,26 @@ export default function AddSection({
             name: "liquibase",
             selected: "original",
             versions: ["original", "original-wordmark"],
+          },
+        ],
+      }),
+    },
+    {
+      label: "Socials",
+      icon: SocialsIcon,
+      create: (): Section => ({
+        id: Date.now(),
+        type: "socials",
+        align: "center",
+        size: 40,
+        list: [
+          {
+            name: "facebook",
+            link: "",
+          },
+          {
+            name: "linkedin",
+            link: "",
           },
         ],
       }),

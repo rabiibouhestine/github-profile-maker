@@ -47,6 +47,15 @@ export default function ButtonsPanel({ sections }: ButtonsPanelProps) {
             .join("\n");
           return `<div align=${section.align}>\n${imgs}\n</div>`;
         }
+        if (section.type === "socials") {
+          const imgs = section.list
+            .map(
+              (social) =>
+                `<a href="${social.name}" target="_blank"><img src="https://raw.githubusercontent.com/maurodesouza/profile-readme-generator/master/src/assets/icons/social/${social.name}/default.svg" height="${section.size}" width="${section.size}" alt="${social.name}" /></a>`
+            )
+            .join("\n");
+          return `<div align=${section.align}>\n${imgs}\n</div>`;
+        }
         return "";
       })
       .join("<br>\n");

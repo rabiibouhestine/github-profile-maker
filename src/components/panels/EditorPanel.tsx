@@ -2,6 +2,7 @@ import TextEditor from "../editors/TextEditor";
 import ImageEditor from "../editors/ImageEditor";
 import GithubEditor from "../editors/GithubEditor";
 import StackEditor from "../editors/StackEditor";
+import SocialsEditor from "../editors/SocialsEditor";
 import { motion, AnimatePresence } from "framer-motion";
 
 import type { Section } from "@/lib/types";
@@ -32,6 +33,7 @@ export default function EditorPanel({
     languages: GithubEditor,
     stats: GithubEditor,
     stack: StackEditor,
+    socials: SocialsEditor,
   };
 
   const EditorComponent = editorMap[selectedSection.type];

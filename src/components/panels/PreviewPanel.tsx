@@ -113,6 +113,21 @@ export default function PreviewPanel({ sections }: PreviePanelProps) {
                   />
                 ))}
               </div>
+            ) : section.type === "socials" ? (
+              <div
+                className={`flex flex-wrap ${justifyMap[section.align]} gap-3`}
+              >
+                {section.list.map((social) => (
+                  <a href={social.link} target="_blank">
+                    <img
+                      src={`https://raw.githubusercontent.com/maurodesouza/profile-readme-generator/master/src/assets/icons/social/${social.name}/default.svg`}
+                      height={section.size}
+                      width={section.size}
+                      alt={social.name}
+                    />
+                  </a>
+                ))}
+              </div>
             ) : null}
             <br></br>
           </motion.div>
