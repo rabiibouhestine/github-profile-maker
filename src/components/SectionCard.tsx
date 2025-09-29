@@ -1,6 +1,5 @@
 import {
   Grip as GripIcon,
-  SquarePen as SquarePenIcon,
   Type as TextIcon,
   Image as ImageIcon,
   SquareDashed as SquareDashedIcon,
@@ -12,16 +11,19 @@ import {
   Blocks as BlocksIcon,
   MessageSquare as SocialsIcon,
   RectangleHorizontal as BadgeIcon,
+  Trash as TrashIcon,
 } from "lucide-react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import type { Section } from "@/lib/types";
 
 type SectionCardProps = {
-  id: string;
+  id: number;
   section: Section;
   isSelected: boolean;
   onClick: () => void;
+  setSections: React.Dispatch<React.SetStateAction<Section[]>>;
+  setSelectedSectionID: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export default function SectionCard({
@@ -29,6 +31,8 @@ export default function SectionCard({
   section,
   isSelected,
   onClick,
+  setSections,
+  setSelectedSectionID,
 }: SectionCardProps) {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: id });
@@ -65,14 +69,28 @@ export default function SectionCard({
     }
   }
 
+  function handleDeleteSection() {
+    setSections((prev) => {
+      const newSections = prev.filter((s) => s.id !== id);
+
+      // Update selectedSectionID to the last section if exists, otherwise 0
+      if (newSections.length > 0) {
+        setSelectedSectionID(newSections[newSections.length - 1].id);
+      } else {
+        setSelectedSectionID(0);
+      }
+
+      return newSections;
+    });
+  }
+
   return (
     <div
-      onClick={onClick}
       ref={setNodeRef}
       style={style}
       className={
         (isSelected ? "border-blue-500 " : "") +
-        "border rounded-sm p-2 flex items-center gap-4 min-h-16 hover:border-blue-500 hover:text-primary hover:cursor-pointer group"
+        "border rounded-sm p-2 flex items-center gap-4 min-h-16"
       }
     >
       <GripIcon
@@ -81,7 +99,10 @@ export default function SectionCard({
         className="text-muted-foreground focus:outline-none hover:cursor-grab"
         strokeWidth={1.5}
       />
-      <div className="flex gap-2 items-center">
+      <div
+        className="flex gap-2 items-center flex-grow hover:cursor-pointer hover:text-blue-500"
+        onClick={onClick}
+      >
         {getIcon(section.type)}
         <div className="flex flex-col">
           <span className="font-semibold capitalize">{section.type}</span>
@@ -90,12 +111,10 @@ export default function SectionCard({
           )}
         </div>
       </div>
-      <SquarePenIcon
-        className={
-          (isSelected ? "text-blue-500 " : "text-muted-foreground ") +
-          "ml-auto group-hover:text-blue-500"
-        }
+      <TrashIcon
+        className="text-muted-foreground hover:cursor-pointer hover:text-destructive flex-shrink-0"
         strokeWidth={1.5}
+        onClick={handleDeleteSection}
       />
     </div>
   );

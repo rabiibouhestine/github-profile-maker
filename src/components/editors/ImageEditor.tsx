@@ -6,8 +6,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
-import { Trash as TrashIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
 import type { Section, ImageSection, AlignType } from "@/lib/types";
@@ -16,14 +14,12 @@ type ImageEditorProps = {
   sections: Section[];
   setSections: React.Dispatch<React.SetStateAction<Section[]>>;
   selectedSectionID: number;
-  setSelectedSectionID: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export default function ImageEditor({
   sections,
   setSections,
   selectedSectionID,
-  setSelectedSectionID,
 }: ImageEditorProps) {
   const selectedSection = sections.find(
     (s): s is ImageSection => s.id === selectedSectionID
@@ -51,21 +47,6 @@ export default function ImageEditor({
     setSections((prev) =>
       prev.map((s) => (s.id === selectedSectionID ? { ...s, height: val } : s))
     );
-  }
-
-  function handleDeleteSection() {
-    setSections((prev) => {
-      const newSections = prev.filter((s) => s.id !== selectedSectionID);
-
-      // Update selectedSectionID to the last section if exists, otherwise 0
-      if (newSections.length > 0) {
-        setSelectedSectionID(newSections[newSections.length - 1].id);
-      } else {
-        setSelectedSectionID(0);
-      }
-
-      return newSections;
-    });
   }
 
   return (
@@ -101,10 +82,6 @@ export default function ImageEditor({
           onChange={onHeightChange}
         />
       </div>
-      <Button variant="destructive" size={"lg"} onClick={handleDeleteSection}>
-        <TrashIcon />
-        Delete Section
-      </Button>
     </div>
   );
 }

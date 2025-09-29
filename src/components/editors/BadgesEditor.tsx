@@ -19,7 +19,7 @@ import {
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
-import { Trash as TrashIcon, CirclePlus as CirclePlusIcon } from "lucide-react";
+import { CirclePlus as CirclePlusIcon } from "lucide-react";
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 import { motion, AnimatePresence } from "framer-motion";
 import { Label } from "@/components/ui/label";
@@ -33,14 +33,12 @@ type BadgesEditorProps = {
   sections: Section[];
   setSections: React.Dispatch<React.SetStateAction<Section[]>>;
   selectedSectionID: number;
-  setSelectedSectionID: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export default function BadgesEditor({
   sections,
   setSections,
   selectedSectionID,
-  setSelectedSectionID,
 }: BadgesEditorProps) {
   const selectedSection = sections.find(
     (s): s is BadgesSection => s.id === selectedSectionID
@@ -60,21 +58,6 @@ export default function BadgesEditor({
     setSections((prev) =>
       prev.map((s) => (s.id === selectedSectionID ? { ...s, align: val } : s))
     );
-  }
-
-  function handleDeleteSection() {
-    setSections((prev) => {
-      const newSections = prev.filter((s) => s.id !== selectedSectionID);
-
-      // Update selectedSectionID to the last section if exists, otherwise 0
-      if (newSections.length > 0) {
-        setSelectedSectionID(newSections[newSections.length - 1].id);
-      } else {
-        setSelectedSectionID(0);
-      }
-
-      return newSections;
-    });
   }
 
   function handleAddBadge() {
@@ -174,10 +157,6 @@ export default function BadgesEditor({
       <Button size="lg" onClick={handleAddBadge}>
         <CirclePlusIcon />
         Add Badge
-      </Button>
-      <Button variant="destructive" size="lg" onClick={handleDeleteSection}>
-        <TrashIcon />
-        Delete Section
       </Button>
     </div>
   );

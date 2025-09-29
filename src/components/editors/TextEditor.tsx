@@ -7,8 +7,6 @@ import {
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
-import { Trash as TrashIcon } from "lucide-react";
 
 import type { Section, TextSection, TagType, AlignType } from "@/lib/types";
 
@@ -16,14 +14,12 @@ type TextEditorProps = {
   sections: Section[];
   setSections: React.Dispatch<React.SetStateAction<Section[]>>;
   selectedSectionID: number;
-  setSelectedSectionID: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export default function TextEditor({
   sections,
   setSections,
   selectedSectionID,
-  setSelectedSectionID,
 }: TextEditorProps) {
   const selectedSection = sections.find(
     (s): s is TextSection => s.id === selectedSectionID
@@ -50,21 +46,6 @@ export default function TextEditor({
     setSections((prev) =>
       prev.map((s) => (s.id === selectedSectionID ? { ...s, text: val } : s))
     );
-  }
-
-  function handleDeleteSection() {
-    setSections((prev) => {
-      const newSections = prev.filter((s) => s.id !== selectedSectionID);
-
-      // Update selectedSectionID to the last section if exists, otherwise 0
-      if (newSections.length > 0) {
-        setSelectedSectionID(newSections[newSections.length - 1].id);
-      } else {
-        setSelectedSectionID(0);
-      }
-
-      return newSections;
-    });
   }
 
   return (
@@ -108,10 +89,6 @@ export default function TextEditor({
           onChange={onTextChange}
         />
       </div>
-      <Button variant="destructive" size={"lg"} onClick={handleDeleteSection}>
-        <TrashIcon />
-        Delete Section
-      </Button>
     </div>
   );
 }

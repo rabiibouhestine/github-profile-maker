@@ -47,8 +47,8 @@ export default function SectionsPanel({
 
     if (active.id !== over.id) {
       setSections((items) => {
-        const oldIndex = items.findIndex((s) => s.id.toString() === active.id);
-        const newIndex = items.findIndex((s) => s.id.toString() === over.id);
+        const oldIndex = items.findIndex((s) => s.id === active.id);
+        const newIndex = items.findIndex((s) => s.id === over.id);
 
         if (oldIndex === -1 || newIndex === -1) return items;
 
@@ -69,7 +69,7 @@ export default function SectionsPanel({
         }}
       >
         <SortableContext
-          items={sections.map((s) => s.id.toString())}
+          items={sections.map((s) => s.id)}
           strategy={verticalListSortingStrategy}
         >
           <AnimatePresence>
@@ -82,11 +82,13 @@ export default function SectionsPanel({
                 transition={{ duration: 0.2 }}
               >
                 <SectionCard
-                  id={section.id.toString()}
+                  id={section.id}
                   key={section.id}
                   section={section}
                   isSelected={section.id === selectedSectionID}
                   onClick={() => setSelectedSectionID(section.id)}
+                  setSections={setSections}
+                  setSelectedSectionID={setSelectedSectionID}
                 />
               </motion.div>
             ))}

@@ -25,8 +25,6 @@ import AddSocial from "@/components/AddSocial";
 import SocialCard from "@/components/SocialCard";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Trash as TrashIcon } from "lucide-react";
 
 import type { Section, AlignType, SocialsSection } from "@/lib/types";
 import type { DragEndEvent } from "@dnd-kit/core";
@@ -35,14 +33,12 @@ type SocialsEditorProps = {
   sections: Section[];
   setSections: React.Dispatch<React.SetStateAction<Section[]>>;
   selectedSectionID: number;
-  setSelectedSectionID: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export default function SocialsEditor({
   sections,
   setSections,
   selectedSectionID,
-  setSelectedSectionID,
 }: SocialsEditorProps) {
   const selectedSection = sections.find(
     (s): s is SocialsSection => s.id === selectedSectionID
@@ -72,21 +68,6 @@ export default function SocialsEditor({
         s.id === selectedSectionID ? { ...s, size: Number(val) } : s
       )
     );
-  }
-
-  function handleDeleteSection() {
-    setSections((prev) => {
-      const newSections = prev.filter((s) => s.id !== selectedSectionID);
-
-      // Update selectedSectionID to the last section if exists, otherwise 0
-      if (newSections.length > 0) {
-        setSelectedSectionID(newSections[newSections.length - 1].id);
-      } else {
-        setSelectedSectionID(0);
-      }
-
-      return newSections;
-    });
   }
 
   function handleDragEnd(event: DragEndEvent) {
@@ -175,10 +156,6 @@ export default function SocialsEditor({
         setSections={setSections}
         selectedSectionID={selectedSectionID}
       />
-      <Button variant="destructive" size={"lg"} onClick={handleDeleteSection}>
-        <TrashIcon />
-        Delete Section
-      </Button>
     </div>
   );
 }

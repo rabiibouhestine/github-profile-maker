@@ -7,8 +7,6 @@ import {
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Trash as TrashIcon } from "lucide-react";
 
 import type {
   Section,
@@ -21,14 +19,12 @@ type GithubEditorProps = {
   sections: Section[];
   setSections: React.Dispatch<React.SetStateAction<Section[]>>;
   selectedSectionID: number;
-  setSelectedSectionID: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export default function GithubEditor({
   sections,
   setSections,
   selectedSectionID,
-  setSelectedSectionID,
 }: GithubEditorProps) {
   const selectedSection = sections.find(
     (s): s is TrophiesSection | ActivitySection => s.id === selectedSectionID
@@ -48,21 +44,6 @@ export default function GithubEditor({
     setSections((prev) =>
       prev.map((s) => (s.id === selectedSectionID ? { ...s, text: val } : s))
     );
-  }
-
-  function handleDeleteSection() {
-    setSections((prev) => {
-      const newSections = prev.filter((s) => s.id !== selectedSectionID);
-
-      // Update selectedSectionID to the last section if exists, otherwise 0
-      if (newSections.length > 0) {
-        setSelectedSectionID(newSections[newSections.length - 1].id);
-      } else {
-        setSelectedSectionID(0);
-      }
-
-      return newSections;
-    });
   }
 
   return (
@@ -89,10 +70,6 @@ export default function GithubEditor({
           </SelectContent>
         </Select>
       </div>
-      <Button variant="destructive" size={"lg"} onClick={handleDeleteSection}>
-        <TrashIcon />
-        Delete Section
-      </Button>
     </div>
   );
 }
