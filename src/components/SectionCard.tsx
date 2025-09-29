@@ -11,6 +11,7 @@ import {
   ChartPie as ChartPieIcon,
   Blocks as BlocksIcon,
   MessageSquare as SocialsIcon,
+  RectangleHorizontal as BadgeIcon,
 } from "lucide-react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
@@ -55,6 +56,8 @@ export default function SectionCard({
         return <BlocksIcon />;
       case "socials":
         return <SocialsIcon />;
+      case "badges":
+        return <BadgeIcon />;
       case "image":
         return <ImageIcon />;
       default:

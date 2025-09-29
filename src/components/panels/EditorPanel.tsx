@@ -3,6 +3,7 @@ import ImageEditor from "../editors/ImageEditor";
 import GithubEditor from "../editors/GithubEditor";
 import StackEditor from "../editors/StackEditor";
 import SocialsEditor from "../editors/SocialsEditor";
+import BadgesEditor from "../editors/BadgesEditor";
 import { motion, AnimatePresence } from "framer-motion";
 
 import type { Section } from "@/lib/types";
@@ -34,6 +35,7 @@ export default function EditorPanel({
     stats: GithubEditor,
     stack: StackEditor,
     socials: SocialsEditor,
+    badges: BadgesEditor,
   };
 
   const EditorComponent = editorMap[selectedSection.type];

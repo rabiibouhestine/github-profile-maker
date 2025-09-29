@@ -17,6 +17,7 @@ import {
   ChartPie as ChartPieIcon,
   Blocks as BlocksIcon,
   MessageSquare as SocialsIcon,
+  RectangleHorizontal as BadgeIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -54,53 +55,14 @@ export default function AddSection({
       }),
     },
     {
-      label: "Trophies",
-      icon: TrophyIcon,
+      label: "Image",
+      icon: ImageIcon,
       create: (): Section => ({
         id: Date.now(),
-        type: "trophies",
+        type: "image",
+        url: "https://placehold.co/600x200",
         align: "center",
-        username: "rabiibouhestine",
-      }),
-    },
-    {
-      label: "Activity",
-      icon: ChartLineIcon,
-      create: (): Section => ({
-        id: Date.now(),
-        type: "activity",
-        align: "center",
-        username: "rabiibouhestine",
-      }),
-    },
-    {
-      label: "Streak",
-      icon: FlameIcon,
-      create: (): Section => ({
-        id: Date.now(),
-        type: "streak",
-        align: "center",
-        username: "rabiibouhestine",
-      }),
-    },
-    {
-      label: "Languages",
-      icon: CodeIcon,
-      create: (): Section => ({
-        id: Date.now(),
-        type: "languages",
-        align: "center",
-        username: "rabiibouhestine",
-      }),
-    },
-    {
-      label: "Stats",
-      icon: ChartPieIcon,
-      create: (): Section => ({
-        id: Date.now(),
-        type: "stats",
-        align: "center",
-        username: "rabiibouhestine",
+        height: 200,
       }),
     },
     {
@@ -151,14 +113,70 @@ export default function AddSection({
       }),
     },
     {
-      label: "Image",
-      icon: ImageIcon,
+      label: "Badges",
+      icon: BadgeIcon,
       create: (): Section => ({
         id: Date.now(),
-        type: "image",
-        url: "https://placehold.co/600x200",
+        type: "badges",
         align: "center",
-        height: 200,
+        list: [
+          {
+            id: Date.now(),
+            label: "anything",
+            message: "you like",
+            color: "blue",
+          },
+        ],
+      }),
+    },
+    {
+      label: "Trophies",
+      icon: TrophyIcon,
+      create: (): Section => ({
+        id: Date.now(),
+        type: "trophies",
+        align: "center",
+        username: "rabiibouhestine",
+      }),
+    },
+    {
+      label: "Activity",
+      icon: ChartLineIcon,
+      create: (): Section => ({
+        id: Date.now(),
+        type: "activity",
+        align: "center",
+        username: "rabiibouhestine",
+      }),
+    },
+    {
+      label: "Streak",
+      icon: FlameIcon,
+      create: (): Section => ({
+        id: Date.now(),
+        type: "streak",
+        align: "center",
+        username: "rabiibouhestine",
+      }),
+    },
+    {
+      label: "Languages",
+      icon: CodeIcon,
+      create: (): Section => ({
+        id: Date.now(),
+        type: "languages",
+        align: "center",
+        username: "rabiibouhestine",
+      }),
+    },
+    {
+      label: "Stats",
+      icon: ChartPieIcon,
+      create: (): Section => ({
+        id: Date.now(),
+        type: "stats",
+        align: "center",
+        username: "rabiibouhestine",
       }),
     },
   ];

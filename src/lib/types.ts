@@ -74,6 +74,19 @@ export type SocialsSection = BaseSection & {
   list: Social[];
 };
 
+export type Badge = {
+  id: number;
+  label: string;
+  message: string;
+  color: string;
+};
+
+export type BadgesSection = BaseSection & {
+  type: "badges";
+  align: AlignType;
+  list: Badge[];
+};
+
 export type Section =
   | TextSection
   | TrophiesSection
@@ -83,4 +96,5 @@ export type Section =
   | StatsSection
   | StackSection
   | SocialsSection
+  | BadgesSection
   | ImageSection;
