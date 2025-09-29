@@ -74,6 +74,8 @@ export default function SectionCard({
     setSections((prev) => {
       const newSections = prev.filter((s) => s.id !== id);
 
+      if (!isSelected) return newSections;
+
       // Update selectedSectionID to the last section if exists, otherwise 0
       if (newSections.length > 0) {
         setSelectedSectionID(newSections[newSections.length - 1].id);
