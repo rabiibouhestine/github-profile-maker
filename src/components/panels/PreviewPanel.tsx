@@ -128,6 +128,18 @@ export default function PreviewPanel({ sections }: PreviePanelProps) {
                   </a>
                 ))}
               </div>
+            ) : section.type === "badges" ? (
+              <div
+                className={`flex flex-wrap ${justifyMap[section.align]} gap-3`}
+              >
+                {section.list.map((badge) => (
+                  <img
+                    src={`https://img.shields.io/badge/${badge.label}-${badge.message}-${badge.color}`}
+                    className="h-full"
+                    alt="badge"
+                  />
+                ))}
+              </div>
             ) : null}
             <br></br>
           </motion.div>
