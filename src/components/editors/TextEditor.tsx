@@ -83,7 +83,7 @@ export default function TextEditor({
       <div className="flex flex-col gap-2">
         <Label>Text</Label>
         <Textarea
-          placeholder="Type your message here."
+          placeholder="Type your text here."
           id="message"
           value={text}
           onChange={onTextChange}
