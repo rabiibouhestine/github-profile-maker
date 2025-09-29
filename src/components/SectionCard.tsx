@@ -100,12 +100,14 @@ export default function SectionCard({
         strokeWidth={1.5}
       />
       <div
-        className="flex gap-2 items-center flex-grow hover:cursor-pointer hover:text-muted-foreground"
+        className="flex gap-2 items-center flex-grow group hover:cursor-pointer"
         onClick={onClick}
       >
         {getIcon(section.type)}
         <div className="flex flex-col">
-          <span className="font-semibold capitalize">{section.type}</span>
+          <span className="font-semibold capitalize group-hover:underline">
+            {section.type}
+          </span>
           {section.type === "text" && (
             <span className="text-xs truncate w-40">{section.text}</span>
           )}
