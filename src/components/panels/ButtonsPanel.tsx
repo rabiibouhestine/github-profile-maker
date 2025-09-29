@@ -83,7 +83,7 @@ export default function ButtonsPanel({ sections }: ButtonsPanelProps) {
           <GithubIcon width={32} height={32} />
         </a>
         <div className="flex flex-col">
-          <h1 className="font-semibold text-sm">Profile Maker</h1>
+          <h1 className="font-semibold text-sm">Github Profile Maker</h1>
           <span className="text-xs">
             Made by{" "}
             <a href="https://rabiibouhestine.com/" target="_blank">
