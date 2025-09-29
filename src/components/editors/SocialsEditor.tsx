@@ -138,7 +138,7 @@ export default function SocialsEditor({
         />
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Stack</Label>
+        <Label>Socials</Label>
         <DndContext
           sensors={sensors}
           collisionDetection={closestCenter}
