@@ -46,6 +46,18 @@ export type StreakSection = BaseSection & {
   type: "streak";
   username: string;
   align: AlignType;
+  theme: string;
+  hide_border: boolean;
+  border_radius: number;
+  short_numbers: boolean;
+  mode: string;
+  exclude_days: string[];
+  disable_animations: boolean;
+  card_width: number;
+  card_height: number;
+  hide_total_contributions: boolean;
+  hide_current_streak: boolean;
+  hide_longest_streak: boolean;
 };
 
 export type LanguagesSection = BaseSection & {

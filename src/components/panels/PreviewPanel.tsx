@@ -82,11 +82,26 @@ export default function PreviewPanel({ sections }: PreviePanelProps) {
               <div className={`flex ${justifyMap[section.align]}`}>
                 <img
                   src={
-                    "https://streak-stats.demolab.com?user=" +
-                    section.username +
-                    "&locale=en&mode=daily&theme=dracula&hide_border=false&border_radius=5"
+                    "https://streak-stats.demolab.com?" +
+                    new URLSearchParams({
+                      user: section.username,
+                      theme: section.theme,
+                      hide_border: section.hide_border.toString(),
+                      border_radius: section.border_radius.toString(),
+                      short_numbers: section.short_numbers.toString(),
+                      mode: section.mode,
+                      exclude_days: section.exclude_days.join(","),
+                      disable_animations: section.disable_animations.toString(),
+                      card_width: section.card_width.toString(),
+                      card_height: section.card_height.toString(),
+                      hide_total_contributions:
+                        section.hide_total_contributions.toString(),
+                      hide_current_streak:
+                        section.hide_current_streak.toString(),
+                      hide_longest_streak:
+                        section.hide_longest_streak.toString(),
+                    }).toString()
                   }
-                  height="150"
                   alt="streak graph"
                 />
               </div>

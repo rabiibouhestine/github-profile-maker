@@ -56,7 +56,25 @@ export default function ButtonsPanel({ sections }: ButtonsPanelProps) {
           }"><img src="https://github-readme-activity-graph.vercel.app/graph?${params.toString()}" alt="activity graph"  /></div>`;
         }
         if (section.type === "streak") {
-          return `<div align="${section.align}"><img src="https://streak-stats.demolab.com?user=${section.username}&locale=en&mode=daily&theme=dracula&hide_border=false&border_radius=5" height="150" alt="streak graph"  /></div>`;
+          const params = new URLSearchParams({
+            user: section.username,
+            theme: section.theme,
+            hide_border: section.hide_border.toString(),
+            border_radius: section.border_radius.toString(),
+            short_numbers: section.short_numbers.toString(),
+            mode: section.mode,
+            exclude_days: section.exclude_days.join(","),
+            disable_animations: section.disable_animations.toString(),
+            card_width: section.card_width.toString(),
+            card_height: section.card_height.toString(),
+            hide_total_contributions:
+              section.hide_total_contributions.toString(),
+            hide_current_streak: section.hide_current_streak.toString(),
+            hide_longest_streak: section.hide_longest_streak.toString(),
+          });
+          return `<div align="${
+            section.align
+          }"><img src="https://streak-stats.demolab.com?${params.toString()}" alt="streak graph"  /></div>`;
         }
         if (section.type === "languages") {
           return `<div align="${section.align}"><img src="https://github-readme-stats.vercel.app/api/top-langs?username=${section.username}&locale=en&hide_title=false&layout=compact&card_width=320&langs_count=5&theme=dracula&hide_border=false" height="150" alt="languages graph"  /></div>`;

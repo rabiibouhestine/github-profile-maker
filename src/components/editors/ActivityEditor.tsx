@@ -226,7 +226,7 @@ export default function ActivityEditor({
           onChange={onDaysChange}
         />
       </div>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between mt-3">
         <Label htmlFor="area">Show Area</Label>
         <Switch id="area" checked={area} onCheckedChange={onAreaChange} />
       </div>
@@ -246,7 +246,7 @@ export default function ActivityEditor({
           onCheckedChange={onHideTitleChange}
         />
       </div>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between mb-3">
         <Label htmlFor="grid">Show Grid</Label>
         <Switch id="grid" checked={grid} onCheckedChange={onGridChange} />
       </div>
