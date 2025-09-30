@@ -257,11 +257,11 @@ export default function TrophiesEditor({
         />
       </div>
       <div className="flex items-center justify-between mt-3">
-        <Label htmlFor="background">Background</Label>
+        <Label htmlFor="background">Show Background</Label>
         <Switch id="background" checked={bg} onCheckedChange={onBgChange} />
       </div>
       <div className="flex items-center justify-between">
-        <Label htmlFor="frame">Frame</Label>
+        <Label htmlFor="frame">Show Frame</Label>
         <Switch id="frame" checked={frame} onCheckedChange={onFrameChange} />
       </div>
     </div>
