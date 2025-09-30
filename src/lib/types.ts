@@ -16,6 +16,15 @@ export type TrophiesSection = BaseSection & {
   type: "trophies";
   username: string;
   align: AlignType;
+  theme: string;
+  title: string[];
+  rank: string[];
+  column: number;
+  row: number;
+  marginW: number;
+  marginH: number;
+  bg: boolean;
+  frame: boolean;
 };
 
 export type ActivitySection = BaseSection & {

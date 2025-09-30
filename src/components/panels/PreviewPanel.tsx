@@ -39,9 +39,19 @@ export default function PreviewPanel({ sections }: PreviePanelProps) {
               <div className={`flex ${justifyMap[section.align]}`}>
                 <img
                   src={
-                    "https://github-profile-trophy.vercel.app?username=" +
-                    section.username +
-                    "&theme=dracula&column=-1&row=1&margin-w=8&margin-h=8&no-bg=false&no-frame=false"
+                    "https://github-profile-trophy.vercel.app?" +
+                    new URLSearchParams({
+                      username: section.username,
+                      theme: section.theme,
+                      title: section.title.join(","),
+                      rank: section.rank.join(","),
+                      column: section.column.toString(),
+                      row: section.row.toString(),
+                      "margin-w": section.marginW.toString(),
+                      "margin-h": section.marginH.toString(),
+                      "no-bg": (!section.bg).toString(),
+                      "no-frame": (!section.frame).toString(),
+                    }).toString()
                   }
                   height="150"
                   alt="trophy graph"

@@ -4,6 +4,7 @@ import GithubEditor from "../editors/GithubEditor";
 import StackEditor from "../editors/StackEditor";
 import SocialsEditor from "../editors/SocialsEditor";
 import BadgesEditor from "../editors/BadgesEditor";
+import TrophiesEditor from "../editors/TrophiesEditor";
 import { motion, AnimatePresence } from "framer-motion";
 
 import type { Section } from "@/lib/types";
@@ -28,7 +29,7 @@ export default function EditorPanel({
   const editorMap: Record<string, React.ComponentType<EditorPanelProps>> = {
     text: TextEditor,
     image: ImageEditor,
-    trophies: GithubEditor,
+    trophies: TrophiesEditor,
     activity: GithubEditor,
     streak: GithubEditor,
     languages: GithubEditor,

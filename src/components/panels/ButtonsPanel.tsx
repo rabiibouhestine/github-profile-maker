@@ -21,7 +21,22 @@ export default function ButtonsPanel({ sections }: ButtonsPanelProps) {
           return `<${section.tag} align="${section.align}" >${section.text}</${section.tag}>`;
         }
         if (section.type === "trophies") {
-          return `<div align="${section.align}"><img src="https://github-profile-trophy.vercel.app?username=${section.username}&theme=dracula&column=-1&row=1&margin-w=8&margin-h=8&no-bg=false&no-frame=false" height="150" alt="trophy graph"  /></div>`;
+          const params = new URLSearchParams({
+            username: section.username,
+            theme: section.theme,
+            title: section.title.join(","), // comma-separated
+            rank: section.rank.join(","), // comma-separated
+            column: section.column.toString(),
+            row: section.row.toString(),
+            "margin-w": section.marginW.toString(),
+            "margin-h": section.marginH.toString(),
+            "no-bg": (!section.bg).toString(),
+            "no-frame": (!section.frame).toString(),
+          });
+
+          return `<div align="${
+            section.align
+          }"><img src="https://github-profile-trophy.vercel.app?${params.toString()}" height="150" alt="trophy graph"/></div>`;
         }
         if (section.type === "activity") {
           return `<div align="${section.align}"><img src="https://github-readme-activity-graph.vercel.app/graph?username=${section.username}&radius=16&theme=dracula&area=true" height="300" alt="activity-graph graph"  /></div>`;
