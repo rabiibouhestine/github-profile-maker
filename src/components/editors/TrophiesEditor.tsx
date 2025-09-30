@@ -19,6 +19,33 @@ type TrophiesEditorProps = {
   selectedSectionID: number;
 };
 
+const themes = [
+  "flat",
+  "onedark",
+  "gruvbox",
+  "dracula",
+  "monokai",
+  "chalk",
+  "nord",
+  "alduin",
+  "darkhub",
+  "juicyfresh",
+  "buddhism",
+  "oldie",
+  "radical",
+  "onestar",
+  "discord",
+  "algolia",
+  "gitdimmed",
+  "tokyonight",
+  "matrix",
+  "apprentice",
+  "dark_dimmed",
+  "dark_lover",
+  "kimbie_dark",
+  "aura",
+];
+
 const trophies: Option[] = [
   { value: "Commits", label: "Commits" },
   { value: "Reviews", label: "Reviews" },
@@ -167,30 +194,11 @@ export default function TrophiesEditor({
             <SelectValue placeholder="Theme" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="flat">flat</SelectItem>
-            <SelectItem value="onedark">onedark</SelectItem>
-            <SelectItem value="gruvbox">gruvbox</SelectItem>
-            <SelectItem value="dracula">dracula</SelectItem>
-            <SelectItem value="monokai">monokai</SelectItem>
-            <SelectItem value="chalk">chalk</SelectItem>
-            <SelectItem value="nord">nord</SelectItem>
-            <SelectItem value="alduin">alduin</SelectItem>
-            <SelectItem value="darkhub">darkhub</SelectItem>
-            <SelectItem value="juicyfresh">juicyfresh</SelectItem>
-            <SelectItem value="buddhism">buddhism</SelectItem>
-            <SelectItem value="oldie">oldie</SelectItem>
-            <SelectItem value="radical">radical</SelectItem>
-            <SelectItem value="onestar">onestar</SelectItem>
-            <SelectItem value="discord">discord</SelectItem>
-            <SelectItem value="algolia">algolia</SelectItem>
-            <SelectItem value="gitdimmed">gitdimmed</SelectItem>
-            <SelectItem value="tokyonight">tokyonight</SelectItem>
-            <SelectItem value="matrix">matrix</SelectItem>
-            <SelectItem value="apprentice">apprentice</SelectItem>
-            <SelectItem value="dark_dimmed">dark_dimmed</SelectItem>
-            <SelectItem value="dark_lover">dark_lover</SelectItem>
-            <SelectItem value="kimbie_dark">kimbie_dark</SelectItem>
-            <SelectItem value="aura">aura</SelectItem>
+            {themes.map((theme) => (
+              <SelectItem key={theme} value={theme}>
+                {theme}
+              </SelectItem>
+            ))}
           </SelectContent>
         </Select>
       </div>

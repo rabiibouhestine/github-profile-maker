@@ -163,8 +163,17 @@ export default function AddSection({
       create: (): Section => ({
         id: Date.now(),
         type: "activity",
-        align: "center",
         username: "rabiibouhestine",
+        align: "center",
+        custom_title: "",
+        theme: "dracula",
+        radius: 16,
+        height: 400,
+        days: 30,
+        area: true,
+        hide_border: false,
+        hide_title: false,
+        grid: true,
       }),
     },
     {

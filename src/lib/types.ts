@@ -31,6 +31,15 @@ export type ActivitySection = BaseSection & {
   type: "activity";
   username: string;
   align: AlignType;
+  custom_title: string;
+  theme: string;
+  radius: number;
+  height: number;
+  days: number;
+  area: boolean;
+  hide_border: boolean;
+  hide_title: boolean;
+  grid: boolean;
 };
 
 export type StreakSection = BaseSection & {

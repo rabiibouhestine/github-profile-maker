@@ -61,12 +61,21 @@ export default function PreviewPanel({ sections }: PreviePanelProps) {
               <div className={`flex ${justifyMap[section.align]}`}>
                 <img
                   src={
-                    "https://github-readme-activity-graph.vercel.app/graph?username=" +
-                    section.username +
-                    "&radius=16&theme=dracula&area=true&t=${Date.now()}"
+                    "https://github-readme-activity-graph.vercel.app/graph?" +
+                    new URLSearchParams({
+                      username: section.username,
+                      theme: section.theme,
+                      custom_title: section.custom_title,
+                      radius: section.radius.toString(),
+                      height: section.height.toString(),
+                      days: section.days.toString(),
+                      area: section.area.toString(),
+                      hide_border: section.hide_border.toString(),
+                      hide_title: section.hide_title.toString(),
+                      grid: section.grid.toString(),
+                    }).toString()
                   }
-                  height="300"
-                  alt="activity-graph graph"
+                  alt="activity graph"
                 />
               </div>
             ) : section.type === "streak" ? (

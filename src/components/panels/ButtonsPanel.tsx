@@ -39,7 +39,21 @@ export default function ButtonsPanel({ sections }: ButtonsPanelProps) {
           }"><img src="https://github-profile-trophy.vercel.app?${params.toString()}" height="150" alt="trophy graph"/></div>`;
         }
         if (section.type === "activity") {
-          return `<div align="${section.align}"><img src="https://github-readme-activity-graph.vercel.app/graph?username=${section.username}&radius=16&theme=dracula&area=true" height="300" alt="activity-graph graph"  /></div>`;
+          const params = new URLSearchParams({
+            username: section.username,
+            theme: section.theme,
+            custom_title: section.custom_title,
+            radius: section.radius.toString(),
+            height: section.height.toString(),
+            days: section.days.toString(),
+            area: section.area.toString(),
+            hide_border: section.hide_border.toString(),
+            hide_title: section.hide_title.toString(),
+            grid: section.grid.toString(),
+          });
+          return `<div align="${
+            section.align
+          }"><img src="https://github-readme-activity-graph.vercel.app/graph?${params.toString()}" alt="activity graph"  /></div>`;
         }
         if (section.type === "streak") {
           return `<div align="${section.align}"><img src="https://streak-stats.demolab.com?user=${section.username}&locale=en&mode=daily&theme=dracula&hide_border=false&border_radius=5" height="150" alt="streak graph"  /></div>`;
