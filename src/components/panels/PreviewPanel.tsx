@@ -63,7 +63,7 @@ export default function PreviewPanel({ sections }: PreviePanelProps) {
                   src={
                     "https://github-readme-activity-graph.vercel.app/graph?username=" +
                     section.username +
-                    "&radius=16&theme=dracula&area=true"
+                    "&radius=16&theme=dracula&area=true&t=${Date.now()}"
                   }
                   height="300"
                   alt="activity-graph graph"
