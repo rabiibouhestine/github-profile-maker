@@ -52,7 +52,7 @@ function App() {
             setSelectedSectionID={setSelectedSectionID}
           />
         </div>
-        <div className="panel col-span-1 h-full xl:min-h-0 overflow-y-auto">
+        <div className="panel col-span-1 h-full xl:min-h-0 xl:overflow-y-auto">
           <EditorPanel
             sections={sections}
             setSections={setSections}
