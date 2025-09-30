@@ -51,14 +51,9 @@ export default function ButtonsPanel({ sections }: ButtonsPanelProps) {
             hide_title: section.hide_title.toString(),
             grid: section.grid.toString(),
           });
-          // Only replace + with %20 for custom_title
-          const queryString = params
-            .toString()
-            .replace(
-              /custom_title=([^&]*)/,
-              (_, match) => `custom_title=${match.replace(/\+/g, "%20")}`
-            );
-          return `<div align="${section.align}"><img src="https://github-readme-activity-graph.vercel.app/graph?${queryString}" alt="activity graph"  /></div>`;
+          return `<div align="${
+            section.align
+          }"><img src="https://github-readme-activity-graph.vercel.app/graph?${params.toString()}" alt="activity graph"  /></div>`;
         }
         if (section.type === "streak") {
           return `<div align="${section.align}"><img src="https://streak-stats.demolab.com?user=${section.username}&locale=en&mode=daily&theme=dracula&hide_border=false&border_radius=5" height="150" alt="streak graph"  /></div>`;
