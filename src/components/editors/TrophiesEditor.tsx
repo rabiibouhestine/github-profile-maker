@@ -66,7 +66,9 @@ export default function TrophiesEditor({
   function onUserChange(event: React.ChangeEvent<HTMLInputElement>) {
     const val = event.target.value;
     setSections((prev) =>
-      prev.map((s) => (s.id === selectedSectionID ? { ...s, text: val } : s))
+      prev.map((s) =>
+        s.id === selectedSectionID ? { ...s, username: val } : s
+      )
     );
   }
 
