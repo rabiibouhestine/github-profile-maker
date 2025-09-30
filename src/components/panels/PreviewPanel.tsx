@@ -11,6 +11,11 @@ export default function PreviewPanel({ sections }: PreviePanelProps) {
     center: "justify-center",
     right: "justify-end",
   };
+  const alignMap: Record<"left" | "center" | "right", string> = {
+    left: "text-left",
+    center: "text-center",
+    right: "text-right",
+  };
   return (
     <AnimatePresence>
       <div className="panel flex-1 xl:min-h-0 xl:overflow-y-auto order-first xl:order-last">
@@ -23,17 +28,15 @@ export default function PreviewPanel({ sections }: PreviePanelProps) {
             exit={{ opacity: 0 }}
           >
             {section.type === "text" ? (
-              <section.tag style={{ textAlign: section.align }}>
+              <section.tag className={alignMap[section.align]}>
                 {section.text}
               </section.tag>
             ) : section.type === "image" ? (
-              <img
-                src={section.url}
-                height={section.height}
-                style={{ display: "block", margin: "auto" }}
-              />
+              <div className={`flex ${justifyMap[section.align]}`}>
+                <img src={section.url} height={section.height} />
+              </div>
             ) : section.type === "trophies" ? (
-              <div className={`text-${section.align}`}>
+              <div className={`flex ${justifyMap[section.align]}`}>
                 <img
                   src={
                     "https://github-profile-trophy.vercel.app?username=" +
@@ -45,7 +48,7 @@ export default function PreviewPanel({ sections }: PreviePanelProps) {
                 />
               </div>
             ) : section.type === "activity" ? (
-              <div className={`text-${section.align}`}>
+              <div className={`flex ${justifyMap[section.align]}`}>
                 <img
                   src={
                     "https://github-readme-activity-graph.vercel.app/graph?username=" +
@@ -57,7 +60,7 @@ export default function PreviewPanel({ sections }: PreviePanelProps) {
                 />
               </div>
             ) : section.type === "streak" ? (
-              <div className={`text-${section.align}`}>
+              <div className={`flex ${justifyMap[section.align]}`}>
                 <img
                   src={
                     "https://streak-stats.demolab.com?user=" +
@@ -69,7 +72,7 @@ export default function PreviewPanel({ sections }: PreviePanelProps) {
                 />
               </div>
             ) : section.type === "languages" ? (
-              <div className={`text-${section.align}`}>
+              <div className={`flex ${justifyMap[section.align]}`}>
                 <img
                   src={
                     "https://github-readme-stats.vercel.app/api/top-langs?username=" +
@@ -81,7 +84,7 @@ export default function PreviewPanel({ sections }: PreviePanelProps) {
                 />
               </div>
             ) : section.type === "stats" ? (
-              <div className={`text-${section.align}`}>
+              <div className={`flex ${justifyMap[section.align]}`}>
                 <img
                   src={
                     "https://github-readme-stats.vercel.app/api?username=" +
