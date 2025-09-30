@@ -227,11 +227,11 @@ export default function ActivityEditor({
         />
       </div>
       <div className="flex items-center justify-between">
-        <Label htmlFor="area">Show area under the graph</Label>
+        <Label htmlFor="area">Show Area</Label>
         <Switch id="area" checked={area} onCheckedChange={onAreaChange} />
       </div>
       <div className="flex items-center justify-between">
-        <Label htmlFor="hide_border">Show border</Label>
+        <Label htmlFor="hide_border">Show Border</Label>
         <Switch
           id="hide_border"
           checked={!hide_border}
@@ -239,7 +239,7 @@ export default function ActivityEditor({
         />
       </div>
       <div className="flex items-center justify-between">
-        <Label htmlFor="hide_title">Show title</Label>
+        <Label htmlFor="hide_title">Show Title</Label>
         <Switch
           id="hide_title"
           checked={!hide_title}
@@ -247,7 +247,7 @@ export default function ActivityEditor({
         />
       </div>
       <div className="flex items-center justify-between">
-        <Label htmlFor="grid">Show grid</Label>
+        <Label htmlFor="grid">Show Grid</Label>
         <Switch id="grid" checked={grid} onCheckedChange={onGridChange} />
       </div>
     </div>
