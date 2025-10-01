@@ -89,6 +89,7 @@ export default function ButtonsPanel({ sections }: ButtonsPanelProps) {
             hide_title: section.hide_title.toString(),
             disable_animations: section.disable_animations.toString(),
             hide_progress: section.hide_progress.toString(),
+            hide_border: section.hide_border.toString(),
           });
           return `<div align="${
             section.align

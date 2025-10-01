@@ -214,8 +214,9 @@ export default function AddSection({
         card_width: 300,
         border_radius: 4.5,
         hide_title: false,
-        disable_animations: false,
         hide_progress: false,
+        hide_border: false,
+        disable_animations: false,
       }),
     },
     {

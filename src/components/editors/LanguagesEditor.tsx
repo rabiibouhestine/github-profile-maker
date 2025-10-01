@@ -39,6 +39,7 @@ export default function LanguagesEditor({
   const border_radius = selectedSection?.border_radius;
   const hide_title = selectedSection?.hide_title;
   const hide_progress = selectedSection?.hide_progress;
+  const hide_border = selectedSection?.hide_border;
   const disable_animations = selectedSection?.disable_animations;
 
   function onUserChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -124,6 +125,14 @@ export default function LanguagesEditor({
     setSections((prev) =>
       prev.map((s) =>
         s.id === selectedSectionID ? { ...s, hide_progress: !val } : s
+      )
+    );
+  }
+
+  function onHideBorderChange(val: boolean) {
+    setSections((prev) =>
+      prev.map((s) =>
+        s.id === selectedSectionID ? { ...s, hide_border: !val } : s
       )
     );
   }
@@ -257,6 +266,14 @@ export default function LanguagesEditor({
           id="hide_progress"
           checked={!hide_progress}
           onCheckedChange={onHideProgressChange}
+        />
+      </div>
+      <div className="flex items-center justify-between">
+        <Label htmlFor="hide_border">Show Border</Label>
+        <Switch
+          id="hide_border"
+          checked={!hide_border}
+          onCheckedChange={onHideBorderChange}
         />
       </div>
       <div className="flex items-center justify-between mb-3">

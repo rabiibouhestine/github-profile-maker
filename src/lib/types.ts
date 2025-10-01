@@ -72,8 +72,9 @@ export type LanguagesSection = BaseSection & {
   card_width: number;
   border_radius: number;
   hide_title: boolean;
-  disable_animations: boolean;
   hide_progress: boolean;
+  hide_border: boolean;
+  disable_animations: boolean;
 };
 
 export type StatsSection = BaseSection & {
