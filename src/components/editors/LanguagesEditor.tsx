@@ -161,7 +161,7 @@ export default function LanguagesEditor({
         </Select>
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Custom Title</Label>
+        <Label>Title</Label>
         <Input
           placeholder="My Contribution Graph"
           id="custom_title"
