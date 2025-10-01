@@ -168,11 +168,16 @@ export default function TrophiesEditor({
             <SelectValue placeholder="Theme" />
           </SelectTrigger>
           <SelectContent>
-            {trophyThemes.map((theme) => (
-              <SelectItem key={theme} value={theme}>
-                {theme}
-              </SelectItem>
-            ))}
+            {trophyThemes.map((theme) => {
+              const label = theme
+                .replace(/_/g, " ")
+                .replace(/\b\w/g, (c) => c.toUpperCase());
+              return (
+                <SelectItem key={theme} value={theme}>
+                  {label}
+                </SelectItem>
+              );
+            })}
           </SelectContent>
         </Select>
       </div>

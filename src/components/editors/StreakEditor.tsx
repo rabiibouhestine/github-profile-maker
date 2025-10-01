@@ -198,11 +198,16 @@ export default function StreakEditor({
             <SelectValue placeholder="Theme" />
           </SelectTrigger>
           <SelectContent>
-            {streakThemes.map((theme) => (
-              <SelectItem key={theme} value={theme}>
-                {theme}
-              </SelectItem>
-            ))}
+            {streakThemes.map((theme) => {
+              const label = theme
+                .replace(/-/g, " ")
+                .replace(/\b\w/g, (c) => c.toUpperCase());
+              return (
+                <SelectItem key={theme} value={theme}>
+                  {label}
+                </SelectItem>
+              );
+            })}
           </SelectContent>
         </Select>
       </div>

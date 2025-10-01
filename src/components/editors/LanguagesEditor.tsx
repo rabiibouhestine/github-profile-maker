@@ -176,11 +176,16 @@ export default function LanguagesEditor({
             <SelectValue placeholder="Theme" />
           </SelectTrigger>
           <SelectContent>
-            {languagesThemes.map((theme) => (
-              <SelectItem key={theme} value={theme}>
-                {theme}
-              </SelectItem>
-            ))}
+            {languagesThemes.map((theme) => {
+              const label = theme
+                .replace(/_/g, " ")
+                .replace(/\b\w/g, (c) => c.toUpperCase());
+              return (
+                <SelectItem key={theme} value={theme}>
+                  {label}
+                </SelectItem>
+              );
+            })}
           </SelectContent>
         </Select>
       </div>

@@ -158,11 +158,16 @@ export default function ActivityEditor({
             <SelectValue placeholder="Theme" />
           </SelectTrigger>
           <SelectContent>
-            {activityThemes.map((theme) => (
-              <SelectItem key={theme} value={theme}>
-                {theme}
-              </SelectItem>
-            ))}
+            {activityThemes.map((theme) => {
+              const label = theme
+                .replace(/-/g, " ")
+                .replace(/\b\w/g, (c) => c.toUpperCase());
+              return (
+                <SelectItem key={theme} value={theme}>
+                  {label}
+                </SelectItem>
+              );
+            })}
           </SelectContent>
         </Select>
       </div>
