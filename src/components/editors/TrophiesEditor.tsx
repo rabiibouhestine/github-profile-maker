@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { MultiSelect } from "@/components/ui/MultiSelect";
+import { trophyThemes } from "@/resources/themes";
 
 import type { Option } from "@/components/ui/MultiSelect";
 import type { Section, AlignType, TrophiesSection } from "@/lib/types";
@@ -18,33 +19,6 @@ type TrophiesEditorProps = {
   setSections: React.Dispatch<React.SetStateAction<Section[]>>;
   selectedSectionID: number;
 };
-
-const themes = [
-  "flat",
-  "onedark",
-  "gruvbox",
-  "dracula",
-  "monokai",
-  "chalk",
-  "nord",
-  "alduin",
-  "darkhub",
-  "juicyfresh",
-  "buddhism",
-  "oldie",
-  "radical",
-  "onestar",
-  "discord",
-  "algolia",
-  "gitdimmed",
-  "tokyonight",
-  "matrix",
-  "apprentice",
-  "dark_dimmed",
-  "dark_lover",
-  "kimbie_dark",
-  "aura",
-];
 
 const trophies: Option[] = [
   { value: "Commits", label: "Commits" },
@@ -194,7 +168,7 @@ export default function TrophiesEditor({
             <SelectValue placeholder="Theme" />
           </SelectTrigger>
           <SelectContent>
-            {themes.map((theme) => (
+            {trophyThemes.map((theme) => (
               <SelectItem key={theme} value={theme}>
                 {theme}
               </SelectItem>

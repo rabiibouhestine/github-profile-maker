@@ -64,6 +64,16 @@ export type LanguagesSection = BaseSection & {
   type: "languages";
   username: string;
   align: AlignType;
+  theme: string;
+  custom_title: string;
+  layout: string;
+  stats_format: string;
+  langs_count: number;
+  card_width: number;
+  border_radius: number;
+  hide_title: boolean;
+  disable_animations: boolean;
+  hide_progress: boolean;
 };
 
 export type StatsSection = BaseSection & {

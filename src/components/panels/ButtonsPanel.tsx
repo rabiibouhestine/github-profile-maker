@@ -77,7 +77,22 @@ export default function ButtonsPanel({ sections }: ButtonsPanelProps) {
           }"><img src="https://streak-stats.demolab.com?${params.toString()}" alt="streak graph"  /></div>`;
         }
         if (section.type === "languages") {
-          return `<div align="${section.align}"><img src="https://github-readme-stats.vercel.app/api/top-langs?username=${section.username}&locale=en&hide_title=false&layout=compact&card_width=320&langs_count=5&theme=dracula&hide_border=false" height="150" alt="languages graph"  /></div>`;
+          const params = new URLSearchParams({
+            username: section.username,
+            theme: section.theme,
+            custom_title: section.custom_title,
+            layout: section.layout,
+            stats_format: section.stats_format,
+            langs_count: section.langs_count.toString(),
+            card_width: section.card_width.toString(),
+            border_radius: section.border_radius.toString(),
+            hide_title: section.hide_title.toString(),
+            disable_animations: section.disable_animations.toString(),
+            hide_progress: section.hide_progress.toString(),
+          });
+          return `<div align="${
+            section.align
+          }"><img src="https://github-readme-stats.vercel.app/api/top-langs?${params.toString()}" alt="languages graph"/></div>`;
         }
         if (section.type === "stats") {
           return `<div align="${section.align}"><img src="https://github-readme-stats.vercel.app/api?username=${section.username}&hide_title=false&hide_rank=false&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=dracula&locale=en&hide_border=false" height="150" alt="stats graph"  /></div>`;

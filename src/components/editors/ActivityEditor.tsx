@@ -10,46 +10,13 @@ import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 
 import type { Section, AlignType, ActivitySection } from "@/lib/types";
+import { activityThemes } from "@/resources/themes";
 
 type ActivityEditorProps = {
   sections: Section[];
   setSections: React.Dispatch<React.SetStateAction<Section[]>>;
   selectedSectionID: number;
 };
-
-const themes = [
-  "redical",
-  "coral",
-  "nord",
-  "lucent",
-  "dracula",
-  "gruvbox",
-  "chartreuse-dark",
-  "github-light",
-  "github-dark",
-  "github-dark-dimmed",
-  "minimal",
-  "material-palenight",
-  "green",
-  "gotham",
-  "noctis-minimus",
-  "monokai",
-  "one-dark",
-  "elegant",
-  "aqua",
-  "synthwave-84",
-  "react",
-  "merko",
-  "vue",
-  "tokyo-day",
-  "tokyo-night",
-  "high-contrast",
-  "cobalt",
-  "material",
-  "nightowl",
-  "modern-lilac",
-  "arctic",
-];
 
 export default function ActivityEditor({
   sections,
@@ -191,7 +158,7 @@ export default function ActivityEditor({
             <SelectValue placeholder="Theme" />
           </SelectTrigger>
           <SelectContent>
-            {themes.map((theme) => (
+            {activityThemes.map((theme) => (
               <SelectItem key={theme} value={theme}>
                 {theme}
               </SelectItem>

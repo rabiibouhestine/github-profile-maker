@@ -7,6 +7,7 @@ import BadgesEditor from "../editors/BadgesEditor";
 import TrophiesEditor from "../editors/TrophiesEditor";
 import ActivityEditor from "../editors/ActivityEditor";
 import StreakEditor from "../editors/StreakEditor";
+import LanguagesEditor from "../editors/LanguagesEditor";
 import { motion, AnimatePresence } from "framer-motion";
 
 import type { Section } from "@/lib/types";
@@ -34,7 +35,7 @@ export default function EditorPanel({
     trophies: TrophiesEditor,
     activity: ActivityEditor,
     streak: StreakEditor,
-    languages: GithubEditor,
+    languages: LanguagesEditor,
     stats: GithubEditor,
     stack: StackEditor,
     socials: SocialsEditor,

@@ -109,12 +109,22 @@ export default function PreviewPanel({ sections }: PreviePanelProps) {
               <div className={`flex ${justifyMap[section.align]}`}>
                 <img
                   src={
-                    "https://github-readme-stats.vercel.app/api/top-langs?username=" +
-                    section.username +
-                    "&locale=en&hide_title=false&layout=compact&card_width=320&langs_count=5&theme=dracula&hide_border=false"
+                    "https://github-readme-stats.vercel.app/api/top-langs?" +
+                    new URLSearchParams({
+                      username: section.username,
+                      theme: section.theme,
+                      custom_title: section.custom_title,
+                      layout: section.layout,
+                      stats_format: section.stats_format,
+                      langs_count: section.langs_count.toString(),
+                      card_width: section.card_width.toString(),
+                      border_radius: section.border_radius.toString(),
+                      hide_title: section.hide_title.toString(),
+                      disable_animations: section.disable_animations.toString(),
+                      hide_progress: section.hide_progress.toString(),
+                    }).toString()
                   }
-                  height="150"
-                  alt="languages graph"
+                  alt="languages card"
                 />
               </div>
             ) : section.type === "stats" ? (
