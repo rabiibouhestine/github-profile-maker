@@ -81,6 +81,19 @@ export type StatsSection = BaseSection & {
   type: "stats";
   username: string;
   align: AlignType;
+  theme: string;
+  rank_icon: string;
+  number_format: string;
+  show: string[];
+  custom_title: string;
+  border_radius: number;
+  card_width: number;
+  hide_border: boolean;
+  hide_title: boolean;
+  hide_rank: boolean;
+  show_icons: boolean;
+  include_all_commits: boolean;
+  disable_animations: boolean;
 };
 
 export type ImageSection = BaseSection & {

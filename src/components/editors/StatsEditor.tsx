@@ -8,12 +8,7 @@ import {
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 
-import type {
-  Section,
-  AlignType,
-  TrophiesSection,
-  ActivitySection,
-} from "@/lib/types";
+import type { Section, AlignType, StatsSection } from "@/lib/types";
 
 type StatsEditorProps = {
   sections: Section[];
@@ -27,7 +22,7 @@ export default function StatsEditor({
   selectedSectionID,
 }: StatsEditorProps) {
   const selectedSection = sections.find(
-    (s): s is TrophiesSection | ActivitySection => s.id === selectedSectionID
+    (s): s is StatsSection => s.id === selectedSectionID
   );
 
   const username = selectedSection?.username || "rabiibouhestine";

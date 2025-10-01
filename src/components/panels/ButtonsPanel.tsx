@@ -96,7 +96,25 @@ export default function ButtonsPanel({ sections }: ButtonsPanelProps) {
           }"><img src="https://github-readme-stats.vercel.app/api/top-langs?${params.toString()}" alt="languages graph"/></div>`;
         }
         if (section.type === "stats") {
-          return `<div align="${section.align}"><img src="https://github-readme-stats.vercel.app/api?username=${section.username}&hide_title=false&hide_rank=false&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=dracula&locale=en&hide_border=false" height="150" alt="stats graph"  /></div>`;
+          const params = new URLSearchParams({
+            username: section.username,
+            theme: section.theme,
+            rank_icon: section.rank_icon,
+            number_format: section.number_format,
+            show: section.show.join(","),
+            custom_title: section.custom_title,
+            border_radius: section.border_radius.toString(),
+            card_width: section.card_width.toString(),
+            hide_border: section.hide_border.toString(),
+            hide_title: section.hide_title.toString(),
+            hide_rank: section.hide_rank.toString(),
+            show_icons: section.show_icons.toString(),
+            include_all_commits: section.include_all_commits.toString(),
+            disable_animations: section.disable_animations.toString(),
+          });
+          return `<div align="${
+            section.align
+          }"><img src="https://github-readme-stats.vercel.app/api?${params.toString()}" alt="stats graph"  /></div>`;
         }
         if (section.type === "image") {
           return `<div align="${section.align}"><img src="${section.url}" height=${section.height} /></div>`;
