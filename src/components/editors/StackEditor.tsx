@@ -34,7 +34,7 @@ export default function StackEditor() {
   const { sections, setSections, selectedSectionID } = useSections();
 
   const selectedSection = sections.find(
-    (s): s is StackSection => s.id === selectedSectionID
+    (s): s is StackSection => s.id === selectedSectionID && s.type === "stack"
   );
 
   const align = selectedSection?.align || "center";

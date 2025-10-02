@@ -42,7 +42,8 @@ export default function TrophiesEditor() {
   const { sections, setSections, selectedSectionID } = useSections();
 
   const selectedSection = sections.find(
-    (s): s is TrophiesSection => s.id === selectedSectionID
+    (s): s is TrophiesSection =>
+      s.id === selectedSectionID && s.type === "trophies"
   );
 
   const username = selectedSection?.username;

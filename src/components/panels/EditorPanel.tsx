@@ -38,14 +38,14 @@ export default function EditorPanel() {
   return (
     <AnimatePresence mode="wait">
       <motion.div
-        key={selectedSection.id}
+        key={selectedSectionID}
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -10 }}
         transition={{ duration: 0.1 }}
         className="h-full"
       >
-        <EditorComponent />
+        <EditorComponent key={selectedSectionID} />
       </motion.div>
     </AnimatePresence>
   );

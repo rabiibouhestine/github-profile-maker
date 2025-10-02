@@ -28,7 +28,7 @@ export default function StatsEditor() {
   const { sections, setSections, selectedSectionID } = useSections();
 
   const selectedSection = sections.find(
-    (s): s is StatsSection => s.id === selectedSectionID
+    (s): s is StatsSection => s.id === selectedSectionID && s.type === "stats"
   );
 
   const username = selectedSection?.username;

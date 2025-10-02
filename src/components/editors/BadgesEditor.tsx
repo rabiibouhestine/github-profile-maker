@@ -34,7 +34,7 @@ export default function BadgesEditor() {
   const { sections, setSections, selectedSectionID } = useSections();
 
   const selectedSection = sections.find(
-    (s): s is BadgesSection => s.id === selectedSectionID
+    (s): s is BadgesSection => s.id === selectedSectionID && s.type === "badges"
   );
 
   const align = selectedSection?.align || "center";

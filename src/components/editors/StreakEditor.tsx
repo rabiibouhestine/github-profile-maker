@@ -30,7 +30,7 @@ export default function StreakEditor() {
   const { sections, setSections, selectedSectionID } = useSections();
 
   const selectedSection = sections.find(
-    (s): s is StreakSection => s.id === selectedSectionID
+    (s): s is StreakSection => s.id === selectedSectionID && s.type === "streak"
   );
 
   const username = selectedSection?.username;

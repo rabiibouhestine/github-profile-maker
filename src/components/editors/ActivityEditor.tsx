@@ -18,7 +18,8 @@ export default function ActivityEditor() {
   const { sections, setSections, selectedSectionID } = useSections();
 
   const selectedSection = sections.find(
-    (s): s is ActivitySection => s.id === selectedSectionID
+    (s): s is ActivitySection =>
+      s.id === selectedSectionID && s.type === "activity"
   );
 
   const username = selectedSection?.username;

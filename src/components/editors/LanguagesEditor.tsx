@@ -18,7 +18,8 @@ export default function LanguagesEditor() {
   const { sections, setSections, selectedSectionID } = useSections();
 
   const selectedSection = sections.find(
-    (s): s is LanguagesSection => s.id === selectedSectionID
+    (s): s is LanguagesSection =>
+      s.id === selectedSectionID && s.type === "image"
   );
 
   const username = selectedSection?.username;

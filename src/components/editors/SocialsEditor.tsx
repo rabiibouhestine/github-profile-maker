@@ -34,7 +34,8 @@ export default function SocialsEditor() {
   const { sections, setSections, selectedSectionID } = useSections();
 
   const selectedSection = sections.find(
-    (s): s is SocialsSection => s.id === selectedSectionID
+    (s): s is SocialsSection =>
+      s.id === selectedSectionID && s.type === "socials"
   );
 
   const align = selectedSection?.align || "center";
