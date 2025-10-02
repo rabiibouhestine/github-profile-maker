@@ -91,7 +91,7 @@ export default function TechCard({ name, selected, versions }: TechCardProps) {
         <SelectTrigger className="ml-auto"></SelectTrigger>
         <SelectContent>
           {versions.map((version) => (
-            <SelectItem value={version}>
+            <SelectItem value={version} key={version}>
               {" "}
               <img
                 src={
