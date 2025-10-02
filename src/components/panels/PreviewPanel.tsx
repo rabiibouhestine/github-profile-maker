@@ -1,8 +1,12 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useSections } from "@/components/hooks/SectionsProvider";
+import { useEffect, useRef, useState } from "react";
 
 export default function PreviewPanel() {
-  const { sections } = useSections();
+  const { sections, selectedSectionID } = useSections();
+  const sectionRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const [highlightedId, setHighlightedId] = useState<number | null>(null);
+
   const justifyMap: Record<"left" | "center" | "right", string> = {
     left: "justify-start",
     center: "justify-center",
@@ -23,16 +27,33 @@ export default function PreviewPanel() {
     p: "text-[16px]",
   };
 
+  useEffect(() => {
+    if (selectedSectionID && sectionRefs.current[selectedSectionID]) {
+      const el = sectionRefs.current[selectedSectionID];
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+      setHighlightedId(selectedSectionID);
+
+      const timeout = setTimeout(() => setHighlightedId(null), 1000);
+      return () => clearTimeout(timeout);
+    }
+  }, [selectedSectionID]);
+
   return (
     <AnimatePresence>
       <div className="panel flex-1 xl:min-h-0 xl:overflow-y-auto order-first xl:order-last">
         {sections.map((section) => (
           <motion.div
             key={section.id}
+            ref={(el) => {
+              sectionRefs.current[section.id] = el;
+            }}
             layout
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            className={`py-2 rounded-md transition-colors ease-out duration-1000 ${
+              highlightedId === section.id ? "bg-border" : ""
+            }`}
           >
             {section.type === "text" && (
               <section.tag
@@ -233,8 +254,6 @@ export default function PreviewPanel() {
                 ))}
               </div>
             )}
-
-            <br />
           </motion.div>
         ))}
       </div>
