@@ -11,16 +11,9 @@ Live demo: [github-profile-maker.netlify.app](https://github-profile-maker.netli
 ## Table of Contents
 
 - [Features](#features)
-- [Demo / Screenshots](#demo--screenshots)
-- [Usage](#usage)
-  - [Installation / Running Locally](#installation--running-locally)
-  - [Configuring Sections](#configuring-sections)
-  - [Exporting / Downloading the README](#exporting--downloading-the-readme)
-- [Project Structure](#project-structure)
+- [Installation / Running Locally](#installation--running-locally)
 - [Technologies Used](#technologies-used)
-- [Contributing](#contributing)
 - [License](#license)
-- [Acknowledgments](#acknowledgments)
 
 ---
 
@@ -34,9 +27,7 @@ Live demo: [github-profile-maker.netlify.app](https://github-profile-maker.netli
 
 ---
 
-## Usage
-
-### Installation / Running Locally
+## Installation / Running Locally
 
 1. Clone the repo:
 
@@ -63,7 +54,7 @@ yarn dev
 
 4. Open your browser at http://localhost:5173 (or as indicated) to use the tool.
 
-### Technologies Used
+## Technologies Used
 
 - React (with TypeScript)
 - Vite for bundling / dev server
@@ -71,6 +62,6 @@ yarn dev
 - [dndkit](https://dndkit.com/) for Drag and Drop
 - [framer motion](https://motion.dev/) for Animations
 
-### License
+## License
 
 This project is licensed under the MIT License

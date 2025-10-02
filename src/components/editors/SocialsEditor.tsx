@@ -134,8 +134,6 @@ export default function SocialsEditor() {
                 >
                   <SocialCard
                     key={social.name}
-                    setSections={setSections}
-                    selectedSectionID={selectedSectionID}
                     name={social.name}
                     link={social.link}
                   />
@@ -145,10 +143,7 @@ export default function SocialsEditor() {
           </SortableContext>
         </DndContext>
       </div>
-      <AddSocial
-        setSections={setSections}
-        selectedSectionID={selectedSectionID}
-      />
+      <AddSocial />
     </div>
   );
 }

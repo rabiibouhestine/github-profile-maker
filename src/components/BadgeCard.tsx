@@ -12,6 +12,7 @@ import {
   DialogFooter,
   DialogClose,
 } from "@/components/ui/dialog";
+import { useSections } from "@/components/hooks/SectionsProvider";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -19,11 +20,9 @@ import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { useState } from "react";
 
-import type { Section, BadgesSection } from "@/lib/types";
+import type { BadgesSection } from "@/lib/types";
 
 type BadgeCardProps = {
-  setSections: React.Dispatch<React.SetStateAction<Section[]>>;
-  selectedSectionID: number;
   id: number;
   label: string;
   message: string;
@@ -31,13 +30,13 @@ type BadgeCardProps = {
 };
 
 export default function BadgeCard({
-  setSections,
-  selectedSectionID,
   id,
   label,
   message,
   color,
 }: BadgeCardProps) {
+  const { setSections, selectedSectionID } = useSections();
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     label,

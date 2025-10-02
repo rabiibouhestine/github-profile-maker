@@ -1,6 +1,7 @@
 import { Trash as TrashIcon, Grip as GripIcon } from "lucide-react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import { useSections } from "@/components/hooks/SectionsProvider";
 
 import {
   Select,
@@ -9,23 +10,17 @@ import {
   SelectTrigger,
 } from "@/components/ui/select";
 
-import type { Section, StackSection } from "@/lib/types";
+import type { StackSection } from "@/lib/types";
 
 type TechCardProps = {
-  setSections: React.Dispatch<React.SetStateAction<Section[]>>;
-  selectedSectionID: number;
   name: string;
   selected: string;
   versions: string[];
 };
 
-export default function TechCard({
-  setSections,
-  selectedSectionID,
-  name,
-  selected,
-  versions,
-}: TechCardProps) {
+export default function TechCard({ name, selected, versions }: TechCardProps) {
+  const { setSections, selectedSectionID } = useSections();
+
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: name });
 

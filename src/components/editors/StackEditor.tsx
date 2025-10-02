@@ -134,8 +134,6 @@ export default function StackEditor() {
                 >
                   <TechCard
                     key={technology.name}
-                    setSections={setSections}
-                    selectedSectionID={selectedSectionID}
                     name={technology.name}
                     selected={technology.selected}
                     versions={technology.versions}
@@ -146,10 +144,7 @@ export default function StackEditor() {
           </SortableContext>
         </DndContext>
       </div>
-      <AddTech
-        setSections={setSections}
-        selectedSectionID={selectedSectionID}
-      />
+      <AddTech />
     </div>
   );
 }

@@ -134,8 +134,6 @@ export default function BadgesEditor() {
                   transition={{ duration: 0.2 }}
                 >
                   <BadgeCard
-                    setSections={setSections}
-                    selectedSectionID={selectedSectionID}
                     id={badge.id}
                     label={badge.label}
                     message={badge.message}

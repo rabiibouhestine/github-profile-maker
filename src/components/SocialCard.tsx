@@ -2,22 +2,18 @@ import { Trash as TrashIcon, Grip as GripIcon } from "lucide-react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { Input } from "@/components/ui/input";
+import { useSections } from "@/components/hooks/SectionsProvider";
 
-import type { Section, SocialsSection } from "@/lib/types";
+import type { SocialsSection } from "@/lib/types";
 
 type SocialCardProps = {
-  setSections: React.Dispatch<React.SetStateAction<Section[]>>;
-  selectedSectionID: number;
   name: string;
   link: string;
 };
 
-export default function SocialCard({
-  setSections,
-  selectedSectionID,
-  name,
-  link,
-}: SocialCardProps) {
+export default function SocialCard({ name, link }: SocialCardProps) {
+  const { setSections, selectedSectionID } = useSections();
+
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: name });
 

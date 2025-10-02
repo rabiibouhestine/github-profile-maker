@@ -11,8 +11,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { dev_icons } from "@/resources/dev_icons";
+import { useSections } from "@/components/hooks/SectionsProvider";
 
-import type { Section, StackSection, Tech } from "@/lib/types";
+import type { StackSection, Tech } from "@/lib/types";
 
 type DeviconItem = {
   name: string;
@@ -21,15 +22,8 @@ type DeviconItem = {
   };
 };
 
-type AddTechProps = {
-  setSections: React.Dispatch<React.SetStateAction<Section[]>>;
-  selectedSectionID: number;
-};
-
-export default function AddTech({
-  setSections,
-  selectedSectionID,
-}: AddTechProps) {
+export default function AddTech() {
+  const { setSections, selectedSectionID } = useSections();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [search, setSearch] = useState("");
 

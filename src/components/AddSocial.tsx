@@ -9,20 +9,14 @@ import {
 import { CirclePlus as CirclePlusIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
 import { social_icons } from "@/resources/social_icons";
+import { useSections } from "@/components/hooks/SectionsProvider";
+import { useState } from "react";
 
-import type { Section, SocialsSection, Social } from "@/lib/types";
+import type { SocialsSection, Social } from "@/lib/types";
 
-type AddSocialProps = {
-  setSections: React.Dispatch<React.SetStateAction<Section[]>>;
-  selectedSectionID: number;
-};
-
-export default function AddSocial({
-  setSections,
-  selectedSectionID,
-}: AddSocialProps) {
+export default function AddSocial() {
+  const { setSections, selectedSectionID } = useSections();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [search, setSearch] = useState("");
 
