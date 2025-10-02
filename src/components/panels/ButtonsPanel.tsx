@@ -2,6 +2,7 @@ import {
   Download as DownloadIcon,
   Clipboard as ClipboardCopyIcon,
 } from "lucide-react";
+import { useState } from "react";
 import { useSections } from "@/components/hooks/SectionsProvider";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/ui/mode-toggle";
@@ -10,11 +11,16 @@ import { buildSection } from "@/lib/section_builders";
 
 export default function ButtonsPanel() {
   const { sections } = useSections();
+  const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
     const sectionsHTML = sections.map(buildSection).join("<br>\n");
     navigator.clipboard.writeText(sectionsHTML);
-    alert("Copied to clipboard!");
+    setCopied(true);
+
+    setTimeout(() => {
+      setCopied(false);
+    }, 1000);
   };
 
   const handleDownload = () => {
@@ -44,9 +50,9 @@ export default function ButtonsPanel() {
         </div>
       </div>
       <div className="flex flex-wrap items-center gap-2">
-        <Button variant="outline" onClick={handleCopy}>
+        <Button variant="outline" onClick={handleCopy} disabled={copied}>
           <ClipboardCopyIcon />
-          Copy
+          {copied ? "Copied!" : "Copy"}
         </Button>
         <Button variant="outline" onClick={handleDownload}>
           <DownloadIcon /> Download
