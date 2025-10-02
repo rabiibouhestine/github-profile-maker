@@ -22,18 +22,19 @@ export default function PreviewPanel() {
     h6: "text-[13.6px]",
     p: "text-[16px]",
   };
+
   return (
     <AnimatePresence>
       <div className="panel flex-1 xl:min-h-0 xl:overflow-y-auto order-first xl:order-last">
         {sections.map((section) => (
           <motion.div
             key={section.id}
-            layout // animates position changes
+            layout
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            {section.type === "text" ? (
+            {section.type === "text" && (
               <section.tag
                 className={[alignMap[section.align], tagMap[section.tag]].join(
                   " "
@@ -41,11 +42,15 @@ export default function PreviewPanel() {
               >
                 {section.text}
               </section.tag>
-            ) : section.type === "image" ? (
+            )}
+
+            {section.type === "image" && (
               <div className={`flex ${justifyMap[section.align]}`}>
                 <img src={section.url} height={section.height} />
               </div>
-            ) : section.type === "trophies" ? (
+            )}
+
+            {section.type === "trophies" && (
               <div className={`flex ${justifyMap[section.align]}`}>
                 <img
                   src={
@@ -67,7 +72,9 @@ export default function PreviewPanel() {
                   alt="trophy graph"
                 />
               </div>
-            ) : section.type === "activity" ? (
+            )}
+
+            {section.type === "activity" && (
               <div className={`flex ${justifyMap[section.align]}`}>
                 <img
                   src={
@@ -88,7 +95,9 @@ export default function PreviewPanel() {
                   alt="activity graph"
                 />
               </div>
-            ) : section.type === "streak" ? (
+            )}
+
+            {section.type === "streak" && (
               <div className={`flex ${justifyMap[section.align]}`}>
                 <img
                   src={
@@ -115,7 +124,9 @@ export default function PreviewPanel() {
                   alt="streak graph"
                 />
               </div>
-            ) : section.type === "languages" ? (
+            )}
+
+            {section.type === "languages" && (
               <div className={`flex ${justifyMap[section.align]}`}>
                 <img
                   src={
@@ -138,7 +149,9 @@ export default function PreviewPanel() {
                   alt="languages card"
                 />
               </div>
-            ) : section.type === "stats" ? (
+            )}
+
+            {section.type === "stats" && (
               <div className={`flex ${justifyMap[section.align]}`}>
                 <img
                   src={
@@ -164,12 +177,15 @@ export default function PreviewPanel() {
                   alt="stats card"
                 />
               </div>
-            ) : section.type === "stack" ? (
+            )}
+
+            {section.type === "stack" && (
               <div
                 className={`flex flex-wrap ${justifyMap[section.align]} gap-3`}
               >
                 {section.list.map((tech) => (
                   <img
+                    key={tech.name}
                     src={
                       "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/" +
                       tech.name +
@@ -185,12 +201,14 @@ export default function PreviewPanel() {
                   />
                 ))}
               </div>
-            ) : section.type === "socials" ? (
+            )}
+
+            {section.type === "socials" && (
               <div
                 className={`flex flex-wrap ${justifyMap[section.align]} gap-3`}
               >
                 {section.list.map((social) => (
-                  <a href={social.link} target="_blank">
+                  <a key={social.name} href={social.link} target="_blank">
                     <img
                       src={`https://raw.githubusercontent.com/rabiibouhestine/github-profile-maker/refs/heads/main/src/assets/social/${social.name}/default.svg`}
                       height={section.size}
@@ -200,19 +218,23 @@ export default function PreviewPanel() {
                   </a>
                 ))}
               </div>
-            ) : section.type === "badges" ? (
+            )}
+
+            {section.type === "badges" && (
               <div
                 className={`flex flex-wrap ${justifyMap[section.align]} gap-3`}
               >
                 {section.list.map((badge) => (
                   <img
+                    key={badge.id}
                     src={`https://img.shields.io/badge/${badge.label}-${badge.message}-${badge.color}`}
                     alt="badge"
                   />
                 ))}
               </div>
-            ) : null}
-            <br></br>
+            )}
+
+            <br />
           </motion.div>
         ))}
       </div>
