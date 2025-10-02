@@ -132,7 +132,7 @@ export default function ButtonsPanel({ sections }: ButtonsPanelProps) {
           const imgs = section.list
             .map(
               (social) =>
-                `<a href="${social.name}" target="_blank"><img src="https://raw.githubusercontent.com/maurodesouza/profile-readme-generator/master/src/assets/icons/social/${social.name}/default.svg" height="${section.size}" width="${section.size}" alt="${social.name}" /></a>`
+                `<a href="${social.name}" target="_blank"><img src="https://raw.githubusercontent.com/rabiibouhestine/github-profile-maker/refs/heads/main/src/assets/social/${social.name}/default.svg" height="${section.size}" width="${section.size}" alt="${social.name}" /></a>`
             )
             .join("\n");
           return `<div align=${section.align}>\n${imgs}\n</div>`;

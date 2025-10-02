@@ -182,7 +182,7 @@ export default function PreviewPanel({ sections }: PreviePanelProps) {
                 {section.list.map((social) => (
                   <a href={social.link} target="_blank">
                     <img
-                      src={`https://raw.githubusercontent.com/maurodesouza/profile-readme-generator/master/src/assets/icons/social/${social.name}/default.svg`}
+                      src={`https://raw.githubusercontent.com/rabiibouhestine/github-profile-maker/refs/heads/main/src/assets/social/${social.name}/default.svg`}
                       height={section.size}
                       width={section.size}
                       alt={social.name}
