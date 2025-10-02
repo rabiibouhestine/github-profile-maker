@@ -16,6 +16,15 @@ export default function PreviewPanel({ sections }: PreviePanelProps) {
     center: "text-center",
     right: "text-right",
   };
+  const tagMap: Record<string, string> = {
+    h1: "text-[32px] border-b",
+    h2: "text-[24px] border-b",
+    h3: "text-[20px]",
+    h4: "text-[16px]",
+    h5: "text-[14px]",
+    h6: "text-[13.6px]",
+    p: "text-[16px]",
+  };
   return (
     <AnimatePresence>
       <div className="panel flex-1 xl:min-h-0 xl:overflow-y-auto order-first xl:order-last">
@@ -28,7 +37,11 @@ export default function PreviewPanel({ sections }: PreviePanelProps) {
             exit={{ opacity: 0 }}
           >
             {section.type === "text" ? (
-              <section.tag className={alignMap[section.align]}>
+              <section.tag
+                className={[alignMap[section.align], tagMap[section.tag]].join(
+                  " "
+                )}
+              >
                 {section.text}
               </section.tag>
             ) : section.type === "image" ? (
