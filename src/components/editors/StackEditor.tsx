@@ -37,9 +37,9 @@ export default function StackEditor() {
     (s): s is StackSection => s.id === selectedSectionID && s.type === "stack"
   );
 
-  const align = selectedSection?.align || "center";
-  const size = selectedSection?.size || 40;
-  const list = selectedSection?.list || [];
+  const align = selectedSection?.align ?? "center";
+  const size = selectedSection?.size ?? 40;
+  const list = selectedSection?.list ?? [];
 
   const sensors = useSensors(
     useSensor(PointerSensor),

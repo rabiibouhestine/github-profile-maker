@@ -31,21 +31,21 @@ export default function StatsEditor() {
     (s): s is StatsSection => s.id === selectedSectionID && s.type === "stats"
   );
 
-  const username = selectedSection?.username;
-  const align = selectedSection?.align;
-  const theme = selectedSection?.theme;
-  const rank_icon = selectedSection?.rank_icon;
-  const number_format = selectedSection?.number_format;
-  const show = selectedSection?.show || [];
-  const custom_title = selectedSection?.custom_title;
-  const border_radius = selectedSection?.border_radius;
-  const card_width = selectedSection?.card_width;
-  const hide_border = selectedSection?.hide_border;
-  const hide_title = selectedSection?.hide_title;
-  const hide_rank = selectedSection?.hide_rank;
-  const show_icons = selectedSection?.show_icons;
-  const include_all_commits = selectedSection?.include_all_commits;
-  const disable_animations = selectedSection?.disable_animations;
+  const username = selectedSection?.username ?? "rabiibouhestine";
+  const align = selectedSection?.align ?? "center";
+  const theme = selectedSection?.theme ?? "dracula";
+  const rank_icon = selectedSection?.rank_icon ?? "default";
+  const number_format = selectedSection?.number_format ?? "short";
+  const show = selectedSection?.show ?? [];
+  const custom_title = selectedSection?.custom_title ?? "Github Stats";
+  const border_radius = selectedSection?.border_radius ?? 4.5;
+  const card_width = selectedSection?.card_width ?? 500;
+  const hide_border = selectedSection?.hide_border ?? false;
+  const hide_title = selectedSection?.hide_title ?? false;
+  const hide_rank = selectedSection?.hide_rank ?? false;
+  const show_icons = selectedSection?.show_icons ?? true;
+  const include_all_commits = selectedSection?.include_all_commits ?? true;
+  const disable_animations = selectedSection?.disable_animations ?? false;
 
   function onUserChange(event: React.ChangeEvent<HTMLInputElement>) {
     const val = event.target.value;

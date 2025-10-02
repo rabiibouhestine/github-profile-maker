@@ -22,19 +22,19 @@ export default function LanguagesEditor() {
       s.id === selectedSectionID && s.type === "image"
   );
 
-  const username = selectedSection?.username;
-  const align = selectedSection?.align;
-  const custom_title = selectedSection?.custom_title;
-  const theme = selectedSection?.theme;
-  const layout = selectedSection?.layout;
-  const stats_format = selectedSection?.stats_format;
-  const langs_count = selectedSection?.langs_count;
-  const card_width = selectedSection?.card_width;
-  const border_radius = selectedSection?.border_radius;
-  const hide_title = selectedSection?.hide_title;
-  const hide_progress = selectedSection?.hide_progress;
-  const hide_border = selectedSection?.hide_border;
-  const disable_animations = selectedSection?.disable_animations;
+  const username = selectedSection?.username ?? "rabiibouhestine";
+  const align = selectedSection?.align ?? "center";
+  const custom_title = selectedSection?.custom_title ?? "Most Used Languages";
+  const theme = selectedSection?.theme ?? "dracula";
+  const layout = selectedSection?.layout ?? "normal";
+  const stats_format = selectedSection?.stats_format ?? "percentages";
+  const langs_count = selectedSection?.langs_count ?? 5;
+  const card_width = selectedSection?.card_width ?? 300;
+  const border_radius = selectedSection?.border_radius ?? 4.5;
+  const hide_title = selectedSection?.hide_title ?? false;
+  const hide_progress = selectedSection?.hide_progress ?? false;
+  const hide_border = selectedSection?.hide_border ?? false;
+  const disable_animations = selectedSection?.disable_animations ?? false;
 
   function onUserChange(event: React.ChangeEvent<HTMLInputElement>) {
     const val = event.target.value;

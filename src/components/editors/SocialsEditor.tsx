@@ -38,9 +38,9 @@ export default function SocialsEditor() {
       s.id === selectedSectionID && s.type === "socials"
   );
 
-  const align = selectedSection?.align || "center";
-  const size = selectedSection?.size || 40;
-  const list = selectedSection?.list || [];
+  const align = selectedSection?.align ?? "center";
+  const size = selectedSection?.size ?? 40;
+  const list = selectedSection?.list ?? [];
 
   const sensors = useSensors(
     useSensor(PointerSensor),

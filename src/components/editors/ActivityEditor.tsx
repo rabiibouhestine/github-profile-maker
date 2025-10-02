@@ -22,17 +22,17 @@ export default function ActivityEditor() {
       s.id === selectedSectionID && s.type === "activity"
   );
 
-  const username = selectedSection?.username;
-  const align = selectedSection?.align;
-  const custom_title = selectedSection?.custom_title;
-  const theme = selectedSection?.theme;
-  const radius = selectedSection?.radius;
-  const height = selectedSection?.height;
-  const days = selectedSection?.days;
-  const area = selectedSection?.area;
-  const hide_border = selectedSection?.hide_border;
-  const hide_title = selectedSection?.hide_title;
-  const grid = selectedSection?.grid;
+  const username = selectedSection?.username ?? "rabiibouhestine";
+  const align = selectedSection?.align ?? "center";
+  const custom_title = selectedSection?.custom_title ?? "Activity Graph";
+  const theme = selectedSection?.theme ?? "dracula";
+  const radius = selectedSection?.radius ?? 16;
+  const height = selectedSection?.height ?? 300;
+  const days = selectedSection?.days ?? 30;
+  const area = selectedSection?.area ?? true;
+  const hide_border = selectedSection?.hide_border ?? false;
+  const hide_title = selectedSection?.hide_title ?? false;
+  const grid = selectedSection?.grid ?? true;
 
   function onUserChange(event: React.ChangeEvent<HTMLInputElement>) {
     const val = event.target.value;

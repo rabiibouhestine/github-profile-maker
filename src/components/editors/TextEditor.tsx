@@ -18,9 +18,9 @@ export default function TextEditor() {
     (s): s is TextSection => s.id === selectedSectionID && s.type === "text"
   );
 
-  const tag = selectedSection?.tag || "h1";
-  const align = selectedSection?.align || "center";
-  const text = selectedSection?.text || "";
+  const tag = selectedSection?.tag ?? "h1";
+  const align = selectedSection?.align ?? "center";
+  const text = selectedSection?.text ?? "";
 
   function onTagChange(val: TagType) {
     setSections((prev) =>

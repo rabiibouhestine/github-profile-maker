@@ -33,20 +33,21 @@ export default function StreakEditor() {
     (s): s is StreakSection => s.id === selectedSectionID && s.type === "streak"
   );
 
-  const username = selectedSection?.username;
-  const align = selectedSection?.align;
-  const theme = selectedSection?.theme;
-  const mode = selectedSection?.mode;
-  const exclude_days = selectedSection?.exclude_days || [];
-  const card_width = selectedSection?.card_width;
-  const card_height = selectedSection?.card_height;
-  const border_radius = selectedSection?.border_radius;
-  const short_numbers = selectedSection?.short_numbers;
-  const disable_animations = selectedSection?.disable_animations;
-  const hide_border = selectedSection?.hide_border;
-  const hide_total_contributions = selectedSection?.hide_total_contributions;
-  const hide_current_streak = selectedSection?.hide_current_streak;
-  const hide_longest_streak = selectedSection?.hide_longest_streak;
+  const username = selectedSection?.username ?? "rabiibouhestine";
+  const align = selectedSection?.align ?? "center";
+  const theme = selectedSection?.theme ?? "dracula";
+  const mode = selectedSection?.mode ?? "daily";
+  const exclude_days = selectedSection?.exclude_days ?? [];
+  const card_width = selectedSection?.card_width ?? 495;
+  const card_height = selectedSection?.card_height ?? 195;
+  const border_radius = selectedSection?.border_radius ?? 4.5;
+  const short_numbers = selectedSection?.short_numbers ?? true;
+  const disable_animations = selectedSection?.disable_animations ?? false;
+  const hide_border = selectedSection?.hide_border ?? false;
+  const hide_total_contributions =
+    selectedSection?.hide_total_contributions ?? false;
+  const hide_current_streak = selectedSection?.hide_current_streak ?? false;
+  const hide_longest_streak = selectedSection?.hide_longest_streak ?? false;
 
   function onUserChange(event: React.ChangeEvent<HTMLInputElement>) {
     const val = event.target.value;

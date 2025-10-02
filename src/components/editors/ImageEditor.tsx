@@ -18,9 +18,9 @@ export default function ImageEditor() {
     (s): s is ImageSection => s.id === selectedSectionID && s.type === "image"
   );
 
-  const url = selectedSection?.url || "";
-  const align = selectedSection?.align || "left";
-  const height = selectedSection?.height || 200;
+  const url = selectedSection?.url ?? "";
+  const align = selectedSection?.align ?? "left";
+  const height = selectedSection?.height ?? 200;
 
   function onUrlChange(event: React.ChangeEvent<HTMLInputElement>) {
     const val = event.target.value;

@@ -37,8 +37,8 @@ export default function BadgesEditor() {
     (s): s is BadgesSection => s.id === selectedSectionID && s.type === "badges"
   );
 
-  const align = selectedSection?.align || "center";
-  const list = selectedSection?.list || [];
+  const align = selectedSection?.align ?? "center";
+  const list = selectedSection?.list ?? [];
 
   const sensors = useSensors(
     useSensor(PointerSensor),

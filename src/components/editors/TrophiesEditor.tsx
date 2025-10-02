@@ -46,17 +46,17 @@ export default function TrophiesEditor() {
       s.id === selectedSectionID && s.type === "trophies"
   );
 
-  const username = selectedSection?.username;
-  const align = selectedSection?.align;
-  const theme = selectedSection?.theme;
-  const title = selectedSection?.title || [];
-  const rank = selectedSection?.rank || [];
-  const column = selectedSection?.column;
-  const row = selectedSection?.row;
-  const marginW = selectedSection?.marginW;
-  const marginH = selectedSection?.marginH;
-  const bg = selectedSection?.bg;
-  const frame = selectedSection?.frame;
+  const username = selectedSection?.username ?? "rabiibouhestine";
+  const align = selectedSection?.align ?? "center";
+  const theme = selectedSection?.theme ?? "dracula";
+  const title = selectedSection?.title ?? [];
+  const rank = selectedSection?.rank ?? [];
+  const column = selectedSection?.column ?? 8;
+  const row = selectedSection?.row ?? 1;
+  const marginW = selectedSection?.marginW ?? 8;
+  const marginH = selectedSection?.marginH ?? 8;
+  const bg = selectedSection?.bg ?? true;
+  const frame = selectedSection?.frame ?? true;
 
   function onUserChange(event: React.ChangeEvent<HTMLInputElement>) {
     const val = event.target.value;
