@@ -20,7 +20,7 @@ export default function ButtonsPanel() {
 
     setTimeout(() => {
       setCopied(false);
-    }, 1000);
+    }, 600);
   };
 
   const handleDownload = () => {
