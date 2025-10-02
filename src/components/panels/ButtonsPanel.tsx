@@ -2,18 +2,15 @@ import {
   Download as DownloadIcon,
   Clipboard as ClipboardCopyIcon,
 } from "lucide-react";
+import { useSections } from "@/components/hooks/SectionsProvider";
 import GithubIcon from "@/components/icons/GithubIcon";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/ui/mode-toggle";
 import { saveAs } from "file-saver";
-import type { Section } from "@/lib/types";
 import { useMemo } from "react";
 
-type ButtonsPanelProps = {
-  sections: Section[];
-};
-
-export default function ButtonsPanel({ sections }: ButtonsPanelProps) {
+export default function ButtonsPanel() {
+  const { sections } = useSections();
   const sectionsHTML = useMemo(() => {
     return sections
       .map((section) => {

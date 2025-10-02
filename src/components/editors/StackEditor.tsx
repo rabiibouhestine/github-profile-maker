@@ -25,21 +25,14 @@ import AddTech from "@/components/AddTech";
 import TechCard from "@/components/TechCard";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import { useSections } from "@/components/hooks/SectionsProvider";
 
-import type { Section, AlignType, StackSection } from "@/lib/types";
+import type { AlignType, StackSection } from "@/lib/types";
 import type { DragEndEvent } from "@dnd-kit/core";
 
-type StackEditorProps = {
-  sections: Section[];
-  setSections: React.Dispatch<React.SetStateAction<Section[]>>;
-  selectedSectionID: number;
-};
+export default function StackEditor() {
+  const { sections, setSections, selectedSectionID } = useSections();
 
-export default function StackEditor({
-  sections,
-  setSections,
-  selectedSectionID,
-}: StackEditorProps) {
   const selectedSection = sections.find(
     (s): s is StackSection => s.id === selectedSectionID
   );

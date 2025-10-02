@@ -19,21 +19,13 @@ import {
   MessageSquare as SocialsIcon,
   RectangleHorizontal as BadgeIcon,
 } from "lucide-react";
+import { useSections } from "@/components/hooks/SectionsProvider";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import type { Section } from "@/lib/types";
 
-type AddSectionProps = {
-  sections: Section[];
-  setSections: React.Dispatch<React.SetStateAction<Section[]>>;
-  setSelectedSectionID: React.Dispatch<React.SetStateAction<number>>;
-};
-
-export default function AddSection({
-  sections,
-  setSections,
-  setSelectedSectionID,
-}: AddSectionProps) {
+export default function AddSection() {
+  const { sections, setSections, setSelectedSectionID } = useSections();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleAddSection = (section: Section) => {

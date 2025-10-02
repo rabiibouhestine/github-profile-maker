@@ -25,21 +25,14 @@ import AddSocial from "@/components/AddSocial";
 import SocialCard from "@/components/SocialCard";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import { useSections } from "@/components/hooks/SectionsProvider";
 
-import type { Section, AlignType, SocialsSection } from "@/lib/types";
+import type { AlignType, SocialsSection } from "@/lib/types";
 import type { DragEndEvent } from "@dnd-kit/core";
 
-type SocialsEditorProps = {
-  sections: Section[];
-  setSections: React.Dispatch<React.SetStateAction<Section[]>>;
-  selectedSectionID: number;
-};
+export default function SocialsEditor() {
+  const { sections, setSections, selectedSectionID } = useSections();
 
-export default function SocialsEditor({
-  sections,
-  setSections,
-  selectedSectionID,
-}: SocialsEditorProps) {
   const selectedSection = sections.find(
     (s): s is SocialsSection => s.id === selectedSectionID
   );

@@ -25,21 +25,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import BadgeCard from "@/components/BadgeCard";
+import { useSections } from "@/components/hooks/SectionsProvider";
 
-import type { Section, AlignType, BadgesSection } from "@/lib/types";
+import type { AlignType, BadgesSection } from "@/lib/types";
 import type { DragEndEvent } from "@dnd-kit/core";
 
-type BadgesEditorProps = {
-  sections: Section[];
-  setSections: React.Dispatch<React.SetStateAction<Section[]>>;
-  selectedSectionID: number;
-};
+export default function BadgesEditor() {
+  const { sections, setSections, selectedSectionID } = useSections();
 
-export default function BadgesEditor({
-  sections,
-  setSections,
-  selectedSectionID,
-}: BadgesEditorProps) {
   const selectedSection = sections.find(
     (s): s is BadgesSection => s.id === selectedSectionID
   );

@@ -1,3 +1,4 @@
+import { useSections } from "@/components/hooks/SectionsProvider";
 import SectionCard from "@/components/SectionCard";
 import AddSection from "@/components/AddSection";
 import {
@@ -17,22 +18,12 @@ import {
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 import { motion, AnimatePresence } from "framer-motion";
 
-import type { Section } from "@/lib/types";
 import type { DragEndEvent } from "@dnd-kit/core";
 
-type SectionsPanelProps = {
-  sections: Section[];
-  setSections: React.Dispatch<React.SetStateAction<Section[]>>;
-  selectedSectionID: number;
-  setSelectedSectionID: React.Dispatch<React.SetStateAction<number>>;
-};
+export default function SectionsPanel() {
+  const { sections, setSections, selectedSectionID, setSelectedSectionID } =
+    useSections();
 
-export default function SectionsPanel({
-  sections,
-  setSections,
-  selectedSectionID,
-  setSelectedSectionID,
-}: SectionsPanelProps) {
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
@@ -87,19 +78,13 @@ export default function SectionsPanel({
                   section={section}
                   isSelected={section.id === selectedSectionID}
                   onClick={() => setSelectedSectionID(section.id)}
-                  setSections={setSections}
-                  setSelectedSectionID={setSelectedSectionID}
                 />
               </motion.div>
             ))}
           </AnimatePresence>
         </SortableContext>
       </DndContext>
-      <AddSection
-        sections={sections}
-        setSections={setSections}
-        setSelectedSectionID={setSelectedSectionID}
-      />
+      <AddSection />
     </>
   );
 }

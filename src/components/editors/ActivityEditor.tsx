@@ -8,21 +8,15 @@ import {
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
+import { useSections } from "@/components/hooks/SectionsProvider";
 
-import type { Section, AlignType, ActivitySection } from "@/lib/types";
+import type { AlignType, ActivitySection } from "@/lib/types";
+
 import { activityThemes } from "@/resources/themes";
 
-type ActivityEditorProps = {
-  sections: Section[];
-  setSections: React.Dispatch<React.SetStateAction<Section[]>>;
-  selectedSectionID: number;
-};
+export default function ActivityEditor() {
+  const { sections, setSections, selectedSectionID } = useSections();
 
-export default function ActivityEditor({
-  sections,
-  setSections,
-  selectedSectionID,
-}: ActivityEditorProps) {
   const selectedSection = sections.find(
     (s): s is ActivitySection => s.id === selectedSectionID
   );

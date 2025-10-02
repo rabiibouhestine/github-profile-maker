@@ -7,20 +7,13 @@ import {
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { useSections } from "@/components/hooks/SectionsProvider";
 
-import type { Section, TextSection, TagType, AlignType } from "@/lib/types";
+import type { TextSection, TagType, AlignType } from "@/lib/types";
 
-type TextEditorProps = {
-  sections: Section[];
-  setSections: React.Dispatch<React.SetStateAction<Section[]>>;
-  selectedSectionID: number;
-};
+export default function TextEditor() {
+  const { sections, setSections, selectedSectionID } = useSections();
 
-export default function TextEditor({
-  sections,
-  setSections,
-  selectedSectionID,
-}: TextEditorProps) {
   const selectedSection = sections.find(
     (s): s is TextSection => s.id === selectedSectionID
   );

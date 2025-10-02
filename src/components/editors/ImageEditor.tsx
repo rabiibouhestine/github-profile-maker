@@ -7,20 +7,13 @@ import {
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import { useSections } from "@/components/hooks/SectionsProvider";
 
-import type { Section, ImageSection, AlignType } from "@/lib/types";
+import type { ImageSection, AlignType } from "@/lib/types";
 
-type ImageEditorProps = {
-  sections: Section[];
-  setSections: React.Dispatch<React.SetStateAction<Section[]>>;
-  selectedSectionID: number;
-};
+export default function ImageEditor() {
+  const { sections, setSections, selectedSectionID } = useSections();
 
-export default function ImageEditor({
-  sections,
-  setSections,
-  selectedSectionID,
-}: ImageEditorProps) {
   const selectedSection = sections.find(
     (s): s is ImageSection => s.id === selectedSectionID
   );

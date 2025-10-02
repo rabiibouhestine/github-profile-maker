@@ -14,6 +14,7 @@ import {
   SquarePen as SquarePenIcon,
   Trash as TrashIcon,
 } from "lucide-react";
+import { useSections } from "@/components/hooks/SectionsProvider";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import type { Section } from "@/lib/types";
@@ -23,8 +24,6 @@ type SectionCardProps = {
   section: Section;
   isSelected: boolean;
   onClick: () => void;
-  setSections: React.Dispatch<React.SetStateAction<Section[]>>;
-  setSelectedSectionID: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export default function SectionCard({
@@ -32,9 +31,9 @@ export default function SectionCard({
   section,
   isSelected,
   onClick,
-  setSections,
-  setSelectedSectionID,
 }: SectionCardProps) {
+  const { setSections, setSelectedSectionID } = useSections();
+
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: id });
 

@@ -10,15 +10,10 @@ import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { MultiSelect } from "@/components/ui/MultiSelect";
 import { trophyThemes } from "@/resources/themes";
+import { useSections } from "@/components/hooks/SectionsProvider";
 
 import type { Option } from "@/components/ui/MultiSelect";
-import type { Section, AlignType, TrophiesSection } from "@/lib/types";
-
-type TrophiesEditorProps = {
-  sections: Section[];
-  setSections: React.Dispatch<React.SetStateAction<Section[]>>;
-  selectedSectionID: number;
-};
+import type { AlignType, TrophiesSection } from "@/lib/types";
 
 const trophies: Option[] = [
   { value: "Commits", label: "Commits" },
@@ -43,11 +38,9 @@ const ranks: Option[] = [
   { value: "C", label: "C" },
 ];
 
-export default function TrophiesEditor({
-  sections,
-  setSections,
-  selectedSectionID,
-}: TrophiesEditorProps) {
+export default function TrophiesEditor() {
+  const { sections, setSections, selectedSectionID } = useSections();
+
   const selectedSection = sections.find(
     (s): s is TrophiesSection => s.id === selectedSectionID
   );

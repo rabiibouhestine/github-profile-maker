@@ -9,11 +9,12 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { MultiSelect } from "@/components/ui/MultiSelect";
 import { Switch } from "@/components/ui/switch";
+import { useSections } from "@/components/hooks/SectionsProvider";
 
 import { statsThemes } from "@/resources/themes";
 
 import type { Option } from "@/components/ui/MultiSelect";
-import type { Section, AlignType, StatsSection } from "@/lib/types";
+import type { AlignType, StatsSection } from "@/lib/types";
 
 const extraStats: Option[] = [
   { value: "reviews", label: "Reviews" },
@@ -23,17 +24,9 @@ const extraStats: Option[] = [
   { value: "prs_merged_percentage", label: "PRs Merged Percentage" },
 ];
 
-type StatsEditorProps = {
-  sections: Section[];
-  setSections: React.Dispatch<React.SetStateAction<Section[]>>;
-  selectedSectionID: number;
-};
+export default function StatsEditor() {
+  const { sections, setSections, selectedSectionID } = useSections();
 
-export default function StatsEditor({
-  sections,
-  setSections,
-  selectedSectionID,
-}: StatsEditorProps) {
   const selectedSection = sections.find(
     (s): s is StatsSection => s.id === selectedSectionID
   );

@@ -8,28 +8,17 @@ import ActivityEditor from "../editors/ActivityEditor";
 import StreakEditor from "../editors/StreakEditor";
 import LanguagesEditor from "../editors/LanguagesEditor";
 import StatsEditor from "../editors/StatsEditor";
+import { useSections } from "@/components/hooks/SectionsProvider";
 import { motion, AnimatePresence } from "framer-motion";
 
-import type { Section } from "@/lib/types";
+export default function EditorPanel() {
+  const { sections, selectedSectionID } = useSections();
 
-type EditorPanelProps = {
-  sections: Section[];
-  setSections: React.Dispatch<React.SetStateAction<Section[]>>;
-  selectedSectionID: number;
-  setSelectedSectionID: React.Dispatch<React.SetStateAction<number>>;
-};
-
-export default function EditorPanel({
-  sections,
-  setSections,
-  selectedSectionID,
-  setSelectedSectionID,
-}: EditorPanelProps) {
   const selectedSection = sections.find((s) => s.id === selectedSectionID);
 
   if (!selectedSection) return null;
 
-  const editorMap: Record<string, React.ComponentType<EditorPanelProps>> = {
+  const editorMap: Record<string, React.ComponentType> = {
     text: TextEditor,
     image: ImageEditor,
     trophies: TrophiesEditor,
@@ -56,12 +45,7 @@ export default function EditorPanel({
         transition={{ duration: 0.1 }}
         className="h-full"
       >
-        <EditorComponent
-          sections={sections}
-          setSections={setSections}
-          selectedSectionID={selectedSectionID}
-          setSelectedSectionID={setSelectedSectionID}
-        />
+        <EditorComponent />
       </motion.div>
     </AnimatePresence>
   );

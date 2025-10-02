@@ -8,22 +8,15 @@ import {
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
+import { useSections } from "@/components/hooks/SectionsProvider";
 
 import { languagesThemes } from "@/resources/themes";
 
-import type { Section, AlignType, LanguagesSection } from "@/lib/types";
+import type { AlignType, LanguagesSection } from "@/lib/types";
 
-type LanguagesEditorProps = {
-  sections: Section[];
-  setSections: React.Dispatch<React.SetStateAction<Section[]>>;
-  selectedSectionID: number;
-};
+export default function LanguagesEditor() {
+  const { sections, setSections, selectedSectionID } = useSections();
 
-export default function LanguagesEditor({
-  sections,
-  setSections,
-  selectedSectionID,
-}: LanguagesEditorProps) {
   const selectedSection = sections.find(
     (s): s is LanguagesSection => s.id === selectedSectionID
   );

@@ -9,9 +9,10 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { MultiSelect } from "@/components/ui/MultiSelect";
+import { useSections } from "@/components/hooks/SectionsProvider";
 
 import type { Option } from "@/components/ui/MultiSelect";
-import type { Section, AlignType, StreakSection } from "@/lib/types";
+import type { AlignType, StreakSection } from "@/lib/types";
 
 import { streakThemes } from "@/resources/themes";
 
@@ -25,17 +26,9 @@ const days: Option[] = [
   { value: "Sat", label: "Saturday" },
 ];
 
-type StreakEditorProps = {
-  sections: Section[];
-  setSections: React.Dispatch<React.SetStateAction<Section[]>>;
-  selectedSectionID: number;
-};
+export default function StreakEditor() {
+  const { sections, setSections, selectedSectionID } = useSections();
 
-export default function StreakEditor({
-  sections,
-  setSections,
-  selectedSectionID,
-}: StreakEditorProps) {
   const selectedSection = sections.find(
     (s): s is StreakSection => s.id === selectedSectionID
   );

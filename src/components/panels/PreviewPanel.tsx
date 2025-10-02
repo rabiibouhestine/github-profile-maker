@@ -1,11 +1,8 @@
 import { motion, AnimatePresence } from "framer-motion";
-import type { Section } from "@/lib/types";
+import { useSections } from "@/components/hooks/SectionsProvider";
 
-type PreviePanelProps = {
-  sections: Section[];
-};
-
-export default function PreviewPanel({ sections }: PreviePanelProps) {
+export default function PreviewPanel() {
+  const { sections } = useSections();
   const justifyMap: Record<"left" | "center" | "right", string> = {
     left: "justify-start",
     center: "justify-center",
