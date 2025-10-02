@@ -69,40 +69,33 @@ export default function AddSocial() {
       <DialogContent className="!max-w-4xl !max-h-4/6 overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Add a social link to your socials</DialogTitle>
-          <DialogDescription>
-            <div className="p-2">
-              <Input
-                type="text"
-                placeholder="Search technologies..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
-            </div>
-            <div className="grid grid-cols-6 gap-4 p-4">
-              {filtered.map((item) => {
-                const src = `https://raw.githubusercontent.com/rabiibouhestine/github-profile-maker/refs/heads/main/src/assets/social/${item}/default.svg`;
-                return (
-                  <div
-                    key={item}
-                    className="flex flex-col items-center border rounded-sm p-4 hover:bg-muted hover:cursor-pointer"
-                    onClick={() => handleAddSocial(item)}
-                  >
-                    <img
-                      key={item}
-                      src={src}
-                      alt={item}
-                      width={40}
-                      height={40}
-                    />
-                    <span className="mt-2 text-center text-sm truncate w-full">
-                      {item}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
-          </DialogDescription>
+          <DialogDescription></DialogDescription>
         </DialogHeader>
+        <div className="p-2">
+          <Input
+            type="text"
+            placeholder="Search technologies..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
+        <div className="grid grid-cols-6 gap-4 p-4">
+          {filtered.map((item) => {
+            const src = `https://raw.githubusercontent.com/rabiibouhestine/github-profile-maker/refs/heads/main/src/assets/social/${item}/default.svg`;
+            return (
+              <div
+                key={item}
+                className="flex flex-col items-center border rounded-sm p-4 hover:bg-muted hover:cursor-pointer"
+                onClick={() => handleAddSocial(item)}
+              >
+                <img key={item} src={src} alt={item} width={40} height={40} />
+                <span className="mt-2 text-center text-sm truncate w-full">
+                  {item}
+                </span>
+              </div>
+            );
+          })}
+        </div>
       </DialogContent>
     </Dialog>
   );

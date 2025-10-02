@@ -247,21 +247,20 @@ export default function AddSection() {
       <DialogContent className="!max-w-4xl !max-h-screen overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Add a section to your profile</DialogTitle>
-          <DialogDescription>
-            <div className="p-4 grid grid-cols-2 sm:grid-cols-5 gap-4 text-primary">
-              {options.map(({ label, icon: Icon, create }) => (
-                <button
-                  key={label}
-                  className="border aspect-square rounded-md flex flex-col items-center justify-center gap-3 hover:bg-muted hover:cursor-pointer"
-                  onClick={() => handleAddSection(create())}
-                >
-                  <Icon />
-                  {label}
-                </button>
-              ))}
-            </div>
-          </DialogDescription>
+          <DialogDescription></DialogDescription>
         </DialogHeader>
+        <div className="p-4 grid grid-cols-2 sm:grid-cols-5 gap-4 text-primary">
+          {options.map(({ label, icon: Icon, create }) => (
+            <button
+              key={label}
+              className="border aspect-square rounded-md flex flex-col items-center justify-center gap-3 hover:bg-muted hover:cursor-pointer"
+              onClick={() => handleAddSection(create())}
+            >
+              <Icon />
+              {label}
+            </button>
+          ))}
+        </div>
       </DialogContent>
     </Dialog>
   );

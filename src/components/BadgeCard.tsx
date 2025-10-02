@@ -11,6 +11,7 @@ import {
   DialogTrigger,
   DialogFooter,
   DialogClose,
+  DialogDescription,
 } from "@/components/ui/dialog";
 import { useSections } from "@/components/hooks/SectionsProvider";
 import { Button } from "@/components/ui/button";
@@ -129,6 +130,7 @@ export default function BadgeCard({
           <form onSubmit={handleSubmit}>
             <DialogHeader className="mb-6">
               <DialogTitle>Add a badge</DialogTitle>
+              <DialogDescription></DialogDescription>
             </DialogHeader>
             <div className="grid gap-4">
               <div className="grid gap-3">

@@ -77,42 +77,41 @@ export default function AddTech() {
       <DialogContent className="!max-w-4xl !max-h-4/6 overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Add a technology to your stack</DialogTitle>
-          <DialogDescription>
-            <div className="p-2">
-              <Input
-                type="text"
-                placeholder="Search technologies..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
-            </div>
-            <div className="grid grid-cols-6 gap-4 p-4">
-              {filtered.map((item) => {
-                const version = item.versions.svg[0];
-                const src = `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${item.name}/${item.name}-${version}.svg`;
-
-                return (
-                  <div
-                    key={item.name}
-                    className="flex flex-col items-center border rounded-sm p-4 hover:bg-muted hover:cursor-pointer"
-                    onClick={() => handleAddTech(item)}
-                  >
-                    <img
-                      key={item.name}
-                      src={src}
-                      alt={item.name}
-                      width={40}
-                      height={40}
-                    />
-                    <span className="mt-2 text-center text-sm truncate w-full">
-                      {item.name}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
-          </DialogDescription>
+          <DialogDescription></DialogDescription>
         </DialogHeader>
+        <div className="p-2">
+          <Input
+            type="text"
+            placeholder="Search technologies..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
+        <div className="grid grid-cols-6 gap-4 p-4">
+          {filtered.map((item) => {
+            const version = item.versions.svg[0];
+            const src = `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${item.name}/${item.name}-${version}.svg`;
+
+            return (
+              <div
+                key={item.name}
+                className="flex flex-col items-center border rounded-sm p-4 hover:bg-muted hover:cursor-pointer"
+                onClick={() => handleAddTech(item)}
+              >
+                <img
+                  key={item.name}
+                  src={src}
+                  alt={item.name}
+                  width={40}
+                  height={40}
+                />
+                <span className="mt-2 text-center text-sm truncate w-full">
+                  {item.name}
+                </span>
+              </div>
+            );
+          })}
+        </div>
       </DialogContent>
     </Dialog>
   );
