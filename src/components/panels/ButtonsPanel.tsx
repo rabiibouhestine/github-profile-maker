@@ -6,22 +6,19 @@ import { useSections } from "@/components/hooks/SectionsProvider";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/ui/mode-toggle";
 import { saveAs } from "file-saver";
-import { useMemo } from "react";
 import { buildSection } from "@/lib/section_builders";
 
 export default function ButtonsPanel() {
   const { sections } = useSections();
 
-  const sectionsHTML = useMemo(() => {
-    return sections.map(buildSection).join("<br>\n");
-  }, [sections]);
-
   const handleCopy = () => {
+    const sectionsHTML = sections.map(buildSection).join("<br>\n");
     navigator.clipboard.writeText(sectionsHTML);
     alert("Copied to clipboard!");
   };
 
   const handleDownload = () => {
+    const sectionsHTML = sections.map(buildSection).join("<br>\n");
     const blob = new Blob([sectionsHTML], {
       type: "text/markdown;charset=utf-8",
     });
