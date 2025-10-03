@@ -100,9 +100,9 @@ export default function BadgesEditor() {
   return (
     <div className="flex flex-col gap-4 pb-3">
       <div className="flex flex-col gap-2">
-        <Label>Align</Label>
+        <Label htmlFor="align">Align</Label>
         <Select value={align} onValueChange={onAlignChange}>
-          <SelectTrigger className="w-full">
+          <SelectTrigger id="align" className="w-full">
             <SelectValue placeholder="Theme" />
           </SelectTrigger>
           <SelectContent>

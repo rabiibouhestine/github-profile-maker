@@ -116,18 +116,20 @@ export default function ActivityEditor() {
   return (
     <div className="flex flex-col gap-4 pb-3">
       <div className="flex flex-col gap-2">
-        <Label>Github Username</Label>
+        <Label htmlFor="username">Github Username</Label>
         <Input
-          placeholder="Type your github username here."
           id="username"
+          type="text"
+          autoComplete="off"
+          placeholder="Type your github username here."
           value={username}
           onChange={onUserChange}
         />
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Align</Label>
+        <Label htmlFor="align">Align</Label>
         <Select value={align} onValueChange={onAlignChange}>
-          <SelectTrigger className="w-full">
+          <SelectTrigger id="align" className="w-full">
             <SelectValue placeholder="Align" />
           </SelectTrigger>
           <SelectContent>
@@ -138,7 +140,7 @@ export default function ActivityEditor() {
         </Select>
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Custom Title</Label>
+        <Label htmlFor="custom_title">Custom Title</Label>
         <Input
           placeholder="My Contribution Graph"
           id="custom_title"
@@ -147,9 +149,9 @@ export default function ActivityEditor() {
         />
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Theme</Label>
+        <Label htmlFor="theme">Theme</Label>
         <Select value={theme} onValueChange={onThemeChange}>
-          <SelectTrigger className="w-full">
+          <SelectTrigger id="theme" className="w-full">
             <SelectValue placeholder="Theme" />
           </SelectTrigger>
           <SelectContent>
@@ -167,8 +169,9 @@ export default function ActivityEditor() {
         </Select>
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Radius</Label>
+        <Label htmlFor="radius">Radius</Label>
         <Input
+          id="radius"
           type="number"
           placeholder="16"
           value={radius}
@@ -176,8 +179,9 @@ export default function ActivityEditor() {
         />
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Height</Label>
+        <Label htmlFor="height">Height</Label>
         <Input
+          id="height"
           type="number"
           placeholder="200"
           value={height}
@@ -185,8 +189,9 @@ export default function ActivityEditor() {
         />
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Days</Label>
+        <Label htmlFor="days">Days</Label>
         <Input
+          id="days"
           type="number"
           placeholder="40"
           value={days}

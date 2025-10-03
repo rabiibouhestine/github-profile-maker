@@ -73,6 +73,7 @@ export default function AddSocial() {
         </DialogHeader>
         <div className="p-2">
           <Input
+            id="search"
             type="text"
             placeholder="Search technologies..."
             value={search}

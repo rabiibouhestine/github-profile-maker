@@ -44,9 +44,9 @@ export default function TextEditor() {
   return (
     <div className="flex flex-col gap-4 pb-3">
       <div className="flex flex-col gap-2">
-        <Label>Tag</Label>
+        <Label htmlFor="tag">Tag</Label>
         <Select value={tag} onValueChange={onTagChange}>
-          <SelectTrigger className="w-full">
+          <SelectTrigger id="tag" className="w-full">
             <SelectValue placeholder="Theme" />
           </SelectTrigger>
           <SelectContent>
@@ -61,9 +61,9 @@ export default function TextEditor() {
         </Select>
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Align</Label>
+        <Label htmlFor="align">Align</Label>
         <Select value={align} onValueChange={onAlignChange}>
-          <SelectTrigger className="w-full">
+          <SelectTrigger id="align" className="w-full">
             <SelectValue placeholder="Theme" />
           </SelectTrigger>
           <SelectContent>
@@ -74,10 +74,10 @@ export default function TextEditor() {
         </Select>
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Text</Label>
+        <Label htmlFor="text">Text</Label>
         <Textarea
+          id="text"
           placeholder="Type your text here."
-          id="message"
           value={text}
           onChange={onTextChange}
         />

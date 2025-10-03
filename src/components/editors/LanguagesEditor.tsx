@@ -142,18 +142,19 @@ export default function LanguagesEditor() {
   return (
     <div className="flex flex-col gap-4 pb-3">
       <div className="flex flex-col gap-2">
-        <Label>Github Username</Label>
+        <Label htmlFor="username">Github Username</Label>
         <Input
-          placeholder="Type your github username here."
           id="username"
+          autoComplete="off"
+          placeholder="Type your github username here."
           value={username}
           onChange={onUserChange}
         />
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Align</Label>
+        <Label htmlFor="align">Align</Label>
         <Select value={align} onValueChange={onAlignChange}>
-          <SelectTrigger className="w-full">
+          <SelectTrigger id="align" className="w-full">
             <SelectValue placeholder="Theme" />
           </SelectTrigger>
           <SelectContent>
@@ -164,18 +165,19 @@ export default function LanguagesEditor() {
         </Select>
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Title</Label>
+        <Label htmlFor="custom_title">Title</Label>
         <Input
-          placeholder="My Contribution Graph"
           id="custom_title"
+          autoComplete="off"
+          placeholder="My Contribution Graph"
           value={custom_title}
           onChange={onTitleChange}
         />
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Theme</Label>
+        <Label htmlFor="theme">Theme</Label>
         <Select value={theme} onValueChange={onThemeChange}>
-          <SelectTrigger className="w-full">
+          <SelectTrigger id="theme" className="w-full">
             <SelectValue placeholder="Theme" />
           </SelectTrigger>
           <SelectContent>
@@ -193,9 +195,9 @@ export default function LanguagesEditor() {
         </Select>
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Layout</Label>
+        <Label htmlFor="layout">Layout</Label>
         <Select value={layout} onValueChange={onLayoutChange}>
-          <SelectTrigger className="w-full">
+          <SelectTrigger id="layout" className="w-full">
             <SelectValue placeholder="Layout" />
           </SelectTrigger>
           <SelectContent>
@@ -208,9 +210,9 @@ export default function LanguagesEditor() {
         </Select>
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Format</Label>
+        <Label htmlFor="format">Format</Label>
         <Select value={stats_format} onValueChange={onFormatChange}>
-          <SelectTrigger className="w-full">
+          <SelectTrigger id="format" className="w-full">
             <SelectValue placeholder="Format" />
           </SelectTrigger>
           <SelectContent>
@@ -220,8 +222,9 @@ export default function LanguagesEditor() {
         </Select>
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Number of Languages</Label>
+        <Label htmlFor="langs_count">Number of Languages</Label>
         <Input
+          id="langs_count"
           type="number"
           placeholder="5"
           value={langs_count}
@@ -229,8 +232,9 @@ export default function LanguagesEditor() {
         />
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Card Width</Label>
+        <Label htmlFor="card_width">Card Width</Label>
         <Input
+          id="card_width"
           type="number"
           placeholder="300"
           value={card_width}
@@ -238,8 +242,9 @@ export default function LanguagesEditor() {
         />
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Border Radius</Label>
+        <Label htmlFor="border_radius">Border Radius</Label>
         <Input
+          id="border_radius"
           type="number"
           placeholder="4.5"
           value={border_radius}

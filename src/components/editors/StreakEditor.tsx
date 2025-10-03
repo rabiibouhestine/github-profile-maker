@@ -164,18 +164,19 @@ export default function StreakEditor() {
   return (
     <div className="flex flex-col gap-4 pb-3">
       <div className="flex flex-col gap-2">
-        <Label>Github Username</Label>
+        <Label htmlFor="username">Github Username</Label>
         <Input
-          placeholder="Type your github username here."
           id="username"
+          autoComplete="off"
+          placeholder="Type your github username here."
           value={username}
           onChange={onUserChange}
         />
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Align</Label>
+        <Label htmlFor="align">Align</Label>
         <Select value={align} onValueChange={onAlignChange}>
-          <SelectTrigger className="w-full">
+          <SelectTrigger id="align" className="w-full">
             <SelectValue placeholder="Align" />
           </SelectTrigger>
           <SelectContent>
@@ -186,9 +187,9 @@ export default function StreakEditor() {
         </Select>
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Theme</Label>
+        <Label htmlFor="theme">Theme</Label>
         <Select value={theme} onValueChange={onThemeChange}>
-          <SelectTrigger className="w-full">
+          <SelectTrigger id="theme" className="w-full">
             <SelectValue placeholder="Theme" />
           </SelectTrigger>
           <SelectContent>
@@ -206,9 +207,9 @@ export default function StreakEditor() {
         </Select>
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Mode</Label>
+        <Label htmlFor="mode">Mode</Label>
         <Select value={mode} onValueChange={onModeChange}>
-          <SelectTrigger className="w-full">
+          <SelectTrigger id="mode" className="w-full">
             <SelectValue placeholder="mode" />
           </SelectTrigger>
           <SelectContent>
@@ -218,7 +219,7 @@ export default function StreakEditor() {
         </Select>
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Exclude Days</Label>
+        <span className="text-sm font-medium">Exclude Days</span>
         <MultiSelect
           options={days}
           value={exclude_days}
@@ -227,8 +228,9 @@ export default function StreakEditor() {
         />
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Card Width</Label>
+        <Label htmlFor="card_width">Card Width</Label>
         <Input
+          id="card_width"
           type="number"
           placeholder="495"
           value={card_width}
@@ -236,8 +238,9 @@ export default function StreakEditor() {
         />
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Card Height</Label>
+        <Label htmlFor="card_height">Card Height</Label>
         <Input
+          id="card_height"
           type="number"
           placeholder="195"
           value={card_height}
@@ -245,8 +248,9 @@ export default function StreakEditor() {
         />
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Border Radius</Label>
+        <Label htmlFor="border_radius">Border Radius</Label>
         <Input
+          id="border_radius"
           type="number"
           placeholder="4.5"
           value={border_radius}

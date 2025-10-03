@@ -168,18 +168,19 @@ export default function StatsEditor() {
   return (
     <div className="flex flex-col gap-4 pb-3">
       <div className="flex flex-col gap-2">
-        <Label>Github Username</Label>
+        <Label htmlFor="username">Github Username</Label>
         <Input
+          id="username"
+          autoComplete="off"
           placeholder="Type your github username here."
-          id="message"
           value={username}
           onChange={onUserChange}
         />
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Align</Label>
+        <Label htmlFor="align">Align</Label>
         <Select value={align} onValueChange={onAlignChange}>
-          <SelectTrigger className="w-full">
+          <SelectTrigger id="align" className="w-full">
             <SelectValue placeholder="Theme" />
           </SelectTrigger>
           <SelectContent>
@@ -190,9 +191,9 @@ export default function StatsEditor() {
         </Select>
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Theme</Label>
+        <Label htmlFor="theme">Theme</Label>
         <Select value={theme} onValueChange={onThemeChange}>
-          <SelectTrigger className="w-full">
+          <SelectTrigger id="theme" className="w-full">
             <SelectValue placeholder="Theme" />
           </SelectTrigger>
           <SelectContent>
@@ -210,9 +211,9 @@ export default function StatsEditor() {
         </Select>
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Rank Icon</Label>
+        <Label htmlFor="rank_icon">Rank Icon</Label>
         <Select value={rank_icon} onValueChange={onRankIconChange}>
-          <SelectTrigger className="w-full">
+          <SelectTrigger id="rank_icon" className="w-full">
             <SelectValue placeholder="Rank Icon" />
           </SelectTrigger>
           <SelectContent>
@@ -223,9 +224,9 @@ export default function StatsEditor() {
         </Select>
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Number Format</Label>
+        <Label htmlFor="number_format">Number Format</Label>
         <Select value={number_format} onValueChange={onNumberFormatChange}>
-          <SelectTrigger className="w-full">
+          <SelectTrigger id="number_format" className="w-full">
             <SelectValue placeholder="Number Format" />
           </SelectTrigger>
           <SelectContent>
@@ -235,7 +236,7 @@ export default function StatsEditor() {
         </Select>
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Extra Stats</Label>
+        <span className="text-sm font-medium">Extra Stats</span>
         <MultiSelect
           options={extraStats}
           value={show}
@@ -244,17 +245,19 @@ export default function StatsEditor() {
         />
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Title</Label>
+        <Label htmlFor="custom_title">Title</Label>
         <Input
-          placeholder="My Contribution Graph"
           id="custom_title"
+          autoComplete="off"
+          placeholder="My Contribution Graph"
           value={custom_title}
           onChange={onTitleChange}
         />
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Border Radius</Label>
+        <Label htmlFor="border_radius">Border Radius</Label>
         <Input
+          id="border_radius"
           type="number"
           placeholder="4.5"
           value={border_radius}
@@ -262,8 +265,9 @@ export default function StatsEditor() {
         />
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Card Width</Label>
+        <Label htmlFor="card_width">Card Width</Label>
         <Input
+          id="card_width"
           type="number"
           placeholder="300"
           value={card_width}

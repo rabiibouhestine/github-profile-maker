@@ -81,6 +81,7 @@ export default function AddTech() {
         </DialogHeader>
         <div className="p-2">
           <Input
+            id="search"
             type="text"
             placeholder="Search technologies..."
             value={search}

@@ -134,18 +134,19 @@ export default function TrophiesEditor() {
   return (
     <div className="flex flex-col gap-4 pb-3">
       <div className="flex flex-col gap-2">
-        <Label>Github Username</Label>
+        <Label htmlFor="username">Github Username</Label>
         <Input
+          id="username"
+          autoComplete="off"
           placeholder="Type your github username here."
-          id="message"
           value={username}
           onChange={onUserChange}
         />
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Align</Label>
+        <Label htmlFor="align">Align</Label>
         <Select value={align} onValueChange={onAlignChange}>
-          <SelectTrigger className="w-full">
+          <SelectTrigger id="align" className="w-full">
             <SelectValue placeholder="Align" />
           </SelectTrigger>
           <SelectContent>
@@ -156,9 +157,9 @@ export default function TrophiesEditor() {
         </Select>
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Theme</Label>
+        <Label htmlFor="theme">Theme</Label>
         <Select value={theme} onValueChange={onThemeChange}>
-          <SelectTrigger className="w-full">
+          <SelectTrigger id="theme" className="w-full">
             <SelectValue placeholder="Theme" />
           </SelectTrigger>
           <SelectContent>
@@ -176,7 +177,7 @@ export default function TrophiesEditor() {
         </Select>
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Trophies</Label>
+        <span className="text-sm font-medium">Trophies</span>
         <MultiSelect
           options={trophies}
           value={title}
@@ -185,7 +186,7 @@ export default function TrophiesEditor() {
         />
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Ranks</Label>
+        <span className="text-sm font-medium">Ranks</span>
         <MultiSelect
           options={ranks}
           value={rank}
@@ -194,8 +195,9 @@ export default function TrophiesEditor() {
         />
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Columns</Label>
+        <Label htmlFor="column">Columns</Label>
         <Input
+          id="column"
           type="number"
           placeholder="8"
           value={column}
@@ -203,8 +205,9 @@ export default function TrophiesEditor() {
         />
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Rows</Label>
+        <Label htmlFor="row">Rows</Label>
         <Input
+          id="row"
           type="number"
           placeholder="1"
           value={row}
@@ -212,8 +215,9 @@ export default function TrophiesEditor() {
         />
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Margin Width</Label>
+        <Label htmlFor="marginW">Margin Width</Label>
         <Input
+          id="marginW"
           type="number"
           placeholder="8"
           value={marginW}
@@ -221,8 +225,9 @@ export default function TrophiesEditor() {
         />
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Margin Height</Label>
+        <Label htmlFor="marginH">Margin Height</Label>
         <Input
+          id="marginH"
           type="number"
           placeholder="8"
           value={marginH}

@@ -45,8 +45,9 @@ export default function ImageEditor() {
   return (
     <div className="h-full flex flex-col gap-4 pb-3">
       <div className="flex flex-col gap-2">
-        <Label>Image URL</Label>
+        <Label htmlFor="url">Image URL</Label>
         <Input
+          id="url"
           type="text"
           placeholder="https://image.com"
           value={url}
@@ -54,9 +55,9 @@ export default function ImageEditor() {
         />
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Align</Label>
+        <Label htmlFor="align">Align</Label>
         <Select value={align} onValueChange={onAlignChange}>
-          <SelectTrigger className="w-full">
+          <SelectTrigger id="align" className="w-full">
             <SelectValue placeholder="Theme" />
           </SelectTrigger>
           <SelectContent>
@@ -67,8 +68,9 @@ export default function ImageEditor() {
         </Select>
       </div>
       <div className="flex flex-col gap-2">
-        <Label>Height</Label>
+        <Label htmlFor="height">Height</Label>
         <Input
+          id="height"
           type="number"
           placeholder="200"
           value={height}

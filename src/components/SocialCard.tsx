@@ -75,9 +75,9 @@ export default function SocialCard({ name, link }: SocialCardProps) {
           width={32}
         />
         <Input
+          id={name}
           type="text"
           placeholder="https://"
-          id="message"
           value={link}
           onChange={(e) => onLinkChange(e, name)}
         />
